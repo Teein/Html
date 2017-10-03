@@ -2,9 +2,9 @@
 namespace Mammalia\Html\Ast;
 
 use Mammalia\Html\Ast\Element;
-use Mammalia\Html\Serializer\ToHtml;
+use Mammalia\Html\Serializer\Element as Serializer;
 
-class NormalElement extends Element implements ToHtml
+class NormalElement extends Element implements Serializer
 {
 
     protected $childNodes;

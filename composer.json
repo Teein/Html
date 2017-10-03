@@ -5,7 +5,8 @@
         "psr-4": {"Mammalia\\Html\\": "src/"},
         "files" : [
             "src/elements.php",
-            "src/attributes.php"
+            "src/attributes.php",
+            "src/text.php"
         ]
     },
     "require-dev": {

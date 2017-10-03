@@ -125,14 +125,6 @@ function charset(string $value) : Attribute
 }
 
 /**
- * @link https://html.spec.whatwg.org/#attr-menuitem-type-state-checkbox
- */
-function Checkbox(string $value) : Attribute
-{
-    return new Attribute('Checkbox', $value);
-}
-
-/**
  * @link https://html.spec.whatwg.org/#attr-menuitem-checked
  */
 function checked(string $value) : Attribute
@@ -155,6 +147,15 @@ function circle(string $value) : Attribute
 {
     return new Attribute('circle', $value);
 }
+
+/**
+ * @link https://html.spec.whatwg.org/#classes
+ */
+function class_(string ...$values) : AttributeList
+{
+    return new AttributeList('class', $values);
+}
+
 
 /**
  * @link https://html.spec.whatwg.org/#attr-mod-cite
@@ -410,6 +411,14 @@ function httpEquiv(string $value) : Attribute
 function icon(string $value) : Attribute
 {
     return new Attribute('icon', $value);
+}
+
+/**
+ * @link https://html.spec.whatwg.org/#the-id-attribute
+ */
+function id(string $value) : Attribute
+{
+    return new Attribute('id', $value);
 }
 
 /**
@@ -818,6 +827,14 @@ function size(string $value) : Attribute
 function sizes(string ...$values) : AttributeList
 {
     return new AttributeList('sizes', $values);
+}
+
+/**
+ * @link https://html.spec.whatwg.org/#attr-slot
+ */
+function slot(string $value) : Attribute
+{
+    return new Attribute('slot', $value);
 }
 
 /**

@@ -1,25 +1,25 @@
 <?php
 namespace Mammalia\Html\Ast;
 
-use Mammalia\Html\Serializer\ToHtml;
+use Mammalia\Html\Serializer\Text as Serializer;
 
-class Text implements ToHtml
+class Text implements Serializer
 {
 
-    protected $text;
+    protected $value;
 
     public function __construct(string $value)
     {
-        $this->text = $text;
+        $this->value = $value;
     }
 
     public function getText() : string
     {
-        return $this->text;
+        return $this->value;
     }
 
     public function toHtml() : string
     {
-        return htmlspecialchars($this->text);
+        return htmlspecialchars($this->value, ENT_HTML5 | ENT_NOQUOTES);
     }
 }

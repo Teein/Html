@@ -1,17 +1,12 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use Mammalia\Html\Ast\NormalElement;
 
-use function Mammalia\Html\table;
-use function Mammalia\Html\thead;
-use function Mammalia\Html\tbody;
-use function Mammalia\Html\tfoot;
-use function Mammalia\Html\tr;
-use function Mammalia\Html\th;
-use function Mammalia\Html\td;
+use function Mammalia\Html\Elements\{table,thead,tbody,tfoot,tr,th,td};
+use function Mammalia\Html\Attributes\{id,class_};
+use function Mammalia\Html\Text\text;
 
-class RawTextElementTest extends TestCase
+class NormalElementTest extends TestCase
 {
     public function testToHtml()
     {
@@ -19,44 +14,18 @@ class RawTextElementTest extends TestCase
         $tableHtml = $table->toHtml();
         $this->assertEquals($tableHtml, '<table></table>');
 
-        $tableWithAttributes = table (id('test-table'), classList('mammalia', 'test'))();
-        $tableWithAttributesHtml = $table->toHtml();
-        $this->assertEquals($tableWithAttributesHtml, '<table id="test-table" class="mammalia test"></table>');
+        $tableWithAttributes = table (id('test-table'), class_('mammalia', 'test'))();
+        $tableWithAttributesHtml = $tableWithAttributes->toHtml();
+        $this->assertEquals('<table id="test-table" class="mammalia test"></table>', $tableWithAttributesHtml);
 
         $tableWithDescendants = table ()(
             thead ()(
                 tr ()(
-                    th ()(text('Lorem')),
-                    th ()(text('ipsum')),
-                    th ()(text('dolor'))
-                )
-            ),
-            tbody ()(
-                tr ()(
-                    td ()(text('sit')),
-                    td ()(text('amet')),
-                    td ()(text('consectetur'))
-                ),
-                tr ()(
-                    th ()(text('adipiscing')),
-                    th ()(text('elit')),
-                    th ()(text('sed'))
-                ),
-                tr ()(
-                    th ()(text('do')),
-                    th ()(text('eiusmod')),
-                    th ()(text('tempor'))
-                )
-            ),
-            tfoot ()(
-                tr ()(
-                    td ()(text('incididunt')),
-                    td ()(text('ut')),
-                    td ()(text('labore'))
+                    th ()(text('Lorem Ipsum'))
                 )
             )
         );
         $tableWithDescendantsHtml = $tableWithDescendants->toHtml();
-        $this->assertEquals($tableWithDescendants, '<table><thead><tr><th></th><th></th><th></th></tr>');
+        $this->assertEquals('<table><thead><tr><th>Lorem Ipsum</th></tr></thead></table>', $tableWithDescendantsHtml);
     }
 }

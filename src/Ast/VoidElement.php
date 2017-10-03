@@ -2,9 +2,9 @@
 namespace Mammalia\Html\Ast;
 
 use Mammalia\Html\Ast\Element;
-use Mammalia\Html\Serializer\ToHtml;
+use Mammalia\Html\Serializer\Element as Serializer;
 
-class VoidElement extends Element implements ToHtml
+class VoidElement extends Element implements Serializer
 {
     public function __construct(string $localName, array $attributes, array $childNodes)
     {

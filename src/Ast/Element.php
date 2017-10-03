@@ -27,7 +27,7 @@ class Element
     {
         return array_reduce($this->attributes, function ($html, $attribute) {
             $htmlAttribute = $attribute->toHtml();
-            return "$html $htmlAttribtue";
+            return "$html $htmlAttribute";
         }, '');
     }
 }

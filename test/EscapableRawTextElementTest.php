@@ -1,9 +1,8 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use Mammalia\Html\Ast\EscapableRawTextElement;
 
-use function Mammalia\Html\title;
+use function Mammalia\Html\Elements\title;
 
 class EscapableRawTextElementTest extends TestCase
 {

@@ -1,7 +1,7 @@
 <?php
 namespace Mammalia\Html\Serializer;
 
-interface ToHtml
+interface Attribute
 {
     public function toHtml() : string;
 }

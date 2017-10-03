@@ -1,9 +1,9 @@
 <?php
 namespace Mammalia\Html\Ast;
 
-use Mammalia\Html\Serializer\ToHtml;
+use Mammalia\Html\Serializer\Attribute as Serializer;
 
-class Attribute implements ToHtml
+class Attribute implements Serializer
 {
 
     protected $name;

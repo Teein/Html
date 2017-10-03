@@ -2,9 +2,9 @@
 namespace Mammalia\Html\Ast;
 
 use Mammalia\Html\Ast\Element;
-use Mammalia\Html\Serializer\ToHtml;
+use Mammalia\Html\Serializer\Element as Serializer;
 
-class RawTextElement extends Element implements ToHtml
+class RawTextElement extends Element implements Serializer
 {
 
     protected $text;
@@ -22,6 +22,6 @@ class RawTextElement extends Element implements ToHtml
 
     public function toHtml() : string
     {
-        throw new Exception('Not implemented yet');
+        throw new \Exception('Not implemented yet');
     }
 }
