@@ -1,0 +1,13 @@
+{
+    "require": {
+    },
+    "autoload": {
+        "psr-4": {"Mammalia\\Html\\": "src/"},
+        "files" : [
+            "src/lang/a.php"
+        ]
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6.1"
+    }
+}
