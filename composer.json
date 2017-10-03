@@ -4,7 +4,8 @@
     "autoload": {
         "psr-4": {"Mammalia\\Html\\": "src/"},
         "files" : [
-            "src/lang/a.php"
+            "src/elements.php",
+            "src/attribues.php"
         ]
     },
     "require-dev": {
