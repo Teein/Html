@@ -39,4 +39,8 @@ class Text implements Serializer
         ];
         return preg_replace($tests, $replacements, $this->text);
     }
+
+    public static function empty() {
+        return new Text('');
+    }
 }

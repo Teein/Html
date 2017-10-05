@@ -1187,11 +1187,11 @@ function samp(Attribute ...$attributes) : callable
  */
 function script(Attribute ...$attributes) : callable
 {
-    return function (Text $text) use ($attributes) : RawTextElement {
+    return function (Text $text = null) use ($attributes) : RawTextElement {
         return new RawTextElement(
             'script',
             $attributes,
-            $text
+            $text ?? Text::empty()
         );
     };
 }
@@ -1296,11 +1296,11 @@ function strong(Attribute ...$attributes) : callable
  */
 function style(Attribute ...$attributes) : callable
 {
-    return function (Text $text) use ($attributes) : RawTextElement {
+    return function (Text $text = null) use ($attributes) : RawTextElement {
         return new RawTextElement(
             'style',
             $attributes,
-            $text
+            $text ?? Text::empty()
         );
     };
 }
@@ -1408,11 +1408,11 @@ function template(Attribute ...$attributes) : callable
  */
 function textarea(Attribute ...$attributes) : callable
 {
-    return function (Text $text) use ($attributes) : TextElement {
+    return function (Text $text = null) use ($attributes) : TextElement {
         return new TextElement(
             'textarea',
             $attributes,
-            $text
+            $text ?? Text::empty()
         );
     };
 }
@@ -1477,11 +1477,11 @@ function time(Attribute ...$attributes) : callable
  */
 function title(Attribute ...$attributes) : callable
 {
-    return function (Text $text) use ($attributes) : TextElement {
+    return function (Text $text = null) use ($attributes) : TextElement {
         return new TextElement(
             'title',
             $attributes,
-            $text
+            $text ?? Text::empty()
         );
     };
 }

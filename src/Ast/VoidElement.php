@@ -8,7 +8,7 @@ use Mammalia\Html\Serializer\Element as Serializer;
 
 class VoidElement extends Element implements Serializer
 {
-    public function __construct(string $localName, array $attributes, array $childNodes)
+    public function __construct(string $localName, array $attributes)
     {
         parent::__construct($localName, $attributes);
     }
