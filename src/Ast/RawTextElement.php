@@ -21,11 +21,11 @@ class RawTextElement extends Element implements Serializer
         return $this->text;
     }
 
-     public function toHtml() : string
-     {
+    public function toHtml() : string
+    {
         $htmlAttributes = $this->attributesToHtml();
         $htmlLocalName = $this->localName;
         $htmlText = $this->text->toNonTerminatingHtml($htmlLocalName);
         return "<{$htmlLocalName}{$htmlAttributes}>$htmlText</$htmlLocalName>";
-     }
+    }
 }
