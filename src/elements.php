@@ -3,9 +3,9 @@ namespace Mammalia\Html\Elements;
 
 use Mammalia\Html\Serializer\Attribute;
 use Mammalia\Html\Serializer\Node;
-use Mammalia\Html\Ast\EscapableRawTextElement;
+use Mammalia\Html\Serializer\Text;
 use Mammalia\Html\Ast\NormalElement;
-use Mammalia\Html\Ast\RawTextElement;
+use Mammalia\Html\Ast\TextElement;
 use Mammalia\Html\Ast\VoidElement;
 
 /**
@@ -1184,8 +1184,8 @@ function samp(Attribute ...$attributes) : callable
  */
 function script(Attribute ...$attributes) : callable
 {
-    return function (string $text) use ($attributes) : RawTextElement {
-        return new RawTextElement(
+    return function (Text $text) use ($attributes) : TextElement {
+        return new TextElement(
             'script',
             $attributes,
             $text
@@ -1293,8 +1293,8 @@ function strong(Attribute ...$attributes) : callable
  */
 function style(Attribute ...$attributes) : callable
 {
-    return function (string $text) use ($attributes) : RawTextElement {
-        return new RawTextElement(
+    return function (Text $text) use ($attributes) : TextElement {
+        return new TextElement(
             'style',
             $attributes,
             $text
@@ -1405,8 +1405,8 @@ function template(Attribute ...$attributes) : callable
  */
 function textarea(Attribute ...$attributes) : callable
 {
-    return function (string $text) use ($attributes) : EscapableRawTextElement {
-        return new EscapableRawTextElement(
+    return function (Text $text) use ($attributes) : TextElement {
+        return new TextElement(
             'textarea',
             $attributes,
             $text
@@ -1474,8 +1474,8 @@ function time(Attribute ...$attributes) : callable
  */
 function title(Attribute ...$attributes) : callable
 {
-    return function (string $text) use ($attributes) : EscapableRawTextElement {
-        return new EscapableRawTextElement(
+    return function (Text $text) use ($attributes) : TextElement {
+        return new TextElement(
             'title',
             $attributes,
             $text

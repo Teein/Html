@@ -13,19 +13,25 @@ class NormalElementTest extends TestCase
         $table = table()();
         $tableHtml = $table->toHtml();
         $this->assertEquals($tableHtml, '<table></table>');
+    }
 
-        $tableWithAttributes = table (id('test-table'), class_('mammalia', 'test'))();
-        $tableWithAttributesHtml = $tableWithAttributes->toHtml();
-        $this->assertEquals('<table id="test-table" class="mammalia test"></table>', $tableWithAttributesHtml);
+    public function testWithAttribtues()
+    {
+        $table = table(id('test'), class_('mammalia', 'test'))();
+        $tableHtml = $table->toHtml();
+        $this->assertEquals('<table id="test" class="mammalia test"></table>', $tableHtml);
+    }
 
-        $tableWithDescendants = table ()(
-            thead ()(
+    public function testWithDescendants()
+    {
+        $table = table()(
+            thead()(
                 tr ()(
-                    th ()(text('Lorem Ipsum'))
+                    th()(text('Lorem Ipsum'))
                 )
             )
         );
-        $tableWithDescendantsHtml = $tableWithDescendants->toHtml();
-        $this->assertEquals('<table><thead><tr><th>Lorem Ipsum</th></tr></thead></table>', $tableWithDescendantsHtml);
+        $tableHtml = $table->toHtml();
+        $this->assertEquals('<table><thead><tr><th>Lorem Ipsum</th></tr></thead></table>', $tableHtml);
     }
 }

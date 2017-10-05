@@ -6,20 +6,35 @@ use Mammalia\Html\Serializer\Text as Serializer;
 class Text implements Serializer
 {
 
-    protected $value;
+    protected $text;
 
-    public function __construct(string $value)
+    public function __construct(string $text)
     {
-        $this->value = $value;
+        $this->text = $text;
     }
 
     public function getText() : string
     {
-        return $this->value;
+        return $this->text;
     }
 
     public function toHtml() : string
     {
-        return htmlspecialchars($this->value, ENT_HTML5 | ENT_NOQUOTES);
+        return htmlspecialchars($this->text, ENT_HTML5 | ENT_NOQUOTES);
+    }
+
+    public function toNonTerminatingHtml (string $localName) : string
+    {
+        $tests = [
+            '/<(' . $localName . ')/ium', // test for forbidden opening tags
+            '/<\/(' .$localName. ')/ium', // test for forbidden closing tags
+            '/<!--/ium'                       // test for forbidden opening comments
+        ];
+        $replacements = [
+            '<\\\$1',
+            '<\\/$1',
+            '<\\!--'
+        ];
+        return preg_replace($tests, $replacements, $this->text);
     }
 }
