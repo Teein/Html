@@ -6,6 +6,7 @@ use Mammalia\Html\Serializer\Node;
 use Mammalia\Html\Serializer\Text;
 use Mammalia\Html\Ast\NormalElement;
 use Mammalia\Html\Ast\TextElement;
+use Mammalia\Html\Ast\RawTextElement;
 use Mammalia\Html\Ast\VoidElement;
 
 /**
@@ -1184,8 +1185,8 @@ function samp(Attribute ...$attributes) : callable
  */
 function script(Attribute ...$attributes) : callable
 {
-    return function (Text $text) use ($attributes) : TextElement {
-        return new TextElement(
+    return function (Text $text) use ($attributes) : RawTextElement {
+        return new RawTextElement(
             'script',
             $attributes,
             $text
@@ -1293,8 +1294,8 @@ function strong(Attribute ...$attributes) : callable
  */
 function style(Attribute ...$attributes) : callable
 {
-    return function (Text $text) use ($attributes) : TextElement {
-        return new TextElement(
+    return function (Text $text) use ($attributes) : RawTextElement {
+        return new RawTextElement(
             'style',
             $attributes,
             $text

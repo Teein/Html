@@ -5,7 +5,7 @@ use Mammalia\Html\Ast\Element;
 use Mammalia\Html\Serializer\Text as TextSerializer;
 use Mammalia\Html\Serializer\TextElement as Serializer;
 
-class TextElement extends Element implements Serializer
+class RawTextElement extends Element implements Serializer
 {
 
     protected $text;
@@ -25,7 +25,7 @@ class TextElement extends Element implements Serializer
      {
         $htmlAttributes = $this->attributesToHtml();
         $htmlLocalName = $this->localName;
-        $htmlText = $this->text->toHtml();
+        $htmlText = $this->text->toNonTerminatingHtml($htmlLocalName);
         return "<{$htmlLocalName}{$htmlAttributes}>$htmlText</$htmlLocalName>";
      }
 }
