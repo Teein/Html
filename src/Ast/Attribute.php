@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace Mammalia\Html\Ast;
 
 use Mammalia\Html\Serializer\Attribute as Serializer;

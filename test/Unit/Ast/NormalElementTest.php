@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace Mammalia\Html\Test\Unit\Ast;
 
 use PHPUnit\Framework\TestCase;
