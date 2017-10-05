@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace Mammalia\Html\Test\Unit\Ast;
 
 use PHPUnit\Framework\TestCase;
-
+use Mammalia\Html\Serializer\Attribute;
 use Mammalia\Html\Ast\VoidElement;
 
 class VoidElementTest extends TestCase
@@ -14,5 +14,14 @@ class VoidElementTest extends TestCase
         $element = new VoidElement('element', []);
         $elementHtml = $element->toHtml();
         $this->assertEquals($elementHtml, '<element>');
+    }
+    
+    public function testWithAttributes()
+    {
+        $attributeStub = $this->createMock(Attribute::class);
+        $attributeStub->method('toHtml')->willReturn('attribute="value"');
+        $element = new VoidElement('element', [$attributeStub]);
+        $elementHtml = $element->toHtml();
+        $this->assertEquals('<element attribute="value">', $elementHtml);
     }
 }
