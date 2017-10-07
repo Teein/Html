@@ -4,15 +4,13 @@ declare(strict_types=1);
 namespace Mammalia\Html\Test\Integration;
 
 use PHPUnit\Framework\TestCase;
-use function Mammalia\Html\Elements\{area,base,br,col,embed,hr,img,input,link};
-use function Mammalia\Html\Elements\{meta,param,source,track,wbr};
+use function Mammalia\Html\Elements\{area,base,br,col,embed,hr,img,input,link,meta,param,source,track,wbr};
 
 class VoidElementsTest extends TestCase
 {
 
     const factories = [
-        'area','base','br','col','embed','hr','img','input',
-        'link','meta','param','source','track','wbr'
+        'area','base','br','col','embed','hr','img','input','link','meta','param','source','track','wbr'
     ];
 
     public function testLocalNames ()
