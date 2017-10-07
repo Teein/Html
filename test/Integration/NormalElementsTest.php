@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace Mammalia\Html\Test\Integration;
 
 use PHPUnit\Framework\TestCase;
-use function Mammalia\Html\Elements\{a,abbr,address,applet,aside,article,audio};
+use function Mammalia\Html\Elements\{a,abbr,address,aside,article,audio};
 use function Mammalia\Html\Elements\{b,bdi,bdo,blockquote,body,button};
 use function Mammalia\Html\Elements\{canvas,caption,cite,code,colgroup};
 use function Mammalia\Html\Elements\{data,datalist,dd,del,details,dfn,dialog,div,dl,dt};
@@ -14,7 +14,7 @@ use function Mammalia\Html\Elements\{h1,h2,h3,h4,h5,h6,head,header,hgroup,html};
 use function Mammalia\Html\Elements\{i,iframe,ins};
 use function Mammalia\Html\Elements\{kbd};
 use function Mammalia\Html\Elements\{label,legend,li};
-use function Mammalia\Html\Elements\{main,map,mark,marquee,menu,menuitem,meter};
+use function Mammalia\Html\Elements\{main,map,mark,menu,meter};
 use function Mammalia\Html\Elements\{nav,noscript};
 use function Mammalia\Html\Elements\{object_,ol,optgroup,option,output};
 use function Mammalia\Html\Elements\{p,picture,pre,progress,q};
@@ -29,7 +29,7 @@ class NormalElementsTest extends TestCase
 {
 
     const factories = [
-        'a','abbr','address','applet','aside','article','audio',
+        'a','abbr','address','aside','article','audio',
         'b','bdi','bdo','blockquote','body','button',
         'canvas','caption','cite','code','colgroup',
         'data','datalist','dd','del','details','dfn','dialog','div','dl','dt',
@@ -39,7 +39,7 @@ class NormalElementsTest extends TestCase
         'i','iframe','ins',
         'kbd',
         'label','legend','li',
-        'main','map','mark','marquee','menu','menuitem','meter',
+        'main','map','mark','menu','meter',
         'nav','noscript',
         'object_','ol','optgroup','option','output',
         'p','picture','pre','progress','q',

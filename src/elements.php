@@ -55,20 +55,6 @@ function address(Attribute ...$attributes) : callable
 }
 
 /**
- * @link https://html.spec.whatwg.org/#the-applet-element
- */
-function applet(Attribute ...$attributes) : callable
-{
-    return function (Node ...$elements) use ($attributes) : NormalElement {
-        return new NormalElement(
-            'applet',
-            $attributes,
-            $elements
-        );
-    };
-}
-
-/**
  * @link https://html.spec.whatwg.org/#the-area-element
  */
 function area(Attribute ...$attributes) : VoidElement
@@ -868,20 +854,6 @@ function mark(Attribute ...$attributes) : callable
 }
 
 /**
- * @link https://html.spec.whatwg.org/#the-marquee-element
- */
-function marquee(Attribute ...$attributes) : callable
-{
-    return function (Node ...$elements) use ($attributes) : NormalElement {
-        return new NormalElement(
-            'marquee',
-            $attributes,
-            $elements
-        );
-    };
-}
-
-/**
  * @link https://html.spec.whatwg.org/#the-menu-element
  */
 function menu(Attribute ...$attributes) : callable
@@ -889,20 +861,6 @@ function menu(Attribute ...$attributes) : callable
     return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'menu',
-            $attributes,
-            $elements
-        );
-    };
-}
-
-/**
- * @link https://html.spec.whatwg.org/#the-menuitem-element
- */
-function menuitem(Attribute ...$attributes) : callable
-{
-    return function (Node ...$elements) use ($attributes) : NormalElement {
-        return new NormalElement(
-            'menuitem',
             $attributes,
             $elements
         );

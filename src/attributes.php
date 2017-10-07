@@ -255,14 +255,6 @@ function dir(string $value) : Attribute
 }
 
 /**
- * @link https://html.spec.whatwg.org/#attr-marquee-direction
- */
-function direction(string $value) : Attribute
-{
-    return new Attribute('direction', $value);
-}
-
-/**
  * @link https://html.spec.whatwg.org/#attr-fe-dirname
  */
 function dirname(string $value) : Attribute
