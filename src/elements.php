@@ -5,7 +5,8 @@ namespace Mammalia\Html\Elements;
 
 use Mammalia\Html\Serializer\Attribute;
 use Mammalia\Html\Serializer\Node;
-use Mammalia\Html\Serializer\Text;
+use Mammalia\Html\Serializer\Text as TextSerializer;
+use Mammalia\Html\Ast\Text;
 use Mammalia\Html\Ast\NormalElement;
 use Mammalia\Html\Ast\TextElement;
 use Mammalia\Html\Ast\RawTextElement;
@@ -964,7 +965,7 @@ function noscript(Attribute ...$attributes) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-object-element
  */
-function object(Attribute ...$attributes) : callable
+function object_(Attribute ...$attributes) : callable
 {
     return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
@@ -1187,11 +1188,11 @@ function samp(Attribute ...$attributes) : callable
  */
 function script(Attribute ...$attributes) : callable
 {
-    return function (Text $text = null) use ($attributes) : RawTextElement {
+    return function (TextSerializer $text = null) use ($attributes) : RawTextElement {
         return new RawTextElement(
             'script',
             $attributes,
-            $text ?? Text::empty()
+            $text ?? new Text('')
         );
     };
 }
@@ -1296,11 +1297,11 @@ function strong(Attribute ...$attributes) : callable
  */
 function style(Attribute ...$attributes) : callable
 {
-    return function (Text $text = null) use ($attributes) : RawTextElement {
+    return function (TextSerializer $text = null) use ($attributes) : RawTextElement {
         return new RawTextElement(
             'style',
             $attributes,
-            $text ?? Text::empty()
+            $text ?? new Text ('')
         );
     };
 }
@@ -1408,11 +1409,11 @@ function template(Attribute ...$attributes) : callable
  */
 function textarea(Attribute ...$attributes) : callable
 {
-    return function (Text $text = null) use ($attributes) : TextElement {
+    return function (TextSerializer $text = null) use ($attributes) : TextElement {
         return new TextElement(
             'textarea',
             $attributes,
-            $text ?? Text::empty()
+            $text ?? new Text('')
         );
     };
 }
@@ -1477,11 +1478,11 @@ function time(Attribute ...$attributes) : callable
  */
 function title(Attribute ...$attributes) : callable
 {
-    return function (Text $text = null) use ($attributes) : TextElement {
+    return function (TextSerializer $text = null) use ($attributes) : TextElement {
         return new TextElement(
             'title',
             $attributes,
-            $text ?? Text::empty()
+            $text ?? new Text('')
         );
     };
 }

@@ -17,11 +17,6 @@ class NormalElement extends Element implements Serializer
         $this->childNodes = $childNodes;
     }
 
-    public function getChildNodes() : array
-    {
-        return $this->childNodes;
-    }
-
     public function toHtml() : string
     {
         $htmlLocalName = $this->localName;

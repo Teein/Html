@@ -15,11 +15,6 @@ class Text implements Serializer
         $this->text = $text;
     }
 
-    public function getText() : string
-    {
-        return $this->text;
-    }
-
     public function toHtml() : string
     {
         return htmlspecialchars($this->text, ENT_HTML5 | ENT_NOQUOTES);
@@ -38,9 +33,5 @@ class Text implements Serializer
             '<\\!--'
         ];
         return preg_replace($tests, $replacements, $this->text);
-    }
-
-    public static function empty() {
-        return new Text('');
     }
 }

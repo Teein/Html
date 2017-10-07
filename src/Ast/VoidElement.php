@@ -15,7 +15,7 @@ class VoidElement extends Element implements Serializer
 
     public function toHtml() : string
     {
-        $htmlLocalName = $this->getLocalName();
+        $htmlLocalName = $this->localName;
         $htmlAttributes = $this->attributesToHtml();
         return "<{$htmlLocalName}{$htmlAttributes}>";
     }

@@ -15,16 +15,6 @@ class Element
         $this->attributes = $attributes;
     }
 
-    public function getLocalName() : string
-    {
-        return $this->localName;
-    }
-
-    public function getAttributes() : array
-    {
-        return $this->attributes;
-    }
-
     protected function attributesToHtml()
     {
         return array_reduce($this->attributes, function ($html, $attribute) {
