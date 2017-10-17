@@ -5,7 +5,7 @@ namespace Mammalia\Html\Ast;
 
 use Mammalia\Html\Serializer\Text as Serializer;
 
-class Text implements Serializer
+final class Text implements Serializer
 {
 
     protected $text;

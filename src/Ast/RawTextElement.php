@@ -7,7 +7,7 @@ use Mammalia\Html\Ast\Element;
 use Mammalia\Html\Serializer\Text as TextSerializer;
 use Mammalia\Html\Serializer\TextElement as Serializer;
 
-class RawTextElement extends Element implements Serializer
+final class RawTextElement extends Element implements Serializer
 {
 
     protected $text;

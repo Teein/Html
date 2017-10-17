@@ -7,7 +7,7 @@ use Mammalia\Html\Ast\Element;
 use Mammalia\Html\Ast\Text;
 use Mammalia\Html\Serializer\Element as Serializer;
 
-class NormalElement extends Element implements Serializer
+final class NormalElement extends Element implements Serializer
 {
 
     protected $childNodes;

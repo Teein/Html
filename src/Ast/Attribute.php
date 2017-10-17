@@ -5,7 +5,7 @@ namespace Mammalia\Html\Ast;
 
 use Mammalia\Html\Serializer\Attribute as Serializer;
 
-class Attribute implements Serializer
+final class Attribute implements Serializer
 {
 
     protected $name;
