@@ -24,4 +24,11 @@ class VoidElementTest extends TestCase
         $elementHtml = $element->toHtml();
         $this->assertEquals('<element attribute="value">', $elementHtml);
     }
+
+    public function testBeautify ()
+    {
+        $element = new VoidElement('element', []);
+        $beautified = $element->beautify();
+        $this->assertEquals($element, $beautified);
+    }
 }

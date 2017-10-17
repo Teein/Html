@@ -34,4 +34,38 @@ class NormalElementTest extends TestCase
         $elementHtml = $element->toHtml();
         $this->assertEquals('<parent><child></parent>', $elementHtml);
     }
+
+    public function testBeautifierWithoutChildren()
+    {
+        $element = new NormalElement('empty', [], []);
+        $beautifiedHtml = $element->beautify()->toHtml();
+        $this->assertEquals("<empty>\n</empty>", $beautifiedHtml);
+    }
+
+    public function testBeautifierWithChild()
+    {
+        $child = new NormalElement('child', [], []);
+        $element = new NormalElement('parent', [], [$child]);
+        $beautifiedHtml = $element->beautify()->toHtml();
+        $this->assertEquals("<parent>\n    <child>\n    </child>\n</parent>", $beautifiedHtml);
+    }
+
+
+    public function testBeautifierWithSingleChildren()
+    {
+        $child = new NormalElement('child', [], []);
+        $element = new NormalElement('parent', [], [$child, $child]);
+        $beautifiedHtml = $element->beautify()->toHtml();
+        $this->assertEquals("<parent>\n    <child>\n    </child>\n    <child>\n    </child>\n</parent>", $beautifiedHtml);
+    }
+
+    public function testBeautifierWithGrandChild()
+    {
+        $grandChild = new NormalElement('grandchild', [], []);
+        $child = new NormalElement('child', [], [$grandChild]);
+        $element = new NormalElement('parent', [], [$child]);
+        $beautifiedHtml = $element->beautify()->toHtml();
+        $this->assertEquals("<parent>\n    <child>\n        <grandchild>\n        </grandchild>\n    </child>\n</parent>", $beautifiedHtml);
+
+    }
 }

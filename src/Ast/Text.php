@@ -20,7 +20,7 @@ class Text implements Serializer
         return htmlspecialchars($this->text, ENT_HTML5 | ENT_NOQUOTES);
     }
 
-    public function toNonTerminatingHtml (string $localName) : string
+    public function toRawText (string $localName) : string
     {
         $tests = [
             '/<(' . $localName . ')/ium', // test for forbidden opening tags

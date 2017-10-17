@@ -18,6 +18,11 @@ class TextElement extends Element implements Serializer
         $this->text = $text;
     }
 
+    public function beautify(int $level = 0) : Element
+    {
+        return $this;
+    }
+
     public function toHtml() : string
     {
         $htmlAttributes = $this->attributesToHtml();

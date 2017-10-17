@@ -26,28 +26,28 @@ class TextTest extends TestCase
     public function testAmpersandShouldBePreserved()
     {
         $text = new Text('Hello, World & Mars!');
-        $textHtml = $text->toNonTerminatingHtml('script');
+        $textHtml = $text->toRawText('script');
         $this->assertEquals('Hello, World & Mars!', $textHtml);
     }
 
     public function testForbiddenOpeningTagShouldBeEscaped()
     {
         $text = new Text('<script>');
-        $textHtml = $text->toNonTerminatingHtml('script');
+        $textHtml = $text->toRawText('script');
         $this->assertEquals('<\\script>', $textHtml);
     }
 
     public function testForbiddenClosingTagShouldBeEscaped()
     {
         $text = new Text('</script>');
-        $textHtml = $text->toNonTerminatingHtml('script');
+        $textHtml = $text->toRawText('script');
         $this->assertEquals('<\\/script>', $textHtml);
     }
 
     public function testForbiddenOpeningCommentShouldBeEscpaed()
     {
         $text = new Text('<!-- -->');
-        $textHtml = $text->toNonTerminatingHtml('script');
+        $textHtml = $text->toRawText('script');
         $this->assertEquals('<\\!-- -->', $textHtml);
     }
 }

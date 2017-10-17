@@ -5,4 +5,5 @@ namespace Mammalia\Html\Serializer;
 
 interface Element extends Node
 {
+    public function toHtml() : string;
 }

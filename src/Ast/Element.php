@@ -3,7 +3,9 @@ declare(strict_types=1);
 
 namespace Mammalia\Html\Ast;
 
-class Element
+use Mammalia\Html\Serializer\Element as Serializer;
+
+abstract class Element implements Serializer
 {
     protected $localName;
 
@@ -15,6 +17,8 @@ class Element
         $this->attributes = $attributes;
     }
 
+    abstract public function beautify(int $level = 0) : Element;
+
     protected function attributesToHtml()
     {
         return array_reduce($this->attributes, function ($html, $attribute) {
@@ -22,4 +26,5 @@ class Element
             return "$html $htmlAttribute";
         }, '');
     }
+
 }

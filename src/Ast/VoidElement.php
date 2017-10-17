@@ -13,6 +13,11 @@ class VoidElement extends Element implements Serializer
         parent::__construct($localName, $attributes);
     }
 
+    public function beautify(int $level = 0) : Element
+    {
+        return $this;
+    }
+
     public function toHtml() : string
     {
         $htmlLocalName = $this->localName;

@@ -5,6 +5,7 @@ namespace Mammalia\Html\Serializer;
 
 interface Text extends Node
 {
+    public function toHtml() : string;
     /**
      * Encode the text contents of <script> and <style> elements.
      * 
@@ -16,5 +17,5 @@ interface Text extends Node
      *                          in questions. This is always 'script' or
      *                          or 'style'.
      */
-    public function toNonTerminatingHtml(string $localName) : string;
+    public function toRawText(string $localName) : string;
 }

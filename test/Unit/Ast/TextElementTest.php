@@ -29,4 +29,13 @@ class TextElementTest extends TestCase
         $elementHtml = $element->toHtml();
         $this->assertEquals('<element attribute="value"></element>', $elementHtml);
     }
+
+    public function testBeautify ()
+    {
+        $textStub = $this->createMock(Text::class);
+        $textStub->method('toRawText')->willReturn('');
+        $element = new TextElement('element', [], $textStub);
+        $beautified = $element->beautify();
+        $this->assertEquals($element, $beautified);
+    }
 }
