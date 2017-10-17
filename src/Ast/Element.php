@@ -11,12 +11,6 @@ abstract class Element implements Serializer
 
     protected $attributes;
 
-    public function __construct(string $localName, array $attributes)
-    {
-        $this->localName = $localName;
-        $this->attributes = $attributes;
-    }
-
     abstract public function beautify(int $level = 0) : Element;
 
     protected function attributesToHtml()

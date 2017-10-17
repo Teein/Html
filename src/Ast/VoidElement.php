@@ -10,7 +10,8 @@ class VoidElement extends Element implements Serializer
 {
     public function __construct(string $localName, array $attributes)
     {
-        parent::__construct($localName, $attributes);
+        $this->localName = $localName;
+        $this->attributes = $attributes;
     }
 
     public function beautify(int $level = 0) : Element

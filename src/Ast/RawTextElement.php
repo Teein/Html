@@ -14,7 +14,8 @@ class RawTextElement extends Element implements Serializer
 
     public function __construct(string $localName, array $attributes, TextSerializer $text)
     {
-        parent::__construct($localName, $attributes);
+        $this->localName = $localName;
+        $this->attributes = $attributes;
         $this->text = $text;
     }
 

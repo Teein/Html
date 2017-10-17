@@ -14,7 +14,8 @@ class NormalElement extends Element implements Serializer
 
     public function __construct(string $localName, array $attributes, array $childNodes)
     {
-        parent::__construct($localName, $attributes);
+        $this->localName = $localName;
+        $this->attributes = $attributes;
         $this->childNodes = $childNodes;
     }
 
