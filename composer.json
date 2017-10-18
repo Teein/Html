@@ -7,7 +7,7 @@
             "src/attributes.php",
             "src/comment.php",
             "src/custom.php",
-            "src/data.php",
+            "src/data_.php",
             "src/document.php",
             "src/elements.php",
             "src/foreign.php",
