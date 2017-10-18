@@ -9,7 +9,7 @@ use Mammalia\Html\Serializer\Node;
 
 function foreign (string $localName) : callable
 {
-    return function (Attribtue ...$attributes) use ($localName) : callable {
+    return function (Attribute ...$attributes) use ($localName) : callable {
         return function (Node ...$childNodes) use ($localName, $attributes) : NormalElement {
             return new NormalElement($localName, $attributes, $childNodes);
         };
