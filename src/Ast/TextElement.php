@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace Mammalia\Html\Ast;
 
 use Mammalia\Html\Ast\Element;
+use Mammalia\Html\Beautifier\Beautifier;
 use Mammalia\Html\Serializer\Text as TextSerializer;
 use Mammalia\Html\Serializer\TextElement as Serializer;
 
@@ -19,7 +20,7 @@ final class TextElement extends Element implements Serializer
         $this->text = $text;
     }
 
-    public function beautify(int $level = 0) : Element
+    public function beautify(int $level = 0) : Beautifier
     {
         return $this;
     }

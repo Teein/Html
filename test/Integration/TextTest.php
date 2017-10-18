@@ -8,7 +8,7 @@ use function Mammalia\Html\Text\{text};
 
 class TextTest extends TestCase
 {
-    public function testLocalNames ()
+    public function testText ()
     {
         $ast = text('lorem ipsum');
         $html = $ast->toHtml();
