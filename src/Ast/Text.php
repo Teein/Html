@@ -3,9 +3,9 @@ declare(strict_types=1);
 
 namespace Mammalia\Html\Ast;
 
-use Mammalia\Html\Serializer\Text as Serializer;
+use Mammalia\Html\VirtualDom\Text as TextInterface;
 
-final class Text implements Serializer
+final class Text implements TextInterface
 {
 
     protected $text;

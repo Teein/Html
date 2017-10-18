@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace Mammalia\Html\Test\Unit\Ast;
 
 use PHPUnit\Framework\TestCase;
-use Mammalia\Html\Serializer\Attribute;
+use Mammalia\Html\VirtualDom\Attribute;
 use Mammalia\Html\Ast\VoidElement;
 
 class VoidElementTest extends TestCase

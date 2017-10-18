@@ -5,15 +5,16 @@ namespace Mammalia\Html\Ast;
 
 use Mammalia\Html\Ast\Element;
 use Mammalia\Html\Beautifier\Beautifier;
-use Mammalia\Html\Serializer\Text as TextSerializer;
-use Mammalia\Html\Serializer\TextElement as Serializer;
+use Mammalia\Html\Serializer\ToHtml;
+use Mammalia\Html\VirtualDom\Text as TextInterface;
+use Mammalia\Html\VirtualDom\Element as ElementInterface;
 
-final class RawTextElement extends Element implements Serializer
+final class RawTextElement extends Element implements ElementInterface, Beautifier, ToHtml
 {
 
     protected $text;
 
-    public function __construct(string $localName, array $attributes, TextSerializer $text)
+    public function __construct(string $localName, array $attributes, TextInterface $text)
     {
         $this->localName = $localName;
         $this->attributes = $attributes;

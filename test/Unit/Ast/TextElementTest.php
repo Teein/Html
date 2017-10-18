@@ -4,8 +4,8 @@ declare(strict_types=1);
 namespace Mammalia\Html\Test\Unit\Ast;
 
 use PHPUnit\Framework\TestCase;
-use Mammalia\Html\Serializer\Attribute;
-use Mammalia\Html\Serializer\Text;
+use Mammalia\Html\VirtualDom\Attribute;
+use Mammalia\Html\VirtualDom\Text;
 use Mammalia\Html\Ast\TextElement;
 
 class TextElementTest extends TestCase

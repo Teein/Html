@@ -3,9 +3,9 @@ declare(strict_types=1);
 
 namespace Mammalia\Html\Ast;
 
-use Mammalia\Html\Serializer\Attribute as Serializer;
+use Mammalia\Html\VirtualDom\Attribute as AttributeInterface;
 
-final class Attribute implements Serializer
+final class Attribute implements AttributeInterface
 {
 
     protected $name;

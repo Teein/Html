@@ -4,10 +4,10 @@ declare(strict_types=1);
 namespace Mammalia\Html\Ast;
 
 use Mammalia\Html\Beautifier\Beautifier;
-use Mammalia\Html\Serializer\Document as Serializer;
-use Mammalia\Html\Serializer\Element;
+use Mammalia\Html\VirtualDom\Document as DocumentInterface;
+use Mammalia\Html\VirtualDom\Element as ElementInterface;
 
-final class Document implements Beautifier, Serializer
+final class Document implements DocumentInterface
 {
 
     protected $root;

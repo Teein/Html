@@ -6,9 +6,10 @@ namespace Mammalia\Html\Ast;
 use Mammalia\Html\Ast\Element;
 use Mammalia\Html\Ast\Text;
 use Mammalia\Html\Beautifier\Beautifier;
-use Mammalia\Html\Serializer\Element as Serializer;
+use Mammalia\Html\Serializer\ToHtml;
+use Mammalia\Html\VirtualDom\Element as ElementInterface;
 
-final class NormalElement extends Element implements Serializer
+final class NormalElement extends Element implements ElementInterface, ToHtml, Beautifier
 {
 
     protected $childNodes;

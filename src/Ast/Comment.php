@@ -4,9 +4,9 @@ declare(strict_types=1);
 namespace Mammalia\Html\Ast;
 
 use Mammalia\Html\Beautifier\Beautifier;
-use Mammalia\Html\Serializer\Comment as Serializer;
+use Mammalia\Html\VirtualDom\Comment as CommentInterface;
 
-final class Comment implements Beautifier, Serializer
+final class Comment implements CommentInterface
 {
 
     protected $comment;

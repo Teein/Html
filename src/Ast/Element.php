@@ -4,13 +4,15 @@ declare(strict_types=1);
 namespace Mammalia\Html\Ast;
 
 use Mammalia\Html\Beautifier\Beautifier;
-use Mammalia\Html\Serializer\Element as Serializer;
+use Mammalia\Html\VirtualDom\Element as ElementInterface;
 
-abstract class Element implements Beautifier, Serializer
+abstract class Element implements ElementInterface
 {
     protected $localName;
 
     protected $attributes;
+
+    abstract public function toHtml() : string;
 
     abstract public function beautify(int $level = 0) : Beautifier;
 
