@@ -3,14 +3,14 @@ declare(strict_types=1);
 
 namespace Mammalia\Html\Elements;
 
-use Mammalia\Html\Serializer\Attribute;
-use Mammalia\Html\Serializer\Node;
-use Mammalia\Html\Serializer\Text as TextSerializer;
-use Mammalia\Html\Ast\Text;
 use Mammalia\Html\Ast\NormalElement;
-use Mammalia\Html\Ast\TextElement;
 use Mammalia\Html\Ast\RawTextElement;
+use Mammalia\Html\Ast\Text;
+use Mammalia\Html\Ast\TextElement;
 use Mammalia\Html\Ast\VoidElement;
+use Mammalia\Html\VirtualDom\Attribute;
+use Mammalia\Html\VirtualDom\Node;
+use Mammalia\Html\VirtualDom\Text as TextInterface;
 
 /**
  * @link https://html.spec.whatwg.org/#the-a-element
@@ -1146,7 +1146,7 @@ function samp(Attribute ...$attributes) : callable
  */
 function script(Attribute ...$attributes) : callable
 {
-    return function (TextSerializer $text = null) use ($attributes) : RawTextElement {
+    return function (TextInterface $text = null) use ($attributes) : RawTextElement {
         return new RawTextElement(
             'script',
             $attributes,
@@ -1255,7 +1255,7 @@ function strong(Attribute ...$attributes) : callable
  */
 function style(Attribute ...$attributes) : callable
 {
-    return function (TextSerializer $text = null) use ($attributes) : RawTextElement {
+    return function (TextInterface $text = null) use ($attributes) : RawTextElement {
         return new RawTextElement(
             'style',
             $attributes,
@@ -1367,7 +1367,7 @@ function template(Attribute ...$attributes) : callable
  */
 function textarea(Attribute ...$attributes) : callable
 {
-    return function (TextSerializer $text = null) use ($attributes) : TextElement {
+    return function (TextInterface $text = null) use ($attributes) : TextElement {
         return new TextElement(
             'textarea',
             $attributes,
@@ -1436,7 +1436,7 @@ function time(Attribute ...$attributes) : callable
  */
 function title(Attribute ...$attributes) : callable
 {
-    return function (TextSerializer $text = null) use ($attributes) : TextElement {
+    return function (TextInterface $text = null) use ($attributes) : TextElement {
         return new TextElement(
             'title',
             $attributes,

@@ -4,8 +4,8 @@ declare(strict_types=1);
 namespace Mammalia\Html\Elements;
 
 use Mammalia\Html\Ast\NormalElement;
-use Mammalia\Html\Ast\Attribute;
-use Mammalia\Html\Serializer\Node;
+use Mammalia\Html\VirtualDom\Attribute;
+use Mammalia\Html\VirtualDom\Node;
 
 function custom (string $localName) : callable
 {
