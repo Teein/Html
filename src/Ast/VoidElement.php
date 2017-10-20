@@ -27,4 +27,14 @@ final class VoidElement extends Element implements ElementInterface, ToHtml, Bea
         $htmlAttributes = $this->attributesToHtml();
         return "<{$htmlLocalName}{$htmlAttributes}>";
     }
+
+    public function setLocalName(string $localName) : ElementInterface
+    {
+        return new VoidElement($localName, $this->attributes);
+    }
+
+    public function setAttributes(array $attributes) : ElementInterface
+    {
+        return new VoidElement($this->localName, $attributes);
+    }
 }

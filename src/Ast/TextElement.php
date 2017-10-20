@@ -5,11 +5,10 @@ namespace Mammalia\Html\Ast;
 
 use Mammalia\Html\Ast\Element;
 use Mammalia\Html\Beautifier\Beautifier;
-use Mammalia\Html\Serializer\ToHtml;
 use Mammalia\Html\VirtualDom\Text as TextInterface;
 use Mammalia\Html\VirtualDom\Element as ElementInterface;
 
-final class TextElement extends Element implements ElementInterface, ToHtml
+final class TextElement extends Element implements ElementInterface
 {
 
     protected $text;
@@ -32,5 +31,25 @@ final class TextElement extends Element implements ElementInterface, ToHtml
         $htmlLocalName = $this->localName;
         $htmlText = $this->text->toHtml();
         return "<{$htmlLocalName}{$htmlAttributes}>$htmlText</$htmlLocalName>";
+    }
+
+    public function getText() : TextInterface
+    {
+        return $this->text;
+    }
+
+    public function setText(TextInterface $text) : ElementInterface
+    {
+        return new TextElement($this->localName, $this->attributes, $text);
+    }
+
+    public function setLocalName(string $localName) : ElementInterface
+    {
+        return new TextElement($localName, $this->attributes, $this->text);
+    }
+
+    public function setAttributes(array $attributes) : ElementInterface
+    {
+        return new TextElement($this->localName, $attributes, $this->text);
     }
 }

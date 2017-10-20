@@ -29,4 +29,14 @@ final class Comment implements CommentInterface
         $beautified = $indent . str_replace("\n", $indent, $this->comment) . $indent;
         return new Comment($beautified);
     }
+
+    public function getComment() : string
+    {
+        return $this->comment;
+    }
+
+    public function setComment(string $comment) : CommentInterface
+    {
+        return new Comment($comment);
+    }
 }

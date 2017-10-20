@@ -8,4 +8,6 @@ use Mammalia\Html\VirtualDom\Node;
 
 interface Comment extends Node, Beautifier
 {
+    public function getComment() : string;
+    public function setComment(string $comment) : Comment;
 }

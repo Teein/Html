@@ -44,4 +44,23 @@ final class NormalElement extends Element implements ElementInterface
             return $html . $childNode->toHtml();
         }, '');
     }
+
+    public function getChildNodes() : array {
+        return $this->childNodes;
+    }
+
+    public function setLocalName(string $localName) : ElementInterface
+    {
+        return new NormalElement($localName, $this->attributes, $this->childNodes);
+    }
+
+    public function setAttributes(array $attributes) : ElementInterface
+    {
+        return new NormalElement($this->localName, $attributes, $this->childNodes);
+    }
+
+    public function setChildNodes(array $childNodes) : ElementInterface
+    {
+        return new NormalElement($this->localName, $this->attributes, $childNodes);
+    }
 }

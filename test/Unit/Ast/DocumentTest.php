@@ -27,4 +27,20 @@ class DocumentTest extends TestCase
         $documentHtml = $document->beautify()->toHtml();
         $this->assertEquals("<!DOCTYPE html>\n<html>\n</html>", $documentHtml);
     }
+
+    public function testGetRoot()
+    {
+        $rootStub = $this->createMock(Element::class);
+        $document = new Document($rootStub);
+        $this->assertEquals($rootStub, $document->getRoot());
+    }
+
+    public function testSetComment()
+    {
+        $rootBefore = $this->createMock(Element::class);
+        $rootAfter = $this->createMock(Element::class);
+        $documentBefore = new Document($rootBefore);
+        $documentAfter = $documentBefore->setRoot($rootAfter);
+        $this->assertEquals($rootAfter, $documentAfter->getRoot());
+    }
 }

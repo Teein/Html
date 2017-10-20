@@ -8,4 +8,6 @@ use Mammalia\Html\VirtualDom\Node;
 
 interface Text extends Node, ToRawText
 {
+    public function getText() : string;
+    public function setText(string $text) : Text;
 }

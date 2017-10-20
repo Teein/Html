@@ -34,4 +34,14 @@ final class Text implements TextInterface
         ];
         return preg_replace($tests, $replacements, $this->text);
     }
+
+    public function getText() : string
+    {
+        return $this->text;
+    }
+
+    public function setText(string $text) : TextInterface
+    {
+        return new Text($text);
+    }
 }

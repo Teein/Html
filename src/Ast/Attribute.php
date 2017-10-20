@@ -24,4 +24,24 @@ final class Attribute implements AttributeInterface
         $htmlValue = htmlspecialchars($this->value, ENT_QUOTES | ENT_HTML5);
         return "$htmlName=\"$htmlValue\"";
     }
+
+    public function getName() : string
+    {
+        return $this->name;
+    }
+
+    public function getValue() : string
+    {
+        return $this->value;
+    }
+
+    public function setName(string $name) : AttributeInterface
+    {
+        return new Attribute($name, $this->value);
+    }
+    
+    public function setValue(string $value) : AttributeInterface
+    {
+        return new Attribute($this->name, $value);
+    }
 }

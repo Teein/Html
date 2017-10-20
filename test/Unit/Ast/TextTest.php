@@ -50,4 +50,20 @@ class TextTest extends TestCase
         $textHtml = $text->toRawText('script');
         $this->assertEquals('<\\!-- -->', $textHtml);
     }
+
+    public function testGetText()
+    {
+        $expected = 'lorem ipsum';
+        $element = new Text($expected);
+        $actual = $element->getText();
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testSetText()
+    {
+        $expected = 'lorem ipsum';
+        $element = new Text('');
+        $actual = $element->setText($expected)->getText();
+        $this->assertEquals($expected, $actual);
+    }
 }

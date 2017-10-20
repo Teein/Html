@@ -42,4 +42,20 @@ class CommentTest extends TestCase
         $commentHtml = $comment->beautify(1)->toHtml();
         $this->assertEquals("<!--\n    lorem\n    ipsum\n    -->", $commentHtml);
     }
+
+    public function testGetComment()
+    {
+        $text = "lorem ipsum";
+        $comment = new Comment($text);
+        $this->assertEquals($text, $comment->getComment());
+    }
+
+    public function testSetComment()
+    {
+        $textBefore = "lorem";
+        $textAfter = "ipsum";
+        $commentBefore = new Comment($textBefore);
+        $commentAfter = $commentBefore->setComment($textAfter);
+        $this->assertEquals($textAfter, $commentAfter->getComment());
+    }
 }

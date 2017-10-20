@@ -29,4 +29,14 @@ final class Document implements DocumentInterface
     {
         return new Document($this->root->beautify(), true);
     }
+
+    public function getRoot() : ElementInterface
+    {
+        return $this->root;
+    }
+
+    public function setRoot(ElementInterface $root) : DocumentInterface
+    {
+        return new Document($root, $this->beautified);
+    }
 }

@@ -66,6 +66,52 @@ class NormalElementTest extends TestCase
         $element = new NormalElement('parent', [], [$child]);
         $beautifiedHtml = $element->beautify()->toHtml();
         $this->assertEquals("<parent>\n    <child>\n        <grandchild>\n        </grandchild>\n    </child>\n</parent>", $beautifiedHtml);
+    }
 
+    public function testGetLocalName()
+    {
+        $localName = 'element';
+        $element = new NormalElement($localName, [], []);
+        $this->assertEquals($localName, $element->getLocalName());
+    }
+
+    public function testGetAttributes()
+    {
+        $attributes = [];
+        $element = new NormalElement('element', $attributes, []);
+        $this->assertEquals($attributes, $element->getAttributes());
+    }
+
+    public function testGetChildNodes()
+    {
+        $childNodes = [];
+        $element = new NormalElement('element', [], $childNodes);
+        $this->assertEquals($childNodes, $element->getChildNodes());
+    }
+
+    public function testSetLocalName()
+    {
+        $expected = 'setelement';
+        $element = new NormalElement('element', [], []);
+        $actual = $element->setLocalName($expected)->getLocalName();
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testSetAttributes()
+    {
+        $attributeStub = $this->createMock(Attribute::class);
+        $expected = [$attributeStub];
+        $element = new NormalElement('element', [], []);
+        $actual = $element->setAttributes($expected)->getAttributes();
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testSetChildNodes()
+    {
+        $child = new NormalElement('child', [], []);
+        $expected = [$child];
+        $element = new NormalElement('element', [], []);
+        $actual = $element->setChildNodes($expected)->getChildNodes();
+        $this->assertEquals($expected, $actual);
     }
 }

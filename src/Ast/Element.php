@@ -24,4 +24,14 @@ abstract class Element implements ElementInterface
         }, '');
     }
 
+    public function getLocalName() : string
+    {
+        return $this->localName;
+    }
+
+    public function getAttributes() : array
+    {
+        return $this->attributes;
+    }
+
 }

@@ -38,4 +38,56 @@ class TextElementTest extends TestCase
         $beautified = $element->beautify();
         $this->assertEquals($element, $beautified);
     }
+    
+    public function testGetLocalName()
+    {
+        $textStub = $this->createMock(Text::class);
+        $localName = 'element';
+        $element = new TextElement($localName, [], $textStub);
+        $this->assertEquals($localName, $element->getLocalName());
+    }
+
+    public function testGetAttributes()
+    {
+        $textStub = $this->createMock(Text::class);
+        $attributes = [];
+        $element = new TextElement('element', $attributes, $textStub);
+        $this->assertEquals($attributes, $element->getAttributes());
+    }
+
+    public function testSetLocalName()
+    {
+        $textStub = $this->createMock(Text::class);
+        $expected = 'setelement';
+        $element = new TextElement('element', [], $textStub);
+        $actual = $element->setLocalName($expected)->getLocalName();
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testSetAttributes()
+    {
+        $textStub = $this->createMock(Text::class);
+        $attributeStub = $this->createMock(Attribute::class);
+        $expected = [$attributeStub];
+        $element = new TextElement('element', [], $textStub);
+        $actual = $element->setAttributes($expected)->getAttributes();
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testGetText()
+    {
+        $expected = $this->createMock(Text::class);
+        $element = new TextElement('element', [], $expected);
+        $actual = $element->getText();
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testSetText()
+    {
+        $textStub = $this->createMock(Text::class);
+        $expected = $this->createMock(Text::class);
+        $element = new TextElement('element', [], $textStub);
+        $actual = $element->setText($expected)->getText();
+        $this->assertEquals($expected, $actual);
+    }
 }
