@@ -24,9 +24,9 @@ final class RawTextElement extends Element implements ElementInterface
      * Construct a new RawTextElement with localName set to $localName,
      * attributes set to $attributes and text-content set to $text
      * 
-     * @param $localName The localName of the new RawTextElement
-     * @param $attributes The attributes of the new RawTextElement
-     * @param $text The text-content of the new RawTextElement
+     * @param string $localName The localName of the new RawTextElement
+     * @param array $attributes The attributes of the new RawTextElement
+     * @param Mammalia\Html\VirtualDom\Text $text The text-content of the new RawTextElement
      */
     public function __construct(string $localName, array $attributes, TextInterface $text)
     {
@@ -48,7 +48,7 @@ final class RawTextElement extends Element implements ElementInterface
      * rule too serious, but make sure to remove the call to "beautify" for
      * production-code.
      * 
-     * @param $level The current level of indentation
+     * @param int $level The current level of indentation
      */
     public function beautify(int $level = 0) : Beautifier
     {
@@ -78,7 +78,7 @@ final class RawTextElement extends Element implements ElementInterface
      * Get a new RawTextElement that is like this one but with its text-content
      * set to $text
      * 
-     * @param $text The text-content of the new RawTextElement
+     * @param Mammalia\Html\VirtualDom\Text $text The text-content of the new RawTextElement
      */
     public function setText(TextInterface $text) : ElementInterface
     {
@@ -89,7 +89,7 @@ final class RawTextElement extends Element implements ElementInterface
      * Get a new RawTextElement that is like this one but with its localName
      * set to $localName
      * 
-     * @param $localName The localName of the new RawTextElement
+     * @param string $localName The localName of the new RawTextElement
      */
     public function setLocalName(string $localName) : ElementInterface
     {
@@ -100,7 +100,7 @@ final class RawTextElement extends Element implements ElementInterface
      * Get a new RawTextElement that is like this one but with its attributes
      * set to $attributes
      * 
-     * @param $attributes The attributes of the new RawTextElement
+     * @param array $attributes The attributes of the new RawTextElement
      */
     public function setAttributes(array $attributes) : ElementInterface
     {

@@ -18,7 +18,7 @@ final class Comment implements CommentInterface
     /**
      * Construct a new Comment with given $comment
      * 
-     * @param $comment The content of the new Comment
+     * @param string $comment The content of the new Comment
      */
     public function __construct(string $comment)
     {
@@ -48,7 +48,7 @@ final class Comment implements CommentInterface
      * serious, but make sure to remove the call to beautify for
      * production-code.
      * 
-     * @param $level The current level of indentation
+     * @param int $level The current level of indentation
      */
     public function beautify (int $level = 0) : Beautifier
     {
@@ -69,7 +69,7 @@ final class Comment implements CommentInterface
      * Get a new Comment that is like this one but with its content set to
      * $content
      * 
-     * @param $comment The content of the new comment
+     * @param string $comment The content of the new comment
      */
     public function setComment(string $comment) : CommentInterface
     {

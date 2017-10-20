@@ -18,8 +18,8 @@ final class VoidElement extends Element implements ElementInterface
      * Construct a new VoidElement with localName set to $localName and
      * attributes set to $attributes
      * 
-     * @param $localName The localName of the new VoidElement
-     * @param $attributes The attributes of the new VoidElement
+     * @param string $localName The localName of the new VoidElement
+     * @param array $attributes The attributes of the new VoidElement
      */
     public function __construct(string $localName, array $attributes)
     {
@@ -38,7 +38,7 @@ final class VoidElement extends Element implements ElementInterface
      * rule too serious, but make sure to remove the call to "beautify" for
      * production-code.
      * 
-     * @param $level The current level of indentation
+     * @param int $level The current level of indentation
      */
     public function beautify(int $level = 0) : Beautifier
     {
@@ -59,7 +59,7 @@ final class VoidElement extends Element implements ElementInterface
      * Get a new VoidElement that is like this one but with its localName set
      * to $localName
      * 
-     * @param $localName The localName of the new VoidElement
+     * @param string $localName The localName of the new VoidElement
      */
     public function setLocalName(string $localName) : ElementInterface
     {
@@ -70,7 +70,7 @@ final class VoidElement extends Element implements ElementInterface
      * Get a new VoidElement that is like this one but with its attributes set
      * to $attributes
      * 
-     * @param $attributes The attributes of the new VoidElement
+     * @param array $attributes The attributes of the new VoidElement
      */
     public function setAttributes(array $attributes) : ElementInterface
     {

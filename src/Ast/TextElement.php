@@ -22,9 +22,9 @@ final class TextElement extends Element implements ElementInterface
      * Construct a new TextElement with localName set to $localName, attributes
      * set to $attributes and text-content set to $text.
      * 
-     * @param $localName The localName of the new TextElement
-     * @param $attributes The attributes of the new TextElement
-     * @param $text The text-content of the new TextElement
+     * @param string $localName The localName of the new TextElement
+     * @param array $attributes The attributes of the new TextElement
+     * @param Mammalia\Html\VirtualDom\TextInterface $text The text-content of the new TextElement
      */
     public function __construct(string $localName, array $attributes, TextInterface $text)
     {
@@ -46,7 +46,7 @@ final class TextElement extends Element implements ElementInterface
      * rule too serious, but make sure to remove the call to "beautify" for
      * production-code.
      * 
-     * @param $level The current level of indentation
+     * @param int $level The current level of indentation
      */
     public function beautify(int $level = 0) : Beautifier
     {
@@ -76,7 +76,7 @@ final class TextElement extends Element implements ElementInterface
      * Get a new TextElement that is like this one but with text-content set to
      * $text
      * 
-     * @param $text The text-content of the new TextElement
+     * @param Mammalia\Html\VirtualDom\TextInterface $text The text-content of the new TextElement
      */
     public function setText(TextInterface $text) : ElementInterface
     {
@@ -87,7 +87,7 @@ final class TextElement extends Element implements ElementInterface
      * Get a new TextElement that is like this one but with localName set to
      * $localName
      * 
-     * @param $localName The localName of the new TextElement
+     * @param string $localName The localName of the new TextElement
      */
     public function setLocalName(string $localName) : ElementInterface
     {
@@ -98,7 +98,7 @@ final class TextElement extends Element implements ElementInterface
      * Get a new TextElement that is like this one but with attributes set to
      * $attributes
      * 
-     * @param $attributes The attributes of the new TextElement
+     * @param array $attributes The attributes of the new TextElement
      */
     public function setAttributes(array $attributes) : ElementInterface
     {

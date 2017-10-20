@@ -20,9 +20,9 @@ final class NormalElement extends Element implements ElementInterface
      * Construct a new NormalElement with localName set to $localName,
      * attributes set to $attributes and childNodes set to $childNodes
      * 
-     * @param $localName The localName of the new NormalElement
-     * @param $attributes The attributes of the new NormalElement
-     * @param $childNodes The childNodes of the new NormalElement
+     * @param string $localName The localName of the new NormalElement
+     * @param array $attributes The attributes of the new NormalElement
+     * @param array $childNodes The childNodes of the new NormalElement
      */
     public function __construct(string $localName, array $attributes, array $childNodes)
     {
@@ -44,7 +44,7 @@ final class NormalElement extends Element implements ElementInterface
      * rule too serious, but make sure to remove the call to "beautify" for
      * production-code.
      * 
-     * @param $level The current level of indentation
+     * @param int $level The current level of indentation
      */
     public function beautify(int $level = 0) : Beautifier
     {
@@ -88,7 +88,7 @@ final class NormalElement extends Element implements ElementInterface
      * Get a new NormalElement that is like this one but with localName set to
      * $localName
      * 
-     * @param $localName The localName of the new NormalElement
+     * @param string $localName The localName of the new NormalElement
      */
     public function setLocalName(string $localName) : ElementInterface
     {
@@ -99,7 +99,7 @@ final class NormalElement extends Element implements ElementInterface
      * Get a new NormalElement that is like this one but with attributes set to
      * $attributes
      * 
-     * @param $attributes The attributes of the new NormalElement
+     * @param array $attributes The attributes of the new NormalElement
      */
     public function setAttributes(array $attributes) : ElementInterface
     {
@@ -110,7 +110,7 @@ final class NormalElement extends Element implements ElementInterface
      * Get a new NormalElement that is like this one but with childNodes set to
      * $childNodes
      * 
-     * @param $childNodes The childNodes of the new NormalElement
+     * @param array $childNodes The childNodes of the new NormalElement
      */
     public function setChildNodes(array $childNodes) : ElementInterface
     {

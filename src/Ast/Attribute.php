@@ -18,8 +18,8 @@ final class Attribute implements AttributeInterface
 
     /**
      * Construct a new Attribute with name set to $name and value set to $value
-     * @param $name The name of the new Attribute
-     * @param $value The value of the new Attribute
+     * @param string $name The name of the new Attribute
+     * @param string $value The value of the new Attribute
      */
     public function __construct(string $name, string $value)
     {
@@ -56,7 +56,7 @@ final class Attribute implements AttributeInterface
     /**
      * Get a new Attribute that is like this one but with name set to $name
      * 
-     * @param $name The name of the new Attribute
+     * @param string $name The name of the new Attribute
      */
     public function setName(string $name) : AttributeInterface
     {
@@ -66,7 +66,7 @@ final class Attribute implements AttributeInterface
     /**
      * Get a new Attribute that is like this one but with value set to $value
      * 
-     * @param $value The value of the new Attribute
+     * @param string $value The value of the new Attribute
      */
     public function setValue(string $value) : AttributeInterface
     {

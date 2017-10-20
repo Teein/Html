@@ -21,15 +21,15 @@ final class Document implements DocumentInterface
     /**
      * Construct a new Document with given root $root.
      * 
-     * @param $root The root-node of the new Document
-     * @param $beautified A flag to capture wether the new Document should be
+     * @param Mammalia\Html\VirtualDom\Element $root The root-node of the new Document
+     * @param bool $beautified A flag to capture wether the new Document should be
      *        beautified before output. This flag defaults to "false" and
      *        should never be set to "true" by the user. It is automatically
      *        set, whenever "beautify" is called on the document. This is
      *        a debugging utility only, so don't take the previous rule too
      *        serious, but make shure to unset the flag for production code.
      */
-    public function __construct(Element $root, bool $beautified = false)
+    public function __construct(ElementInterface $root, bool $beautified = false)
     {
         $this->root = $root;
         $this->beautified = $beautified;
@@ -55,7 +55,7 @@ final class Document implements DocumentInterface
      * 
      * Make sure to remove the call to beautify for production-code.
      * 
-     * @param $level The current level of indentation. This should always be 0.
+     * @param int $level The current level of indentation. This should always be 0.
      */
     public function beautify (int $level = 0) : Beautifier
     {
@@ -74,7 +74,7 @@ final class Document implements DocumentInterface
      * Get a new Document that is like this one but with the root-node
      * set to $root
      * 
-     * @param $root The root-node of the new Document
+     * @param Mammalia\Html\VirtualDom\Element $root The root-node of the new Document
      */
     public function setRoot(ElementInterface $root) : DocumentInterface
     {

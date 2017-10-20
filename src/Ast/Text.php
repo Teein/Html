@@ -16,7 +16,7 @@ final class Text implements TextInterface
     /**
      * Construct a new Text with text-content set to $text
      * 
-     * @param $text The text-content of the new Text
+     * @param string $text The text-content of the new Text
      */
     public function __construct(string $text)
     {
@@ -38,7 +38,7 @@ final class Text implements TextInterface
      * not replaced by the html-escaping-sequence "&amp;", but left
      * unmodifier.
      * 
-     * @param $localName A localName, that is escaped inside the
+     * @param string $localName A localName, that is escaped inside the
      *        text-content of this Text.
      */
     public function toRawText (string $localName) : string
@@ -68,7 +68,7 @@ final class Text implements TextInterface
      * Get a new Text that is like this one but with its text-content set to
      * $text.
      * 
-     * @param $text The text-content of the new Text
+     * @param string $text The text-content of the new Text
      */
     public function setText(string $text) : TextInterface
     {
