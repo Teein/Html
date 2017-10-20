@@ -4,106 +4,143 @@
 
 # CommonCrane/Html
 
-CommonCrane/Html is a functional templating-engine for PHP inspired by React, XHP and Elm. It is written for 2017 web-development. It's core-features are:
+CommonCrane/Html is a functional templating-engine for PHP inspired by React, XHP and Elm. It's core-features are:
 
-* No new syntax, just regular PHP.
-* Performance
-* Interoperability
+* Ease of use
+
+  Templates are written in ordinary PHP and they closely resemble the syntax of html.
+
 * Robustness
-* Immutable data
-* No state
 
-If you are interested how we archieve these goals, you might want to read our fesign-documents and then our architecture-guide. If this is your first contact with CommonCrane/Html we recommend you to read this README first.
+  Templates are immutable and therefore predictable in their outcome when transformed to html. Once created you cannot change the template. However, you can always derive a new template from an existing one with the a fluent getter/setter-api.
+
+* Security
+
+  Unlike most other templating-engines for PHP CommonCrane/Html automatically detects and prevents cross-site-scripting-attacks.
 
 ## Getting Started
+
+### Requirements
+
+CommonCrane/Html requires at least PHP 7.1 and Composer. If you haven't installed composer on your system yet, you can so by following their official installation-instructions at <https://getcomposer.org/doc/00-intro.md>.
+
+### Installation
+
+When your system fullfills the requirements listed above, you can install Composer/Html by typing:
+
+```bash
+composer require commoncrane/html
+```
+
+or by adding it manually to your composer.json-file.
 
 ### Hello World
 
 ```php
 <?php
+declare(strict_types = 1);
 
-use CommonCrane\Html;
+namespace CommonCreane\Html\Example;
 
-echo show (beautify (
-  html (lang ('en')) (
-    head () (
-      meta (charset ('utf8')),
-      title () (
-        text ('Hello World!')
+use function CommonCrane\Html\Beautify\beautify;
+use function CommonCrane\Html\ToHtml\toHtml;
+use function CommonCrane\Html\Document\document;
+use function CommonCrane\Html\Elements\{html,head,meta,title,body,h1};
+use function CommonCrane\Html\Attributes\{lang,charset};
+use function CommonCrane\Html\Text\text;
+
+echo toHtml(beautify(document(
+    html(lang('en'))(
+      head()(
+          meta(charset('utf8')),
+          title()(
+              text('Hello World!')
+          )
+      ),
+      body()(
+          h1()(
+             text('Hello World!')
+          )
       )
-    ),
-    body () (
-      h1 () (
-        text ('Hello World!')
-      )
-    )
   )
-));
+)));
 ```
 
-CommonCrane/Html features a concise syntax for writing your templates. Hopefully, the example reminds you of HTML.
+CommonCrane/Html features a concise syntax for writing your templates. Hopefully, the example reminds you of ordinary html.
 
 Let's see how CommonCrane/Html syntax is similar to HTML:
 
 * We have tagnames: `html`, `head`, `body`, `h1`, ...
 * We have attribtues: `lang`, `charset`, ...
 
-Notice, what is different from HTML:
+Notice, what is different from html:
 
 * We use parenthesis not angle-brackets and they're placed in different positions
 * We don't have closing-tags.
 * We can use any PHP-expression inside our templates and it will become evaluated.
 
-There is more to discover in oru example:
+There is more to discover in our example:
 
-* CommonCrane-Temapltes are minified by default, we use the `beautify`-function to have a nicer identiation.
-* We use the show-Function to print 
+* Temapltes are minified by default, we use the `beautify`-function to indent our output.
+* We use the toHtml-Function to get a string-representation from our abstract syntax tree. 
 
 ### if then else
 
-Unlike other templating-engines CommonCrane/html does not introduce special syntax for conditional branches or loops. Instead, we use PHPs built-in language features for these kind of things. However, the functional interface of CommonCrane/html wants *expressions* not *statements*. For example PHPs `if () {} else {}`-construct is a statement, but the ternary-operator `$cond ? $foo : $bar` is an expression (if you don't like the flaky syntax of the ternary operator, you can always define your own view-helpers).
+Unlike other templating-engines CommonCrane/html does not introduce special syntax for conditional branches or loops. Instead, we use PHPs built-in language features for these kind of things. However, the functional interface of CommonCrane/Html wants *expressions* not *statements*. For example PHPs `if () {} else {}`-construct is a statement, but the ternary-operator `$cond ? $foo : $bar` is an expression (if you don't like the flaky syntax of the ternary operator, you can always define your own view-helpers, we'll come back to this later).
 
 ```php
 <?php
+declare(strict_types = 1);
 
-use Mammut\Html;
+namespace CommonCreane\Html\Example;
 
-$name = ;
+use function CommonCrane\Html\Beautify\beautify;
+use function CommonCrane\Html\ToHtml\toHtml;
+use function CommonCrane\Html\Document\document;
+use function CommonCrane\Html\Elements\{html,head,meta,title,body,h1};
+use function CommonCrane\Html\Attributes\{lang,charset};
+use function CommonCrane\Html\Text\text;
 
-echo show (beautify (
-  html (lang ('en')) (
-    head () (
-      meta (charset ('utf8')),
-      title () (
-        text ('Hello World!')
-      )
-    ),
-    body () (
-      h1 () (
-        (isset ($_GET['name'])
-            ? text ("Hello {$_GET[name]}!")
-            : text ('Hello World!')
+echo toHtml(beautify(document(
+    html(lang('en')) (
+        head()(
+            meta(charset ('utf8')),
+            title() (
+               text('Hello World!')
+            )
+        ),
+        body()(
+            h1()(
+                (isset($_GET['name'])
+                    ? text("Hello {$_GET[name]}!")
+                    : text('Hello World!')
+                )
+            )
         )
-      )
     )
-  )
-));
+)));
 ```
 
 ### Loops
 
-PHPs `for`- and `while`-loops are statements and therefore won't work in CommonCrane\templates. We use the cooler map/reduce-functions to loop:
+PHPs `for`- and `while`-loops are statements and therefore won't work in CommonCrane\Html. We use the cooler map/reduce-functions to loop:
 
 ```php
 <?php
+declare(strict_types = 1);
 
-use CommonCrane\Html;
+namespace CommonCreane\Html\Example;
 
-$books = [
+use function CommonCrane\Html\Beautify\beautify;
+use function CommonCrane\Html\ToHtml\toHtml;
+use function CommonCrane\Html\Document\document;
+use function CommonCrane\Html\Elements\{html,head,meta,title,body,table,tr,td};
+use function CommonCrane\Html\Attributes\{lang,charset};
+use function CommonCrane\Html\Text\text;
 
-];
+$books = [];
 
-echo show (beautify (
+echo toHtml (beautify ( document (
   html (lang ('en')) (
     head () (
       meta (charset ('utf8')),
@@ -122,7 +159,7 @@ echo show (beautify (
       )
     )
   )
-));
+)));
 ```
 
 ```php
@@ -159,39 +196,3 @@ echo show (beautify (
   )
 ));
 ```
-
-### Fragments
-
-### Sanitization
-
-### View Helpers
-
-### Custom Elements
-
-### Data Attributes
-
-### SVG / MathML
-
-## Known Conflicts
-
-### Naming conflicts
-
-## Compared to
-
-### Twig / Smarty
-
-### XHP
-
-### raw PHP
-
-## Future
-
-### Constraints
-
-### Function Autoloading
-
-## Architecture
-
-### API / Domain Specific Language
-
-### Virtual DOM / Abstract Syntax Tree
