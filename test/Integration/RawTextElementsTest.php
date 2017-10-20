@@ -9,18 +9,30 @@ use function Mammalia\Html\Elements\{script,style};
 class RawTextElementsTest extends TestCase
 {
 
-    const factories = ['script', 'style'];
+    /**
+     * @dataProvider factoryProvider
+     */
+    public function testToHtml ($factory)
+    {            
+        $fullyQualifiedFactory = self::fullyQualifiedName($factory);
+        $expected = self::exptected($factory);
+        $actual = call_user_func_array($fullyQualifiedFactory,[])()->toHtml();
+        $this->assertEquals($expected, $actual);
+    }
 
-    public function testLocalNames ()
+    public function factoryProvider()
     {
-        $factories = self::factories;
-        array_walk($factories, function ($factoryName) {
-            $localName = $factoryName;
-            $fullyQualifiedFactory = "Mammalia\\Html\\Elements\\$factoryName";
-            $ast = call_user_func_array($fullyQualifiedFactory,[])();
-            $html = $ast->toHtml();
-            $expected = "<$localName></$localName>";
-            $this->assertEquals($expected, $html);
-        });
+        return [['script'], ['style']];
+    }
+
+    public static function exptected ($factory)
+    {
+        $localName = rtrim($factory, '_');
+        return "<$localName></$localName>";
+    }
+
+    public static function fullyQualifiedName ($factory)
+    {
+        return "Mammalia\\Html\\Elements\\$factory";
     }
 }

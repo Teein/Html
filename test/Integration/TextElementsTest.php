@@ -8,19 +8,31 @@ use function Mammalia\Html\Elements\{title,textarea};
 
 class TextElementsTest extends TestCase
 {
-
-    const factories = ['title', 'textarea'];
-
-    public function testLocalNames ()
-    {
-        $factories = self::factories;
-        array_walk($factories, function ($factoryName) {
-            $localName = $factoryName;
-            $fullyQualifiedFactory = "Mammalia\\Html\\Elements\\$factoryName";
-            $ast = call_user_func_array($fullyQualifiedFactory,[])();
-            $html = $ast->toHtml();
-            $expected = "<$localName></$localName>";
-            $this->assertEquals($expected, $html);
-        });
+    /**
+     * @dataProvider factoryProvider
+     */
+    public function testToHtml ($factory)
+    {            
+        $fullyQualifiedFactory = self::fullyQualifiedName($factory);
+        $expected = self::exptected($factory);
+        $actual = call_user_func_array($fullyQualifiedFactory,[])()->toHtml();
+        $this->assertEquals($expected, $actual);
     }
+
+    public function factoryProvider()
+    {
+        return [['title'], ['textarea']];
+    }
+
+    public static function exptected ($factory)
+    {
+        $localName = rtrim($factory, '_');
+        return "<$localName></$localName>";
+    }
+
+    public static function fullyQualifiedName ($factory)
+    {
+        return "Mammalia\\Html\\Elements\\$factory";
+    }
+
 }

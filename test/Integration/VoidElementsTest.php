@@ -8,21 +8,30 @@ use function Mammalia\Html\Elements\{area,base,br,col,embed,hr,img,input,link,me
 
 class VoidElementsTest extends TestCase
 {
+    /**
+     * @dataProvider factoryProvider
+     */
+    public function testToHtml ($factory)
+    {            
+        $fullyQualifiedFactory = self::fullyQualifiedName($factory);
+        $expected = self::exptected($factory);
+        $actual = call_user_func_array($fullyQualifiedFactory,[])->toHtml();
+        $this->assertEquals($expected, $actual);
+    }
 
-    const factories = [
-        'area','base','br','col','embed','hr','img','input','link','meta','param','source','track','wbr'
-    ];
-
-    public function testLocalNames ()
+    public function factoryProvider()
     {
-        $factories = self::factories;
-        array_walk($factories, function ($factoryName) {
-            $localName = $factoryName;
-            $fullyQualifiedFactory = "Mammalia\\Html\\Elements\\$factoryName";
-            $ast = call_user_func_array($fullyQualifiedFactory,[]);
-            $html = $ast->toHtml();
-            $expected = "<$localName>";
-            $this->assertEquals($expected, $html);
-        });
+        return [['area'],['base'],['br'],['col'],['embed'],['hr'],['img'],['input'],['link'],['meta'],['param'],['source'],['track'],['wbr']];
+    }
+
+    public static function exptected ($factory)
+    {
+        $localName = rtrim($factory, '_');
+        return "<$localName>";
+    }
+
+    public static function fullyQualifiedName ($factory)
+    {
+        return "Mammalia\\Html\\Elements\\$factory";
     }
 }
