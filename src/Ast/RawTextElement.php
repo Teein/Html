@@ -26,7 +26,7 @@ final class RawTextElement extends Element implements ElementInterface
      * 
      * @param string $localName The localName of the new RawTextElement
      * @param array $attributes The attributes of the new RawTextElement
-     * @param Mammalia\Html\VirtualDom\Text $text The text-content of the new RawTextElement
+     * @param TextInterface $text The text-content of the new RawTextElement
      */
     public function __construct(string $localName, array $attributes, TextInterface $text)
     {
@@ -78,7 +78,7 @@ final class RawTextElement extends Element implements ElementInterface
      * Get a new RawTextElement that is like this one but with its text-content
      * set to $text
      * 
-     * @param Mammalia\Html\VirtualDom\Text $text The text-content of the new RawTextElement
+     * @param TextInterface $text The text-content of the new RawTextElement
      */
     public function setText(TextInterface $text) : ElementInterface
     {

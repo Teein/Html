@@ -24,7 +24,7 @@ final class TextElement extends Element implements ElementInterface
      * 
      * @param string $localName The localName of the new TextElement
      * @param array $attributes The attributes of the new TextElement
-     * @param Mammalia\Html\VirtualDom\TextInterface $text The text-content of the new TextElement
+     * @param TextInterface $text The text-content of the new TextElement
      */
     public function __construct(string $localName, array $attributes, TextInterface $text)
     {
@@ -76,7 +76,7 @@ final class TextElement extends Element implements ElementInterface
      * Get a new TextElement that is like this one but with text-content set to
      * $text
      * 
-     * @param Mammalia\Html\VirtualDom\TextInterface $text The text-content of the new TextElement
+     * @param TextInterface $text The text-content of the new TextElement
      */
     public function setText(TextInterface $text) : ElementInterface
     {

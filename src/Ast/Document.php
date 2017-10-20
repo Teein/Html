@@ -21,7 +21,7 @@ final class Document implements DocumentInterface
     /**
      * Construct a new Document with given root $root.
      * 
-     * @param Mammalia\Html\VirtualDom\Element $root The root-node of the new Document
+     * @param ElementInterface $root The root-node of the new Document
      * @param bool $beautified A flag to capture wether the new Document should be
      *        beautified before output. This flag defaults to "false" and
      *        should never be set to "true" by the user. It is automatically
@@ -74,7 +74,7 @@ final class Document implements DocumentInterface
      * Get a new Document that is like this one but with the root-node
      * set to $root
      * 
-     * @param Mammalia\Html\VirtualDom\Element $root The root-node of the new Document
+     * @param ElementInterface $root The root-node of the new Document
      */
     public function setRoot(ElementInterface $root) : DocumentInterface
     {
