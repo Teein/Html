@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace Mammalia\Html\Test\Integration;
+namespace CommonCrane\Html\Test\Integration;
 
 use PHPUnit\Framework\TestCase;
-use function Mammalia\Html\Comment\{comment};
+use function CommonCrane\Html\Comment\{comment};
 
 class CommentTest extends TestCase
 {

@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Mammalia\Html\Comment;
+namespace CommonCrane\Html\Comment;
 
-use Mammalia\Html\Ast\Comment;
+use CommonCrane\Html\Ast\Comment;
 
 function comment (string $comment) : Comment
 {

@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace Mammalia\Html\Test\Unit\Ast;
+namespace CommonCrane\Html\Test\Unit\Ast;
 
 use PHPUnit\Framework\TestCase;
-use Mammalia\Html\VirtualDom\Attribute;
-use Mammalia\Html\VirtualDom\Element;
-use Mammalia\Html\Ast\NormalElement;
+use CommonCrane\Html\VirtualDom\Attribute;
+use CommonCrane\Html\VirtualDom\Element;
+use CommonCrane\Html\Ast\NormalElement;
 
 class NormalElementTest extends TestCase
 {

@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace Mammalia\Html\Test\Integration;
+namespace CommonCrane\Html\Test\Integration;
 
 use PHPUnit\Framework\TestCase;
-use function Mammalia\Html\Elements\{area,base,br,col,embed,hr,img,input,link,meta,param,source,track,wbr};
+use function CommonCrane\Html\Elements\{area,base,br,col,embed,hr,img,input,link,meta,param,source,track,wbr};
 
 class VoidElementsTest extends TestCase
 {
@@ -32,6 +32,6 @@ class VoidElementsTest extends TestCase
 
     public static function fullyQualifiedName ($factory)
     {
-        return "Mammalia\\Html\\Elements\\$factory";
+        return "CommonCrane\\Html\\Elements\\$factory";
     }
 }

@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace Mammalia\Html\VirtualDom;
+namespace CommonCrane\Html\VirtualDom;
 
-use Mammalia\Html\Beautifier\Beautifier;
-use Mammalia\Html\Serializer\ToHtml;
-use Mammalia\Html\VirtualDom\Element;
+use CommonCrane\Html\Beautifier\Beautifier;
+use CommonCrane\Html\Serializer\ToHtml;
+use CommonCrane\Html\VirtualDom\Element;
 
 interface Document extends Beautifier, ToHtml
 {

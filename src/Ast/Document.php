@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace Mammalia\Html\Ast;
+namespace CommonCrane\Html\Ast;
 
-use Mammalia\Html\Beautifier\Beautifier;
-use Mammalia\Html\VirtualDom\Document as DocumentInterface;
-use Mammalia\Html\VirtualDom\Element as ElementInterface;
+use CommonCrane\Html\Beautifier\Beautifier;
+use CommonCrane\Html\VirtualDom\Document as DocumentInterface;
+use CommonCrane\Html\VirtualDom\Element as ElementInterface;
 
 /**
  * A Document represents a html-document, that is a document-type-definition,

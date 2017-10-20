@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace Mammalia\Html\Ast;
+namespace CommonCrane\Html\Ast;
 
-use Mammalia\Html\Beautifier\Beautifier;
-use Mammalia\Html\VirtualDom\Comment as CommentInterface;
+use CommonCrane\Html\Beautifier\Beautifier;
+use CommonCrane\Html\VirtualDom\Comment as CommentInterface;
 
 /**
  * A Comment represents a html-comment, that is a node with some text-content

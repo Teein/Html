@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace Mammalia\Html\Ast;
+namespace CommonCrane\Html\Ast;
 
-use Mammalia\Html\Ast\Element;
-use Mammalia\Html\Beautifier\Beautifier;
-use Mammalia\Html\VirtualDom\Text as TextInterface;
-use Mammalia\Html\VirtualDom\Element as ElementInterface;
+use CommonCrane\Html\Ast\Element;
+use CommonCrane\Html\Beautifier\Beautifier;
+use CommonCrane\Html\VirtualDom\Text as TextInterface;
+use CommonCrane\Html\VirtualDom\Element as ElementInterface;
 
 /**
  * A RawTextElement represents a html-element which contents are restricted

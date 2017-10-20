@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace Mammalia\Html\Test\Integration;
+namespace CommonCrane\Html\Test\Integration;
 
 use PHPUnit\Framework\TestCase;
-use function Mammalia\Html\Text\{text};
+use function CommonCrane\Html\Text\{text};
 
 class TextTest extends TestCase
 {

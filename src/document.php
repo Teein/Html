@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace Mammalia\Html\Document;
+namespace CommonCrane\Html\Document;
 
-use Mammalia\Html\Ast\Document;
-use Mammalia\Html\VirtualDom\Element;
+use CommonCrane\Html\Ast\Document;
+use CommonCrane\Html\VirtualDom\Element;
 
 function document (Element $root) : Document
 {

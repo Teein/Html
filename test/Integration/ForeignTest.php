@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace Mammalia\Html\Test\Integration;
+namespace CommonCrane\Html\Test\Integration;
 
 use PHPUnit\Framework\TestCase;
-use function Mammalia\Html\Elements\{foreign};
+use function CommonCrane\Html\Elements\{foreign};
 
 class ForeignTest extends TestCase
 {

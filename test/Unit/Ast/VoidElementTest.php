@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace Mammalia\Html\Test\Unit\Ast;
+namespace CommonCrane\Html\Test\Unit\Ast;
 
 use PHPUnit\Framework\TestCase;
-use Mammalia\Html\VirtualDom\Attribute;
-use Mammalia\Html\Ast\VoidElement;
+use CommonCrane\Html\VirtualDom\Attribute;
+use CommonCrane\Html\Ast\VoidElement;
 
 class VoidElementTest extends TestCase
 {

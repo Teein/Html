@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Mammalia\Html\Attributes;
+namespace CommonCrane\Html\Attributes;
 
-use Mammalia\Html\Ast\Attribute;
+use CommonCrane\Html\Ast\Attribute;
 
 /**
  * @link https://html.spec.whatwg.org/#attr-th-abbr

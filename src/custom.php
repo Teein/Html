@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace Mammalia\Html\Elements;
+namespace CommonCrane\Html\Elements;
 
-use Mammalia\Html\Ast\NormalElement;
-use Mammalia\Html\VirtualDom\Attribute;
-use Mammalia\Html\VirtualDom\Node;
+use CommonCrane\Html\Ast\NormalElement;
+use CommonCrane\Html\VirtualDom\Attribute;
+use CommonCrane\Html\VirtualDom\Node;
 
 function custom (string $localName) : callable
 {

@@ -1,6 +1,6 @@
-# Mammalia/Html
+# CommonCrane/Html
 
-Mammalia/Html is a functional templating-engine for PHP inspired by React, XHP and Elm. It is written for 2017 web-development. It's core-features are:
+CommonCrane/Html is a functional templating-engine for PHP inspired by React, XHP and Elm. It is written for 2017 web-development. It's core-features are:
 
 * No new syntax, just regular PHP.
 * Performance
@@ -9,7 +9,7 @@ Mammalia/Html is a functional templating-engine for PHP inspired by React, XHP a
 * Immutable data
 * No state
 
-If you are interested how we archieve these goals, you might want to read our fesign-documents and then our architecture-guide. If this is your first contact with Mammalia/Html we recommend you to read this README first.
+If you are interested how we archieve these goals, you might want to read our fesign-documents and then our architecture-guide. If this is your first contact with CommonCrane/Html we recommend you to read this README first.
 
 ## Getting Started
 
@@ -18,7 +18,7 @@ If you are interested how we archieve these goals, you might want to read our fe
 ```php
 <?php
 
-use Mammalia\Html;
+use CommonCrane\Html;
 
 echo show (beautify (
   html (lang ('en')) (
@@ -37,9 +37,9 @@ echo show (beautify (
 ));
 ```
 
-Mammalia/Html features a concise syntax for writing your templates. Hopefully, the example reminds you of HTML.
+CommonCrane/Html features a concise syntax for writing your templates. Hopefully, the example reminds you of HTML.
 
-Let's see how Mammalia/Html syntax is similar to HTML:
+Let's see how CommonCrane/Html syntax is similar to HTML:
 
 * We have tagnames: `html`, `head`, `body`, `h1`, ...
 * We have attribtues: `lang`, `charset`, ...
@@ -52,12 +52,12 @@ Notice, what is different from HTML:
 
 There is more to discover in oru example:
 
-* Mammalia-Temapltes are minified by default, we use the `beautify`-function to have a nicer identiation.
+* CommonCrane-Temapltes are minified by default, we use the `beautify`-function to have a nicer identiation.
 * We use the show-Function to print 
 
 ### if then else
 
-Unlike other templating-engines mammalia/html does not introduce special syntax for conditional branches or loops. Instead, we use PHPs built-in language features for these kind of things. However, the functional interface of mammalia/html wants *expressions* not *statements*. For example PHPs `if () {} else {}`-construct is a statement, but the ternary-operator `$cond ? $foo : $bar` is an expression (if you don't like the flaky syntax of the ternary operator, you can always define your own view-helpers).
+Unlike other templating-engines CommonCrane/html does not introduce special syntax for conditional branches or loops. Instead, we use PHPs built-in language features for these kind of things. However, the functional interface of CommonCrane/html wants *expressions* not *statements*. For example PHPs `if () {} else {}`-construct is a statement, but the ternary-operator `$cond ? $foo : $bar` is an expression (if you don't like the flaky syntax of the ternary operator, you can always define your own view-helpers).
 
 ```php
 <?php
@@ -88,12 +88,12 @@ echo show (beautify (
 
 ### Loops
 
-PHPs `for`- and `while`-loops are statements and therefore won't work in mammalia\templates. We use the cooler map/reduce-functions to loop:
+PHPs `for`- and `while`-loops are statements and therefore won't work in CommonCrane\templates. We use the cooler map/reduce-functions to loop:
 
 ```php
 <?php
 
-use Mammalia\Html;
+use CommonCrane\Html;
 
 $books = [
 

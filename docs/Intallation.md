@@ -3,5 +3,5 @@
 ## Installation
 
 ```bash
-composer install mammalia/html
+composer install CommonCrane/html
 ```

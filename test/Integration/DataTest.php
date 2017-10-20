@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace Mammalia\Html\Test\Integration;
+namespace CommonCrane\Html\Test\Integration;
 
 use PHPUnit\Framework\TestCase;
-use function Mammalia\Html\Attributes\{data_};
+use function CommonCrane\Html\Attributes\{data_};
 
 class DataTest extends TestCase
 {

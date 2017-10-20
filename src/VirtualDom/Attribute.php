@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Mammalia\Html\VirtualDom;
+namespace CommonCrane\Html\VirtualDom;
 
-use Mammalia\Html\Serializer\ToHtml;
+use CommonCrane\Html\Serializer\ToHtml;
 
 interface Attribute extends ToHtml
 {

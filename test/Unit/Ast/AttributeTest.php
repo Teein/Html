@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace Mammalia\Html\Test\Unit\Ast;
+namespace CommonCrane\Html\Test\Unit\Ast;
 
 use PHPUnit\Framework\TestCase;
-use Mammalia\Html\Ast\Attribute;
+use CommonCrane\Html\Ast\Attribute;
 
 class AttributeTest extends TestCase
 {

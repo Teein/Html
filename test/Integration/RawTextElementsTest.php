@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace Mammalia\Html\Test\Integration;
+namespace CommonCrane\Html\Test\Integration;
 
 use PHPUnit\Framework\TestCase;
-use function Mammalia\Html\Elements\{script,style};
+use function CommonCrane\Html\Elements\{script,style};
 
 class RawTextElementsTest extends TestCase
 {
@@ -33,6 +33,6 @@ class RawTextElementsTest extends TestCase
 
     public static function fullyQualifiedName ($factory)
     {
-        return "Mammalia\\Html\\Elements\\$factory";
+        return "CommonCrane\\Html\\Elements\\$factory";
     }
 }

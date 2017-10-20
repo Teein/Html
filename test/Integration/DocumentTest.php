@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace Mammalia\Html\Test\Integration;
+namespace CommonCrane\Html\Test\Integration;
 
 use PHPUnit\Framework\TestCase;
-use function Mammalia\Html\Elements\{html};
-use function Mammalia\Html\Document\{document};
+use function CommonCrane\Html\Elements\{html};
+use function CommonCrane\Html\Document\{document};
 
 class DocumentTest extends TestCase
 {

@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Mammalia\Html\Text;
+namespace CommonCrane\Html\Text;
 
-use Mammalia\Html\Ast\Text;
+use CommonCrane\Html\Ast\Text;
 
 function text (string $value) : Text
 {

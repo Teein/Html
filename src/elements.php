@@ -1,16 +1,16 @@
 <?php
 declare(strict_types=1);
 
-namespace Mammalia\Html\Elements;
+namespace CommonCrane\Html\Elements;
 
-use Mammalia\Html\Ast\NormalElement;
-use Mammalia\Html\Ast\RawTextElement;
-use Mammalia\Html\Ast\Text;
-use Mammalia\Html\Ast\TextElement;
-use Mammalia\Html\Ast\VoidElement;
-use Mammalia\Html\VirtualDom\Attribute;
-use Mammalia\Html\VirtualDom\Node;
-use Mammalia\Html\VirtualDom\Text as TextInterface;
+use CommonCrane\Html\Ast\NormalElement;
+use CommonCrane\Html\Ast\RawTextElement;
+use CommonCrane\Html\Ast\Text;
+use CommonCrane\Html\Ast\TextElement;
+use CommonCrane\Html\Ast\VoidElement;
+use CommonCrane\Html\VirtualDom\Attribute;
+use CommonCrane\Html\VirtualDom\Node;
+use CommonCrane\Html\VirtualDom\Text as TextInterface;
 
 /**
  * @link https://html.spec.whatwg.org/#the-a-element

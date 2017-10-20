@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Mammalia\Html\Attributes;
+namespace CommonCrane\Html\Attributes;
 
-use Mammalia\Html\Ast\Attribute;
+use CommonCrane\Html\Ast\Attribute;
 
 function data_(string $name, string $value) : Attribute
 {

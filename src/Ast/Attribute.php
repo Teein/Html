@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Mammalia\Html\Ast;
+namespace CommonCrane\Html\Ast;
 
-use Mammalia\Html\VirtualDom\Attribute as AttributeInterface;
+use CommonCrane\Html\VirtualDom\Attribute as AttributeInterface;
 
 /**
  * An Attribute represents a html-attribute, that is a name-value-pair that is

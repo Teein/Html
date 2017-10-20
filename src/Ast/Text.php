@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Mammalia\Html\Ast;
+namespace CommonCrane\Html\Ast;
 
-use Mammalia\Html\VirtualDom\Text as TextInterface;
+use CommonCrane\Html\VirtualDom\Text as TextInterface;
 
 /**
  * A Text represents a text-node.

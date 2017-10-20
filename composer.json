@@ -2,7 +2,7 @@
     "require": {
     },
     "autoload": {
-        "psr-4": {"Mammalia\\Html\\": "src/"},
+        "psr-4": {"CommonCrane\\Html\\": "src/"},
         "files" : [
             "src/attributes.php",
             "src/comment.php",
