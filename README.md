@@ -1,3 +1,7 @@
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/CommonCrane/Html/badges/quality-score.png?b=feature%2Finitial-api-design)](https://scrutinizer-ci.com/g/CommonCrane/Html/?branch=feature%2Finitial-api-design)
+[![Code Coverage](https://scrutinizer-ci.com/g/CommonCrane/Html/badges/coverage.png?b=feature%2Finitial-api-design)](https://scrutinizer-ci.com/g/CommonCrane/Html/?branch=feature%2Finitial-api-design)
+[![Build Status](https://scrutinizer-ci.com/g/CommonCrane/Html/badges/build.png?b=feature%2Finitial-api-design)](https://scrutinizer-ci.com/g/CommonCrane/Html/build-status/feature/initial-api-design)
+
 # CommonCrane/Html
 
 CommonCrane/Html is a functional templating-engine for PHP inspired by React, XHP and Elm. It is written for 2017 web-development. It's core-features are:
