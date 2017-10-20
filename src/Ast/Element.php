@@ -6,16 +6,20 @@ namespace Mammalia\Html\Ast;
 use Mammalia\Html\Beautifier\Beautifier;
 use Mammalia\Html\VirtualDom\Element as ElementInterface;
 
+/**
+ * An Element represents common properties of more specific types of html-
+ * elements. More precise, an Element comprises a localName and optionally
+ * some attributes.
+ */
 abstract class Element implements ElementInterface
 {
     protected $localName;
 
     protected $attributes;
 
-    abstract public function toHtml() : string;
-
-    abstract public function beautify(int $level = 0) : Beautifier;
-
+    /**
+     * Get the html-representation of the Attributes of this Element
+     */
     protected function attributesToHtml()
     {
         return array_reduce($this->attributes, function ($html, $attribute) {
@@ -24,11 +28,17 @@ abstract class Element implements ElementInterface
         }, '');
     }
 
+    /**
+     * Get the localName of this Element
+     */
     public function getLocalName() : string
     {
         return $this->localName;
     }
 
+    /**
+     * Get the attributes of this Element
+     */
     public function getAttributes() : array
     {
         return $this->attributes;

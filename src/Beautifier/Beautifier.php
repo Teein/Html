@@ -5,5 +5,5 @@ namespace Mammalia\Html\Beautifier;
 
 interface Beautifier
 {
-    public function beautify (int $level) : Beautifier;
+    public function beautify (int $level = 0) : Beautifier;
 }
