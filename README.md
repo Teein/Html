@@ -1,8 +1,9 @@
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/CommonCrane/Html/badges/quality-score.png?b=feature%2Finitial-api-design)](https://scrutinizer-ci.com/g/CommonCrane/Html/?branch=feature%2Finitial-api-design)
-[![Code Coverage](https://scrutinizer-ci.com/g/CommonCrane/Html/badges/coverage.png?b=feature%2Finitial-api-design)](https://scrutinizer-ci.com/g/CommonCrane/Html/?branch=feature%2Finitial-api-design)
-[![Build Status](https://scrutinizer-ci.com/g/CommonCrane/Html/badges/build.png?b=feature%2Finitial-api-design)](https://scrutinizer-ci.com/g/CommonCrane/Html/build-status/feature/initial-api-design)
 
-# CommonCrane/Html
+![CommonCrane/Html](resources/header.png)
+
+[![Build Status](https://scrutinizer-ci.com/g/CommonCrane/Html/badges/build.png?b=feature%2Finitial-api-design)](https://scrutinizer-ci.com/g/CommonCrane/Html/build-status/feature/initial-api-design)
+[![Code Coverage](https://scrutinizer-ci.com/g/CommonCrane/Html/badges/coverage.png?b=feature%2Finitial-api-design)](https://scrutinizer-ci.com/g/CommonCrane/Html/?branch=feature%2Finitial-api-design)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/CommonCrane/Html/badges/quality-score.png?b=feature%2Finitial-api-design)](https://scrutinizer-ci.com/g/CommonCrane/Html/?branch=feature%2Finitial-api-design)
 
 CommonCrane/Html is a functional templating-engine for PHP inspired by React, XHP and Elm. It's core-features are:
 
