@@ -10,21 +10,21 @@ Teein/Html is a virtual-dom-based templating-engine for PHP inspired by React, X
 
 * **No new syntax to learn** Templates are written in ordinary PHP and they closely resemble the syntax of html.
 * **Immutable data** Templates are immutable and therefore always predictable. Once created you cannot change a template. However, you can always derive a new template from an existing one with a fluent getter/setter-api.
-* **Composable templates** The only way to create a template is to compose them from simpler ones. Composable templates scale with your application without adding to its complexity.
+* **Composable templates** The only way to create templates is to compose them from simpler ones. Composable templates scale with your application without adding to its complexity.
 * **Security** Unlike most other templating-engines we automatically detect and prevent most cross-site-scripting-attacks.
 
 ## Getting Started
 
 ### Requirements
 
-Teein/Html requires at least PHP 7.1 and Composer. If you haven't installed composer on your system yet, you can do so by following their official installation-instructions at <https://getcomposer.org/doc/00-intro.md>.
+Teein/Html requires at least PHP 7.1 and [Composer](https://getcomposer.org/). If you haven't installed composer on your system yet, you can do so by following their [installation-instructions](https://getcomposer.org/doc/00-intro.md).
 
 ### Installation
 
-When your system fullfills the requirements listed above, you can install Composer/Html by typing:
+When your system satisfies the requirements listed above, you can install Teein/Html by typing:
 
 ```bash
-composer require Teein/html
+composer require Teein/Html
 ```
 
 or by adding it manually to your composer.json-file:
@@ -48,6 +48,8 @@ namespace Teein\Html\Example;
 use function Teein\Html\{Beautify\beautify,ToHtml\toHtml,Document\document,Text\text};
 use function Teein\Html\Elements\{html,head,meta,title,body,h1};
 use function Teein\Html\Attributes\{lang,charset};
+
+require __DIR__ . '/vendor/autoload.php';
 
 echo toHtml(beautify(document(
     html(lang('en'))(
@@ -87,9 +89,9 @@ There is more to discover in our example:
 
 ### Composable templates
 
-The "Hello World"-example looks managable, but for real world application templates tend to be much more involved. To cope with the growing complexity of your application we make use of an earth-old concept: composability. The idea is to group simpel templates together to get bigger but equally simpel templates. For instance, many things in our example look like typical HTML5-boilerplate. Let's see how we could refactor the example so that we can reuse most of the template and adapt the flexible parts to other scenarios.
+The "Hello World"-example looks managable, but for real world application templates tend to be much more involved. To cope with the growing complexity of your application we make use of an earth-old concept: composability. The idea is to group simple templates together to get bigger but equally simple templates. For instance, many things in our example look like typical HTML5-boilerplate. Let's see how we could refactor the example so that we can reuse most of the template and adapt the flexible parts to other scenarios.
 
-The primary ingredient for composable templates is the `function`. Here is the roadmap of what we are going to do for refactoring: We will separate the hello-world-template into two functions: Let's call 'em `boilerplate` and `content`. The `boilerplat`-function takes one arguement `$content` and wraps it into a HTML5-skeleton exactly like the one above. The `content`-function does not take any arguements but simply returns the headline. Finally, we're going to glue the two functions together to get the same output as in our orignal example.
+The primary ingredient for composable templates is the `function`. Here is the roadmap of what we are going to do for refactoring: We will separate the hello-world-template into two functions: Let's call 'em `boilerplate` and `content`. The `boilerplate`-function takes one arguement `$content` and wraps it into a HTML5-skeleton exactly like the one above. The `content`-function does not take any arguements but simply returns the headline. Finally, we're going to glue the two functions together to get the same output as in our orignal example.
 
 ~~~php
 <?php
@@ -119,7 +121,7 @@ function boilerplate (Node $content) : Document
 }
 ~~~
 
-Let's have a small look at the new things that are packed in this snippet before we continue with the `content`-function. You probably noticed the type-annotations or type-hints like they're often called in PHP. They are another great feature of Teein/Html. The signature of the function makes clear that it will only accept a single `Node` as its input and it will return a `Document`. A `Node` is either an `Element`, like `h1` or `span`, a `Text` or a `Comment`. All factory functions in our library are type-annotated and they ensure that you don't compose incompatible functions together. This should suffice for the moment, we'll come back to types later. Let's return to our running example. So far we have written the `boilerplate`-function, time to turn to the `content`-function, which should be easy now:
+Let's have a small look at the new things that are packed in this snippet before we continue with the `content`-function. You probably noticed the type-annotations or type-hints like they're often called in PHP. They're another great feature of Teein/Html. The signature of the function makes clear that it will only accept a single `Node` as its input and it will return a `Document`. A `Node` is either an `Element`, like `h1` or `span`, a `Text` or a `Comment`. All factory functions in our library are type-annotated and they ensure that you don't compose incompatible functions together. This should suffice for the moment, we'll come back to types later. Let's return to our running example. So far we have written the `boilerplate`-function, time to turn to the `content`-function, which should be easy now:
 
 ~~~php
 <?php
@@ -137,7 +139,7 @@ function content () : Element
 }
 ~~~
 
-By the way, we sometimes call functions like `boilerplate` and `content` view-helpers. Notice how simple are view-helpers are: They're just functions. Mappings from inputs to outputs. There is no abstract base class that we need to inherit or an interface that we must implement. It just that simple: functions. Now, it should be clear how we can compose `boilerplate` and `content` together to get the same output as from our original hello-world-exmaple. Just to be sure, here it is, our new-born hello-world:
+By the way, we sometimes call functions like `boilerplate` and `content` view-helpers. Notice how simple view-helpers are: They're just functions. Mappings from inputs to outputs. There is no abstract base class that we need to inherit or an interface that we must implement. It's just that simple: functions. Now, it should be clear how we can compose `boilerplate` and `content` together to get the same output as from our original hello-world-exmaple. Just to be sure, here it is, our new-born hello-world:
 
 ~~~php
 <?php
@@ -156,90 +158,78 @@ echo toHtml(
 
 ... functions. Hope you appreciate them right now :)
 
-### if then else
+### Conditional branches
 
-Unlike other templating-engines Teein/Html does not introduce special syntax for conditional branches or loops. Instead, we use PHPs built-in language features for these kind of things. However, the functional interface of Teein/Html wants *expressions* not *statements*. For example PHPs `if () {} else {}`-construct is a statement, but the ternary-operator `$cond ? $foo : $bar` is an expression (if you don't like the flaky syntax of the ternary operator, you can always define your own view-helpers, we'll come back to this in a moment).
+Unlike other templating-engines Teein/Html does not introduce special syntax for conditional branches or loops. Instead, we use PHPs built-in language features for these kind of things. However, the functional interface of Teein/Html wants *expressions* not *statements*. For example PHPs `if () {} else {}`-construct is a statement, but the ternary-operator `$cond ? $foo : $bar` is an expression (if you don't like the flaky syntax of the ternary operator, here is a reminder that you can always define your own view-helpers and give them expressive names).
+
+Let's see how this works in practice. Here is how we would add a personalized greeting to our template. For brevity we're going to modify our existing `content`-function.
 
 ```php
-<?php
-echo toHtml(beautify(document(
-    html(lang('en')) (
-        head()(
-            meta(charset ('utf8')),
-            title() (
-               text('Hello World!')
-            )
-        ),
-        body()(
-            h1()(
-                (isset($_GET['name'])
-                    ? text("Hello {$_GET[name]}!")
-                    : text('Hello World!')
-                )
-            )
+function content () {
+    return h1() (
+        text(
+            isset($_GET['name'])
+                ? "Hello {$_GET[name]}"
+                : "Hello World!"
         )
     )
-)));
+}
 ```
+
+Notice, that we didn't put `htmlspecialchars` around `$_GET['name']`. This would be a security issue in most other templating-engines. Teein/Html however automatically escapes any special character and defuses the bomb when the template is rendered. Also, this saves you some typing and let's you focus on the content.
 
 ### Loops
 
-PHPs `for`- and `while`-loops are statements and therefore won't work in Teein\Html. We use the cooler map/reduce-functions to loop:
+The restriction for `if`-statements also holds for `for`- and `while`-loops. We use the cooler `map`/`reduce`-functions to loop. Again, let's have a view at some code. The greeting-example, however, got me bored. So let's think of something fancier, let's make a list view of some of my favourite comics. For this sake, assume we have a model
+of a comic, that implements the following interface:
+
+~~~php
+interface Comic
+{
+    public function getTitle() : string;
+    public function getSuperhero() : string;
+    public function getVillain() : string;
+}
+~~~
+
+Furthermore, let's assume that an array of such comics is provided in the variable `$comics`. Here is how such a template could look like:
 
 ```php
 <?php
-echo toHtml(beautify(document(
-    html(lang('en'))(
-        head()(
-            meta(charset('utf8')),
-            title()(
-                text('Hello World!')
-            )
-        ),
-        body () (
-            table () (
-              ...array_map( function ($book) {
-                  return tr () (
-                      td () (text ($book->title)),
-                      td () (text ($book->author))
-                  )
-              }, $books)
-            )
-        )
+function comics (array $comics) : Element
+{
+    return ul () (
+        ...array_map(function (Comic $comic) : Element {
+            return li () (
+                span(class_('title'))(text($comic->getTitle())),
+                span(class_('superhero'))(text($comic->getSuperhero())),
+                span(class_('villlain'))(text($comic->getVillain()))
+            );
+        }, $comics)
     )
-)));
+}
 ```
 
+Protipp: Nesting anonymous functions can become cumbersome. On the positive site the anonymous function offers us hint where we could split our template into separate view-helpers. Here is a refactored version:
+
 ```php
-<?php
-function viewBook ($books) {
-    return array_map( function ($book) {
-        return  tr () (
-            td () (text ($book->title)),
-            td () (text ($book->author))
-        );
-    }, $books);
+function comic (Comic $comic) : Element {
+    return li () (
+        span(class_('title'))(text($comic->getTitle())),
+        span(class_('superhero'))(text($comic->getSuperhero())),
+        span(class_('villlain'))(text($comic->getVillain()))
+    );
 }
 
-echo toHtml(beautify(document(
-    html(lang ('en'))(
-        head()(
-            meta(charset('utf8')),
-            title()(
-                text('Hello World!')
-            )
-        ),
-        body () (
-            table () (
-                ...viewBooks($books)
-            )
-        )
-    )
-)));
+function comics (array $comics) : Element {
+    return ul () (
+        ...array_map('book', $books)
+    );
+}
 ```
-### Some words an the namespace-imports
+### Namespaces
 
-Teein/Html does not register any global definitions, that means that you have to import everything you are going to use in your template explicitly at the beginning of your script. Most editors today offer automatic tools to simplify this process. However, some tools find it hard detect functions inside your namespaces. If you want to get up and running you can always include the complete list of functions at the beginning of your file.
+Teein/Html does not register any global definitions, that means that you have to import everything you are going to use in your template explicitly at the beginning of your script. Most editors today offer automatic tools to simplify this process. However, some tools find it hard detect functions inside your namespaces. If you are on coffein and cannot wait for better tooling you can always include the complete list of functions at the beginning of your file.
 
 ```php
 <?php
