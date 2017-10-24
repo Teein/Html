@@ -4,6 +4,8 @@
 [![Code Coverage](https://scrutinizer-ci.com/g/Teein/Html/badges/coverage.png?b=feature%2Finitial-api-design)](https://scrutinizer-ci.com/g/Teein/Html/?branch=feature%2Finitial-api-design)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Teein/Html/badges/quality-score.png?b=feature%2Finitial-api-design)](https://scrutinizer-ci.com/g/Teein/Html/?branch=feature%2Finitial-api-design)
 
+<img src="logo.png" align="right" height="300">
+
 Teein/Html is a virtual-dom-based templating-engine for PHP inspired by React, XHP and Elm. Here are some highlights:
 
 * **No new syntax to learn** Templates are written in ordinary PHP and they closely resemble the syntax of html.
