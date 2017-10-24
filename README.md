@@ -22,7 +22,7 @@ Teein/Html requires at least PHP 7.1 and Composer. If you haven't installed comp
 When your system fullfills the requirements listed above, you can install Composer/Html by typing:
 
 ```bash
-composer require teein/html
+composer require Teein/html
 ```
 
 or by adding it manually to your composer.json-file:
@@ -30,7 +30,7 @@ or by adding it manually to your composer.json-file:
 ```json
 {
     "require": {
-        "teein/html" : "1.0.*"
+        "Teein/Html" : "1.0.*"
     }
 }
 ```
