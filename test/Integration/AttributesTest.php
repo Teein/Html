@@ -33,6 +33,6 @@ class AttributesTest extends TestCase
 
     public static function fullyQualifiedName ($factory)
     {
-        return "teein\\Html\\Attributes\\$factory";
+        return "Teein\\Html\\Attributes\\$factory";
     }
 }

@@ -33,6 +33,6 @@ class RawTextElementsTest extends TestCase
 
     public static function fullyQualifiedName ($factory)
     {
-        return "teein\\Html\\Elements\\$factory";
+        return "Teein\\Html\\Elements\\$factory";
     }
 }
