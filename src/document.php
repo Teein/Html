@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace CommonCrane\Html\Document;
+namespace Teein\Html\Document;
 
-use CommonCrane\Html\Ast\Document;
-use CommonCrane\Html\VirtualDom\Element;
+use Teein\Html\Ast\Document;
+use Teein\Html\VirtualDom\Element;
 
 function document (Element $root) : Document
 {

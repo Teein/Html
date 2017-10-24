@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace CommonCrane\Html\Test\Unit\Ast;
+namespace Teein\Html\Test\Unit\Ast;
 
 use PHPUnit\Framework\TestCase;
-use CommonCrane\Html\Ast\Comment;
+use Teein\Html\Ast\Comment;
 
 class CommentTest extends TestCase
 {

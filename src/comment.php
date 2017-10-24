@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace CommonCrane\Html\Comment;
+namespace Teein\Html\Comment;
 
-use CommonCrane\Html\Ast\Comment;
+use Teein\Html\Ast\Comment;
 
 function comment (string $comment) : Comment
 {

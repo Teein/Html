@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace CommonCrane\Html\Beautifier;
+namespace Teein\Html\Beautifier;
 
 interface Beautifier
 {

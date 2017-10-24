@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace CommonCrane\Html\Text;
+namespace Teein\Html\Text;
 
-use CommonCrane\Html\Ast\Text;
+use Teein\Html\Ast\Text;
 
 function text (string $value) : Text
 {

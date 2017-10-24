@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace CommonCrane\Html\Ast;
+namespace Teein\Html\Ast;
 
-use CommonCrane\Html\Beautifier\Beautifier;
-use CommonCrane\Html\VirtualDom\Comment as CommentInterface;
+use Teein\Html\Beautifier\Beautifier;
+use Teein\Html\VirtualDom\Comment as CommentInterface;
 
 /**
  * A Comment represents a html-comment, that is a node with some text-content

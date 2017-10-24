@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace CommonCrane\Html\Attributes;
+namespace Teein\Html\Attributes;
 
-use CommonCrane\Html\Ast\Attribute;
+use Teein\Html\Ast\Attribute;
 
 /**
  * @link https://html.spec.whatwg.org/#attr-th-abbr

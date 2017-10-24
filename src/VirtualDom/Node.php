@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace CommonCrane\Html\VirtualDom;
+namespace Teein\Html\VirtualDom;
 
-use CommonCrane\Html\Serializer\ToHtml;
+use Teein\Html\Serializer\ToHtml;
 
 interface Node extends ToHtml
 {

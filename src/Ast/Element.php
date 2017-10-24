@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace CommonCrane\Html\Ast;
+namespace Teein\Html\Ast;
 
-use CommonCrane\Html\Beautifier\Beautifier;
-use CommonCrane\Html\VirtualDom\Element as ElementInterface;
+use Teein\Html\Beautifier\Beautifier;
+use Teein\Html\VirtualDom\Element as ElementInterface;
 
 /**
  * An Element represents common properties of more specific types of html-

@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace CommonCrane\Html\Test\Integration;
+namespace Teein\Html\Test\Integration;
 
 use PHPUnit\Framework\TestCase;
-use function CommonCrane\Html\Elements\{area,base,br,col,embed,hr,img,input,link,meta,param,source,track,wbr};
+use function Teein\Html\Elements\{area,base,br,col,embed,hr,img,input,link,meta,param,source,track,wbr};
 
 class VoidElementsTest extends TestCase
 {
@@ -32,6 +32,6 @@ class VoidElementsTest extends TestCase
 
     public static function fullyQualifiedName ($factory)
     {
-        return "CommonCrane\\Html\\Elements\\$factory";
+        return "teein\\Html\\Elements\\$factory";
     }
 }

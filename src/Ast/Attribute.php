@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace CommonCrane\Html\Ast;
+namespace Teein\Html\Ast;
 
-use CommonCrane\Html\VirtualDom\Attribute as AttributeInterface;
+use Teein\Html\VirtualDom\Attribute as AttributeInterface;
 
 /**
  * An Attribute represents a html-attribute, that is a name-value-pair that is

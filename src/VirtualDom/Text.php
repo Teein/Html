@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace CommonCrane\Html\VirtualDom;
+namespace Teein\Html\VirtualDom;
 
-use CommonCrane\Html\Serializer\ToRawText;
-use CommonCrane\Html\VirtualDom\Node;
+use Teein\Html\Serializer\ToRawText;
+use Teein\Html\VirtualDom\Node;
 
 interface Text extends Node, ToRawText
 {

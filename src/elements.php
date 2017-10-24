@@ -1,16 +1,16 @@
 <?php
 declare(strict_types=1);
 
-namespace CommonCrane\Html\Elements;
+namespace Teein\Html\Elements;
 
-use CommonCrane\Html\Ast\NormalElement;
-use CommonCrane\Html\Ast\RawTextElement;
-use CommonCrane\Html\Ast\Text;
-use CommonCrane\Html\Ast\TextElement;
-use CommonCrane\Html\Ast\VoidElement;
-use CommonCrane\Html\VirtualDom\Attribute;
-use CommonCrane\Html\VirtualDom\Node;
-use CommonCrane\Html\VirtualDom\Text as TextInterface;
+use Teein\Html\Ast\NormalElement;
+use Teein\Html\Ast\RawTextElement;
+use Teein\Html\Ast\Text;
+use Teein\Html\Ast\TextElement;
+use Teein\Html\Ast\VoidElement;
+use Teein\Html\VirtualDom\Attribute;
+use Teein\Html\VirtualDom\Node;
+use Teein\Html\VirtualDom\Text as TextInterface;
 
 /**
  * @link https://html.spec.whatwg.org/#the-a-element

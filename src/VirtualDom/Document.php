@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace CommonCrane\Html\VirtualDom;
+namespace Teein\Html\VirtualDom;
 
-use CommonCrane\Html\Beautifier\Beautifier;
-use CommonCrane\Html\Serializer\ToHtml;
-use CommonCrane\Html\VirtualDom\Element;
+use Teein\Html\Beautifier\Beautifier;
+use Teein\Html\Serializer\ToHtml;
+use Teein\Html\VirtualDom\Element;
 
 interface Document extends Beautifier, ToHtml
 {

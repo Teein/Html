@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace CommonCrane\Html\Test\Unit\Ast;
+namespace Teein\Html\Test\Unit\Ast;
 
 use PHPUnit\Framework\TestCase;
-use CommonCrane\Html\VirtualDom\Attribute;
-use CommonCrane\Html\VirtualDom\Text;
-use CommonCrane\Html\Ast\TextElement;
+use Teein\Html\VirtualDom\Attribute;
+use Teein\Html\VirtualDom\Text;
+use Teein\Html\Ast\TextElement;
 
 class TextElementTest extends TestCase
 {

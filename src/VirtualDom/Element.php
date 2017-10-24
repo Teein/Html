@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace CommonCrane\Html\VirtualDom;
+namespace Teein\Html\VirtualDom;
 
-use CommonCrane\Html\Beautifier\Beautifier;
-use CommonCrane\Html\VirtualDom\Node;
+use Teein\Html\Beautifier\Beautifier;
+use Teein\Html\VirtualDom\Node;
 
 interface Element extends Node, Beautifier
 {

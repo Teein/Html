@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace CommonCrane\Html\Test\Unit\Ast;
+namespace Teein\Html\Test\Unit\Ast;
 
 use PHPUnit\Framework\TestCase;
 
-use CommonCrane\Html\Ast\Text;
+use Teein\Html\Ast\Text;
 
 class TextTest extends TestCase
 {

@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace CommonCrane\Html\Test\Unit\Ast;
+namespace Teein\Html\Test\Unit\Ast;
 
 use PHPUnit\Framework\TestCase;
-use CommonCrane\Html\Ast\Document;
-use CommonCrane\Html\Ast\Element;
+use Teein\Html\Ast\Document;
+use Teein\Html\Ast\Element;
 
 class DocumentTest extends TestCase
 {

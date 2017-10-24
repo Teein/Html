@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace CommonCrane\Html\Attributes;
+namespace Teein\Html\Attributes;
 
-use CommonCrane\Html\Ast\Attribute;
+use Teein\Html\Ast\Attribute;
 
 function data_(string $name, string $value) : Attribute
 {

@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace CommonCrane\Html\Test\Integration;
+namespace Teein\Html\Test\Integration;
 
 use PHPUnit\Framework\TestCase;
-use function CommonCrane\Html\Elements\{foreign};
+use function Teein\Html\Elements\{foreign};
 
 class ForeignTest extends TestCase
 {

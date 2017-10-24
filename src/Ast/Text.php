@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace CommonCrane\Html\Ast;
+namespace Teein\Html\Ast;
 
-use CommonCrane\Html\VirtualDom\Text as TextInterface;
+use Teein\Html\VirtualDom\Text as TextInterface;
 
 /**
  * A Text represents a text-node.

@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace CommonCrane\Html\Ast;
+namespace Teein\Html\Ast;
 
-use CommonCrane\Html\Ast\Element;
-use CommonCrane\Html\Beautifier\Beautifier;
-use CommonCrane\Html\VirtualDom\Text as TextInterface;
-use CommonCrane\Html\VirtualDom\Element as ElementInterface;
+use Teein\Html\Ast\Element;
+use Teein\Html\Beautifier\Beautifier;
+use Teein\Html\VirtualDom\Text as TextInterface;
+use Teein\Html\VirtualDom\Element as ElementInterface;
 
 /**
  * A RawTextElement represents a html-element which contents are restricted

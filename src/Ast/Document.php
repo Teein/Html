@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace CommonCrane\Html\Ast;
+namespace Teein\Html\Ast;
 
-use CommonCrane\Html\Beautifier\Beautifier;
-use CommonCrane\Html\VirtualDom\Document as DocumentInterface;
-use CommonCrane\Html\VirtualDom\Element as ElementInterface;
+use Teein\Html\Beautifier\Beautifier;
+use Teein\Html\VirtualDom\Document as DocumentInterface;
+use Teein\Html\VirtualDom\Element as ElementInterface;
 
 /**
  * A Document represents a html-document, that is a document-type-definition,

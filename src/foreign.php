@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace CommonCrane\Html\Elements;
+namespace Teein\Html\Elements;
 
-use CommonCrane\Html\Ast\NormalElement;
-use CommonCrane\Html\VirtualDom\Attribute;
-use CommonCrane\Html\VirtualDom\Node;
+use Teein\Html\Ast\NormalElement;
+use Teein\Html\VirtualDom\Attribute;
+use Teein\Html\VirtualDom\Node;
 
 function foreign (string $localName) : callable
 {

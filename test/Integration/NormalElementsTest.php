@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace CommonCrane\Html\Test\Integration;
+namespace Teein\Html\Test\Integration;
 
 use PHPUnit\Framework\TestCase;
 
@@ -32,7 +32,7 @@ class NormalElementsTest extends TestCase
 
     public static function fullyQualifiedName ($factory)
     {
-        return "CommonCrane\\Html\\Elements\\$factory";
+        return "teein\\Html\\Elements\\$factory";
     }
 
 }

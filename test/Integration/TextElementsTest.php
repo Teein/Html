@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace CommonCrane\Html\Test\Integration;
+namespace Teein\Html\Test\Integration;
 
 use PHPUnit\Framework\TestCase;
-use function CommonCrane\Html\Elements\{title,textarea};
+use function Teein\Html\Elements\{title,textarea};
 
 class TextElementsTest extends TestCase
 {
@@ -32,7 +32,7 @@ class TextElementsTest extends TestCase
 
     public static function fullyQualifiedName ($factory)
     {
-        return "CommonCrane\\Html\\Elements\\$factory";
+        return "teein\\Html\\Elements\\$factory";
     }
 
 }
