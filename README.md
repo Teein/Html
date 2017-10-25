@@ -40,10 +40,14 @@ or by adding it manually to your composer.json-file:
 ### Hello World
 
 <table>
-<tr><th>Teein/Html</th><th>HTML5</th></tr>
-<tr><td>
-<details>
-    <summary><i>Show me the head section of this script</i></summary>
+    <tr>
+        <th>Teein/Html</th>
+        <th>HTML5</th>
+    </tr>
+    <tr>
+        <td>
+            <details>
+                <summary><i>Show me the head section of this script</i></summary>
 
 ```php
 <?php
@@ -62,9 +66,15 @@ require __DIR__ . '/vendor/autoload.php';
 ```
 
 </details>
-</td><td>&nbsp;</td></tr>
-      
-<tr><td>
+        </td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>
 
 ```php
 echo toHtml(beautify(document(
@@ -79,9 +89,8 @@ echo toHtml(beautify(document(
     )
 )));
 ```
-
-</td><td>
-
+</td>
+        <td>
 
 ```html
 <!DOCTYPE html>
@@ -98,7 +107,9 @@ echo toHtml(beautify(document(
 
 ```
 
-</td></tr></table>
+</td>
+    </tr>
+</table>
 
 Hopefully, the example reminds you of ordinary HTML5.
 
