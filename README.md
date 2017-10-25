@@ -39,8 +39,11 @@ or by adding it manually to your composer.json-file:
 
 ### Hello World
 
+<table>
+<tr><th>Teein/Html</th><th>HTML5</th></tr>
+<tr><td>
 <details>
-    <summary> <i>We have hidde some details from the example below, expand to to the full example</i> </summary>
+    <summary><i>Show me the head section of this script</i></summary>
 
 ```php
 <?php
@@ -48,7 +51,10 @@ declare(strict_types = 1);
 
 namespace Teein\Html\Example;
 
-use function Teein\Html\{Beautify\beautify,ToHtml\toHtml,Document\document,Text\text};
+use function Teein\Html\Beautify\beautify;
+use function Teein\Html\ToHtml\toHtml;
+use function Teein\Html\Document\document;
+use function Teein\Html\Text\text;
 use function Teein\Html\Elements\{html,head,meta,title,body,h1};
 use function Teein\Html\Attributes\{lang,charset};
 
@@ -56,12 +62,11 @@ require __DIR__ . '/vendor/autoload.php';
 ```
 
 </details>
-
-<table>
-    <tr><th>Teein/Html</th><th>HTML5</th></tr>    
+</td><td>&nbsp;</td></tr>
+      
 <tr><td>
 
-```html
+```php
 echo toHtml(beautify(document(
     html(lang('en'))(
         head()(
@@ -78,7 +83,7 @@ echo toHtml(beautify(document(
 </td><td>
 
 
-```php
+```html
 <!DOCTYPE html>
 <html lang="en">
     <head>
