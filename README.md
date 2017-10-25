@@ -39,6 +39,9 @@ or by adding it manually to your composer.json-file:
 
 ### Hello World
 
+<details>
+    <summary> <i>We have hidde some details from the example below, expand to to the full example</i> </summary>
+
 ```php
 <?php
 declare(strict_types = 1);
@@ -50,23 +53,47 @@ use function Teein\Html\Elements\{html,head,meta,title,body,h1};
 use function Teein\Html\Attributes\{lang,charset};
 
 require __DIR__ . '/vendor/autoload.php';
+```
 
+</details>
+
+<table>
+    <tr><th>Teein/Html</th><th>HTML5</th></tr>    
+<tr><td>
+
+```html
 echo toHtml(beautify(document(
     html(lang('en'))(
         head()(
             meta(charset('utf8')),
-            title()(
-                text('Hello World!')
-            )
+            title()(text('Hello World!'))
         ),
         body()(
-            h1()(
-                text('Hello World!')
-            )
+            h1()(text('Hello World!'))
         )
     )
 )));
 ```
+
+</td><td>
+
+
+```php
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf8">
+        <title>Hello World!</titel>
+    </head>
+    <body>
+        <h1>Hello World!</h1>
+    </body>
+</html>
+
+
+```
+
+</td></tr></table>
 
 Hopefully, the example reminds you of ordinary HTML5.
 
@@ -223,7 +250,7 @@ function comic (Comic $comic) : Element {
 
 function comics (array $comics) : Element {
     return ul () (
-        ...array_map('book', $books)
+        ...array_map('comic', $comics)
     );
 }
 ```
