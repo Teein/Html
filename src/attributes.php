@@ -1,13 +1,14 @@
 <?php
-namespace Mammalia\Html\Attributes;
+declare(strict_types=1);
 
-use Mammalia\Html\Ast\Attribute;
-use Mammalia\Html\Ast\AttributeList;
+namespace Teein\Html\Attributes;
+
+use Teein\Html\Ast\Attribute;
 
 /**
  * @link https://html.spec.whatwg.org/#attr-th-abbr
  */
-function abbr(string $value) : Attribute
+function abbr_(string $value) : Attribute
 {
     return new Attribute('abbr', $value);
 }
@@ -23,9 +24,17 @@ function accept(string $value) : Attribute
 /**
  * @link https://html.spec.whatwg.org/#attr-form-accept-charset
  */
-function acceptCharset(string $value) : Attribute
+function acceptcharset(string $value) : Attribute
 {
     return new Attribute('accept-charset', $value);
+}
+
+/**
+ * @link https://html.spec.whatwg.org/multipage/interaction.html#the-accesskey-attribute
+ */
+function accesskey(string $value) : Attribute
+{
+    return new Attribute('accesskey', $value);
 }
 
 /**
@@ -109,27 +118,11 @@ function autoplay(string $value) : Attribute
 }
 
 /**
- * @link https://html.spec.whatwg.org/#attr-fe-autocomplete-billing
- */
-function billing(string $value) : Attribute
-{
-    return new Attribute('billing', $value);
-}
-
-/**
  * @link https://html.spec.whatwg.org/#attr-meta-charset
  */
 function charset(string $value) : Attribute
 {
     return new Attribute('charset', $value);
-}
-
-/**
- * @link https://html.spec.whatwg.org/#attr-menuitem-type-state-checkbox
- */
-function Checkbox(string $value) : Attribute
-{
-    return new Attribute('Checkbox', $value);
 }
 
 /**
@@ -141,25 +134,18 @@ function checked(string $value) : Attribute
 }
 
 /**
- * @link https://html.spec.whatwg.org/#attr-area-shape-keyword-circ
+ * @link https://html.spec.whatwg.org/#classes
  */
-function circ(string $value) : Attribute
+function class_(string $value) : Attribute
 {
-    return new Attribute('circ', $value);
+    return new Attribute('class', $value);
 }
 
-/**
- * @link https://html.spec.whatwg.org/#attr-area-shape-keyword-circle
- */
-function circle(string $value) : Attribute
-{
-    return new Attribute('circle', $value);
-}
 
 /**
  * @link https://html.spec.whatwg.org/#attr-mod-cite
  */
-function cite(string $value) : Attribute
+function cite_(string $value) : Attribute
 {
     return new Attribute('cite', $value);
 }
@@ -231,7 +217,7 @@ function crossorigin(string $value) : Attribute
 /**
  * @link https://html.spec.whatwg.org/#attr-object-data
  */
-function data(string $value) : Attribute
+function odata(string $value) : Attribute
 {
     return new Attribute('data', $value);
 }
@@ -261,11 +247,11 @@ function defer(string $value) : Attribute
 }
 
 /**
- * @link https://html.spec.whatwg.org/#attr-marquee-direction
+ * @link https://html.spec.whatwg.org/#the-dir-attribute
  */
-function direction(string $value) : Attribute
+function dir(string $value) : Attribute
 {
-    return new Attribute('direction', $value);
+    return new Attribute('dir', $value);
 }
 
 /**
@@ -293,6 +279,14 @@ function download(string $value) : Attribute
 }
 
 /**
+ * @link https://html.spec.whatwg.org/multipage/dnd.html#the-draggable-attribute
+ */
+function draggable(string $value) : Attribute
+{
+    return new Attribute('draggable', $value);
+}
+
+/**
  * @link https://html.spec.whatwg.org/#attr-fs-enctype
  */
 function enctype(string $value) : Attribute
@@ -303,15 +297,15 @@ function enctype(string $value) : Attribute
 /**
  * @link https://html.spec.whatwg.org/#attr-output-for
  */
-function for_(string ...$values) : AttributeList
+function for_(string $value) : Attribute
 {
-    return new AttributeList('for', $values);
+    return new Attribute('for', $value);
 }
 
 /**
  * @link https://html.spec.whatwg.org/#attr-fae-form
  */
-function form(string $value) : Attribute
+function form_(string $value) : Attribute
 {
     return new Attribute('form', $value);
 }
@@ -373,6 +367,14 @@ function height(string $value) : Attribute
 }
 
 /**
+ * @link https://html.spec.whatwg.org/multipage/interaction.html#the-hidden-attribute
+ */
+function hidden(string $value) : Attribute
+{
+    return new Attribute('hidden', $value);
+}
+
+/**
  * @link https://html.spec.whatwg.org/#attr-meter-high
  */
 function high(string $value) : Attribute
@@ -399,17 +401,17 @@ function hreflang(string $value) : Attribute
 /**
  * @link https://html.spec.whatwg.org/#attr-meta-http-equiv
  */
-function httpEquiv(string $value) : Attribute
+function httpequiv(string $value) : Attribute
 {
     return new Attribute('http-equiv', $value);
 }
 
 /**
- * @link https://html.spec.whatwg.org/#attr-menuitem-icon
+ * @link https://html.spec.whatwg.org/#the-id-attribute
  */
-function icon(string $value) : Attribute
+function id(string $value) : Attribute
 {
-    return new Attribute('icon', $value);
+    return new Attribute('id', $value);
 }
 
 /**
@@ -444,6 +446,47 @@ function ismap(string $value) : Attribute
     return new Attribute('ismap', $value);
 }
 
+
+/**
+ * @link https://html.spec.whatwg.org/multipage/microdata.html#attr-itemid
+ */
+ function itemid (string $value) : Attribute
+{
+    return new Attribute('itemid', $value);
+}
+
+ /**
+ * @link https://html.spec.whatwg.org/multipage/microdata.html#attr-itemid
+ */
+function itemprop (string $value) : Attribute
+{
+    return new Attribute('itemprop', $value);
+}
+
+/**
+ * @link https://html.spec.whatwg.org/multipage/microdata.html#attr-itemref
+ */
+function itemref (string $value) : Attribute
+{
+    return new Attribute('itemref', $value);
+}
+
+ /**
+ * @link https://html.spec.whatwg.org/multipage/microdata.html#attr-itemscope
+ */
+function itemscope (string $value) : Attribute
+{
+    return new Attribute('itemscope', $value);
+}
+
+/**
+ * @link https://html.spec.whatwg.org/multipage/microdata.html#attr-itemtype
+ */
+function itemtype (string $value) : Attribute
+{
+    return new Attribute('itemtype', $value);
+}
+
 /**
  * @link https://html.spec.whatwg.org/#attr-track-kind
  */
@@ -455,7 +498,7 @@ function kind(string $value) : Attribute
 /**
  * @link https://html.spec.whatwg.org/#attr-option-label
  */
-function label(string $value) : Attribute
+function label_(string $value) : Attribute
 {
     return new Attribute('label', $value);
 }
@@ -466,14 +509,6 @@ function label(string $value) : Attribute
 function lang(string $value) : Attribute
 {
     return new Attribute('lang', $value);
-}
-
-/**
- * @link https://html.spec.whatwg.org/#attr-marquee-direction-left
- */
-function left(string $value) : Attribute
-{
-    return new Attribute('left', $value);
 }
 
 /**
@@ -581,14 +616,6 @@ function name(string $value) : Attribute
 }
 
 /**
- * @link https://html.spec.whatwg.org/#attr-area-nohref
- */
-function nohref(string $value) : Attribute
-{
-    return new Attribute('nohref', $value);
-}
-
-/**
  * @link https://html.spec.whatwg.org/#attr-script-nomodule
  */
 function nomodule(string $value) : Attribute
@@ -605,35 +632,11 @@ function nonce(string $value) : Attribute
 }
 
 /**
- * @link https://html.spec.whatwg.org/#attr-media-preload-none
- */
-function none(string $value) : Attribute
-{
-    return new Attribute('none', $value);
-}
-
-/**
  * @link https://html.spec.whatwg.org/#attr-fs-novalidate
  */
 function novalidate(string $value) : Attribute
 {
     return new Attribute('novalidate', $value);
-}
-
-/**
- * @link https://html.spec.whatwg.org/#attr-fe-autocomplete-off
- */
-function off(string $value) : Attribute
-{
-    return new Attribute('off', $value);
-}
-
-/**
- * @link https://html.spec.whatwg.org/#attr-fe-autocomplete-on
- */
-function on(string $value) : Attribute
-{
-    return new Attribute('on', $value);
 }
 
 /**
@@ -658,6 +661,14 @@ function optimum(string $value) : Attribute
 function pattern(string $value) : Attribute
 {
     return new Attribute('pattern', $value);
+}
+
+/**
+ * @link https://html.spec.whatwg.org/multipage/links.html#ping
+ */
+function ping(string $value) : Attribute
+{
+    return new Attribute('ping', $value);
 }
 
 /**
@@ -693,22 +704,6 @@ function preload(string $value) : Attribute
 }
 
 /**
- * @link https://html.spec.whatwg.org/#attr-menuitem-type-state-radio
- */
-function Radio(string $value) : Attribute
-{
-    return new Attribute('Radio', $value);
-}
-
-/**
- * @link https://html.spec.whatwg.org/#attr-menuitem-radiogroup
- */
-function radiogroup(string $value) : Attribute
-{
-    return new Attribute('radiogroup', $value);
-}
-
-/**
  * @link https://html.spec.whatwg.org/#attr-textarea-readonly
  */
 function readonly(string $value) : Attribute
@@ -727,9 +722,9 @@ function referrerpolicy(string $value) : Attribute
 /**
  * @link https://html.spec.whatwg.org/#attr-hyperlink-rel
  */
-function rel(string ...$values) : AttributeList
+function rel(string $value) : Attribute
 {
-    return new AttributeList('rel', $values);
+    return new Attribute('rel', $value);
 }
 
 /**
@@ -767,9 +762,9 @@ function rowspan(string $value) : Attribute
 /**
  * @link https://html.spec.whatwg.org/#attr-iframe-sandbox
  */
-function sandbox(string ...$values) : AttributeList
+function sandbox(string $value) : Attribute
 {
-    return new AttributeList('sandbox', $values);
+    return new Attribute('sandbox', $value);
 }
 
 /**
@@ -797,14 +792,6 @@ function shape(string $value) : Attribute
 }
 
 /**
- * @link https://html.spec.whatwg.org/#attr-fe-autocomplete-shipping
- */
-function shipping(string $value) : Attribute
-{
-    return new Attribute('shipping', $value);
-}
-
-/**
  * @link https://html.spec.whatwg.org/#attr-select-size
  */
 function size(string $value) : Attribute
@@ -815,15 +802,23 @@ function size(string $value) : Attribute
 /**
  * @link https://html.spec.whatwg.org/#attr-source-sizes
  */
-function sizes(string ...$values) : AttributeList
+function sizes(string $value) : Attribute
 {
-    return new AttributeList('sizes', $values);
+    return new Attribute('sizes', $value);
+}
+
+/**
+ * @link https://html.spec.whatwg.org/#attr-slot
+ */
+function slot_(string $value) : Attribute
+{
+    return new Attribute('slot', $value);
 }
 
 /**
  * @link https://html.spec.whatwg.org/#attr-colgroup-span
  */
-function span(string $value) : Attribute
+function span_(string $value) : Attribute
 {
     return new Attribute('span', $value);
 }
@@ -885,6 +880,14 @@ function step(string $value) : Attribute
 }
 
 /**
+ * @link https://html.spec.whatwg.org/#the-style-attribute
+ */
+function style_(string $value) : Attribute
+{
+    return new Attribute('style', $value);
+}
+
+/**
  * @link https://html.spec.whatwg.org/#attr-tabindex
  */
 function tabindex(string $value) : Attribute
@@ -903,9 +906,17 @@ function target(string $value) : Attribute
 /**
  * @link https://html.spec.whatwg.org/#attr-title
  */
-function title(string $value) : Attribute
+function title_(string $value) : Attribute
 {
     return new Attribute('title', $value);
+}
+
+/**
+ * @link https://html.spec.whatwg.org/#the-translate-attribute
+ */
+function translate(string $value) : Attribute
+{
+    return new Attribute('translate', $value);
 }
 
 /**
@@ -925,11 +936,11 @@ function typemustmatch(string $value) : Attribute
 }
 
 /**
- * @link https://html.spec.whatwg.org/#attr-link-usecache
+ * @link https://html.spec.whatwg.org/#attr-link-updateviacache
  */
-function usecache(string $value) : Attribute
+function updateviacache(string $value) : Attribute
 {
-    return new Attribute('usecache', $value);
+    return new Attribute('updateviacache', $value);
 }
 
 /**

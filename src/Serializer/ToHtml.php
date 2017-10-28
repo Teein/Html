@@ -1,5 +1,7 @@
 <?php
-namespace Mammalia\Html\Serializer;
+declare(strict_types=1);
+
+namespace Teein\Html\Serializer;
 
 interface ToHtml
 {

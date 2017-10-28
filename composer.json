@@ -2,12 +2,21 @@
     "require": {
     },
     "autoload": {
-        "psr-4": {"Mammalia\\Html\\": "src/"},
+        "psr-4": {"Teein\\Html\\": "src/"},
         "files" : [
-            "src/lang/a.php"
+            "src/attributes.php",
+            "src/comment.php",
+            "src/custom.php",
+            "src/data_.php",
+            "src/document.php",
+            "src/elements.php",
+            "src/foreign.php",
+            "src/text.php",
+            "src/toHtml.php",
+            "src/unknown.php"
         ]
     },
     "require-dev": {
-        "phpunit/phpunit": "^6.1"
+        "phpunit/phpunit": "^6.3"
     }
 }
