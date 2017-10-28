@@ -12,6 +12,7 @@
             "src/elements.php",
             "src/foreign.php",
             "src/text.php",
+            "src/toHtml.php",
             "src/unknown.php"
         ]
     },

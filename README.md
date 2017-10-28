@@ -378,6 +378,7 @@ function comics (array $comics) : Element
 
 Teein/Html does not register any global definitions, that means that you have to import everything you are going to use in your template explicitly at the beginning of your script. Most editors today offer automatic tools to simplify this process. However, some tools find it hard detect functions inside your namespaces. If you are on coffein and cannot wait for better tooling you can always include the complete list of functions at the beginning of your file.
 
+
 ~~~php
 <?php
 use function Teein\Html\{Beautify\beautify,ToHtml\toHtml,Document\document,Text\text};
