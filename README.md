@@ -447,3 +447,9 @@ meta(httpequiv('anyhttpheader'))
 </td>
     </tr>
 </table>
+use function Teein\Html\Attributes\{abbr as abbr_,accept,accept_charset,accesskey,action,allowfullscreen,allowpaymentrequest,allowusermedia,alt,as_,async,autocomplete,autofocus,autoplay,charset,checked,cite as cite_,class_,color,cols,colspan,content,contenteditable,controls,coords,crossorigin,data_, data as data__,datetime,default_,defer,dir,dirname,disabled,download,draggable,enctype,for_,form as form_,formaction,formenctype,formmethod,formnovalidate,formtarget,headers,height,hidden,high,href,hreflang,http_equiv,id,inputmode,integrity,is,ismap,itemid,itemprop,itemref,itemscope,itemtype,kind,label as label_,lang,list_,loop,low,manifest,max,maxlength,media,method,min,minlength,multiple,muted,name,nomodule,nonce,novalidate,open,optimum,pattern,ping,placeholder,playsinline,poster,preload,readonly,referrerpolicy,rel,required,reversed,rows,rowspan,sandbox,scope,selected,shape,size,sizes,slot as slot_,span as span_,spellcheck,src,srcdoc,srclang,srcset,start,step,style as style_,tabindex,target,title as title_,translate,type,typemustmatch,updateviacache,usemap,value,width,workertype,wrap};
+```
+
+## Contribution
+
+In the interest of fostering an open and welcoming environment, we as contributors and maintainers pledge to making participation in our project and our community a harassment-free experience for everyone, regardless of age, body size, disability, ethnicity, gender identity and expression, level of experience, nationality, personal appearance, race, religion, or sexual identity and orientation. Please read our full [Code of Coduct](CODE_OF_CONDUCT.md).
