@@ -8,7 +8,7 @@ use Teein\Html\Ast\Attribute;
 /**
  * @link https://html.spec.whatwg.org/#attr-th-abbr
  */
-function abbr(string $value) : Attribute
+function abbr_(string $value) : Attribute
 {
     return new Attribute('abbr', $value);
 }
@@ -24,7 +24,7 @@ function accept(string $value) : Attribute
 /**
  * @link https://html.spec.whatwg.org/#attr-form-accept-charset
  */
-function accept_charset(string $value) : Attribute
+function acceptcharset(string $value) : Attribute
 {
     return new Attribute('accept-charset', $value);
 }
@@ -145,7 +145,7 @@ function class_(string $value) : Attribute
 /**
  * @link https://html.spec.whatwg.org/#attr-mod-cite
  */
-function cite(string $value) : Attribute
+function cite_(string $value) : Attribute
 {
     return new Attribute('cite', $value);
 }
@@ -217,7 +217,7 @@ function crossorigin(string $value) : Attribute
 /**
  * @link https://html.spec.whatwg.org/#attr-object-data
  */
-function data(string $value) : Attribute
+function odata(string $value) : Attribute
 {
     return new Attribute('data', $value);
 }
@@ -305,7 +305,7 @@ function for_(string $value) : Attribute
 /**
  * @link https://html.spec.whatwg.org/#attr-fae-form
  */
-function form(string $value) : Attribute
+function form_(string $value) : Attribute
 {
     return new Attribute('form', $value);
 }
@@ -401,7 +401,7 @@ function hreflang(string $value) : Attribute
 /**
  * @link https://html.spec.whatwg.org/#attr-meta-http-equiv
  */
-function http_equiv(string $value) : Attribute
+function httpequiv(string $value) : Attribute
 {
     return new Attribute('http-equiv', $value);
 }
@@ -498,7 +498,7 @@ function kind(string $value) : Attribute
 /**
  * @link https://html.spec.whatwg.org/#attr-option-label
  */
-function label(string $value) : Attribute
+function label_(string $value) : Attribute
 {
     return new Attribute('label', $value);
 }
@@ -810,7 +810,7 @@ function sizes(string $value) : Attribute
 /**
  * @link https://html.spec.whatwg.org/#attr-slot
  */
-function slot(string $value) : Attribute
+function slot_(string $value) : Attribute
 {
     return new Attribute('slot', $value);
 }
@@ -818,7 +818,7 @@ function slot(string $value) : Attribute
 /**
  * @link https://html.spec.whatwg.org/#attr-colgroup-span
  */
-function span(string $value) : Attribute
+function span_(string $value) : Attribute
 {
     return new Attribute('span', $value);
 }
@@ -882,7 +882,7 @@ function step(string $value) : Attribute
 /**
  * @link https://html.spec.whatwg.org/#the-style-attribute
  */
-function style(string $value) : Attribute
+function style_(string $value) : Attribute
 {
     return new Attribute('style', $value);
 }
@@ -906,7 +906,7 @@ function target(string $value) : Attribute
 /**
  * @link https://html.spec.whatwg.org/#attr-title
  */
-function title(string $value) : Attribute
+function title_(string $value) : Attribute
 {
     return new Attribute('title', $value);
 }

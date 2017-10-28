@@ -130,7 +130,7 @@ There is more to discover in our example:
 * Templates are minified by default, we use the `beautify`-function to indent our output.
 * We use the `toHtml`-function to get a string-representation from our virtual dom. 
 
-### Composable templates
+### Composable Templates
 
 The "Hello World"-example looks managable, but for real world application templates tend to be much more involved. To cope with the growing complexity of your application we make use of an earth-old concept: composability. The idea is to group simple templates together to get bigger but equally simple templates. For instance, many things in our example look like typical HTML5-boilerplate. Let's see how we could refactor the example so that we can reuse most of the template and adapt the flexible parts to other scenarios.
 
@@ -172,7 +172,7 @@ function boilerplate (Node $content) : Document
 }
 ~~~
 
-Let's have a small look at the new things that are packed in this snippet before we continue with the `content`-function. You probably noticed the type-annotations or type-hints like they're often called in PHP. They're another great feature of Teein/Html. The signature of the function makes clear that it will only accept a single `Node` as its input and it will return a `Document`. A `Node` is either an `Element`, like `h1` or `span`, a `Text` or a `Comment`. All factory functions in our library are type-annotated and they ensure that you don't compose incompatible functions together. This should suffice for the moment, we'll come back to types later. Let's return to our running example. So far we have written the `boilerplate`-function, time to turn to the `content`-function, which should be easy now:
+Let's have a small look at the new things that are packed in this snippet before we continue with the `content`-function. You probably noticed the type-annotations or type-hints like they're often called in PHP. They're another great feature of Teein/Html. The signature of the function makes clear that it will only accept a single `Node` as its input and it will return a `Document`. A `Node` is either an `Element`, like `h1` or `span`, a `Text` or a `Comment`. All factory functions in our library are type-annotated and they ensure that you don't compose incompatible functions together. This should suffice for the moment. Let's return to our running example. So far we have written the `boilerplate`-function, time to turn to the `content`-function, which should be easy now:
 
 <details>
     <summary><i>Show me the head section of this script</i></summary>
@@ -223,7 +223,7 @@ echo toHtml(
 
 ... functions. Hope you appreciate them right now :)
 
-### Conditional branches
+### Conditional Branches
 
 Unlike other templating-engines Teein/Html does not introduce special syntax for conditional branches or loops. Instead, we use PHPs built-in language features for these kind of things. However, the functional interface of Teein/Html wants *expressions* not *statements*. For example PHPs `if () {} else {}`-construct is a statement, but the ternary-operator `$cond ? $foo : $bar` is an expression (if you don't like the flaky syntax of the ternary operator, here is a reminder that you can always define your own view-helpers and give them expressive names).
 
@@ -378,10 +378,72 @@ function comics (array $comics) : Element
 
 Teein/Html does not register any global definitions, that means that you have to import everything you are going to use in your template explicitly at the beginning of your script. Most editors today offer automatic tools to simplify this process. However, some tools find it hard detect functions inside your namespaces. If you are on coffein and cannot wait for better tooling you can always include the complete list of functions at the beginning of your file.
 
-
 ~~~php
 <?php
 use function Teein\Html\{Beautify\beautify,ToHtml\toHtml,Document\document,Text\text};
 use function Teein\Html\Elements\{a,abbr,address,area,article,aside,audio,b,base,bdi,bdo,blockquote,body,br,button,canvas,caption,cite,code,col,colgroup,data,datalist,dd,del,details,dfn,dialog,div,dl,dt,em,embed,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,head,header,hgroup,hr,html,i,iframe,img,input,ins,kbd,label,legend,li,link,main,map,mark,math,menu,meta,meter,nav,noscript,object_,ol,optgroup,option,output,p,param,picture,pre,progress,q,rp,rt,ruby,s,samp,script,section,select,slot,small,source,span,strong,style,sub,summary,sup,svg,table,tbody,td,template,textarea,tfoot,th,thead,time,title,tr,track,u,ul,var_,video,wbr};
-use function Teein\Html\Attributes\{abbr as abbr_,accept,accept_charset,accesskey,action,allowfullscreen,allowpaymentrequest,allowusermedia,alt,as_,async,autocomplete,autofocus,autoplay,charset,checked,cite as cite_,class_,color,cols,colspan,content,contenteditable,controls,coords,crossorigin,data_, data as data__,datetime,default_,defer,dir,dirname,disabled,download,draggable,enctype,for_,form as form_,formaction,formenctype,formmethod,formnovalidate,formtarget,headers,height,hidden,high,href,hreflang,http_equiv,id,inputmode,integrity,is,ismap,itemid,itemprop,itemref,itemscope,itemtype,kind,label as label_,lang,list_,loop,low,manifest,max,maxlength,media,method,min,minlength,multiple,muted,name,nomodule,nonce,novalidate,open,optimum,pattern,ping,placeholder,playsinline,poster,preload,readonly,referrerpolicy,rel,required,reversed,rows,rowspan,sandbox,scope,selected,shape,size,sizes,slot as slot_,span as span_,spellcheck,src,srcdoc,srclang,srcset,start,step,style as style_,tabindex,target,title as title_,translate,type,typemustmatch,updateviacache,usemap,value,width,workertype,wrap};
+use function Teein\Html\Attributes\{abbr_,accept,accept_charset,accesskey,action,allowfullscreen,allowpaymentrequest,allowusermedia,alt,as_,async,autocomplete,autofocus,autoplay,charset,checked,cite_,class_,color,cols,colspan,content,contenteditable,controls,coords,crossorigin,data_,datetime,default_,defer,dir,dirname,disabled,download,draggable,enctype,for_,form_,formaction,formenctype,formmethod,formnovalidate,formtarget,headers,height,hidden,high,href,hreflang,http_equiv,id,inputmode,integrity,is,ismap,itemid,itemprop,itemref,itemscope,itemtype,kind,label_,lang,list_,loop,low,manifest,max,maxlength,media,method,min,minlength,multiple,muted,name,nomodule,nonce,novalidate,objectData,open,optimum,pattern,ping,placeholder,playsinline,poster,preload,readonly,referrerpolicy,rel,required,reversed,rows,rowspan,sandbox,scope,selected,shape,size,sizes,slot_,span_,spellcheck,src,srcdoc,srclang,srcset,start,step,style_,tabindex,target,title_,translate,type,typemustmatch,updateviacache,usemap,value,width,workertype,wrap};
 ~~~
+
+### Naming Deviations
+
+We tried to give every HTML5 element and attribute a factory with the same name. However, there are some cases where this is not possible. PHP reserves some words, which means we cannot use them as a name for a factory. Furthermore, HTML5 sometimes uses the same name for an attribute and an element. Here is a complete list of factories with unconventional names and their output:
+
+<table>
+    <tr>
+        <th>Teein/Html</th>
+        <th>HTML5</th>
+    </tr>
+    <tr>
+        <td>
+
+~~~php
+object_()()
+var_()()
+th(abbr_('anyalternativelabel'))()
+form(accecptcharset('utf8'))()
+link(as_('fetch'))
+q(cite_('https://example.com'))()
+div(class_('anyclass'))()
+object_(odata('https://example.com'))()
+div(data('custom', 'anyvalue'))()
+track(default_('default'))
+output(for_('anyid'))()
+button(form_('anyid'))()
+option(label_('anylabel'))()
+input(list_('anyid'))
+div(slot_('anyslot'))()
+col(span_('42'))
+div(style_('color: pink'))()
+div(title_('anytitle'))()
+meta(httpequiv('anyhttpheader'))
+~~~
+
+</td>
+        <td>
+
+~~~html
+<object></object>
+<var></var>
+<th abbr="anyalternativelabel"></th>
+<form accept-charset="utf8">
+<link as="fetch">
+<q cite="https://example.com"></q>
+<div class="anyclass">
+<object data="https://example.com"></object>
+<div data-custom="anyvalue">
+<track default="default"></track>
+<output for="anyid"></output>
+<button form="anyid"></button>
+<option label="anylabel"></option>
+<input list="anyid">
+<div slot="anyslot"></div>
+<col span="42">
+<div style="color: pink"></div>
+<div title="anytitle"></div>
+<meta http-equiv="anyhttpheader">
+~~~
+
+</td>
+    </tr>
+</table>
