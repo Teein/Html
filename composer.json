@@ -1,5 +1,8 @@
 {
+    "name" : "Teein/Html",
+    "description": "A Virtual DOM and templating engine for PHP",
     "require": {
+        "php" : "^7.1"
     },
     "autoload": {
         "psr-4": {"Teein\\Html\\": "src/"},
