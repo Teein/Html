@@ -38,7 +38,7 @@ final class Document implements DocumentInterface
     /**
      * Get the html-representation of this document.
      */
-    public function toHtml () : string
+    public function toHtml() : string
     {
         return "<!DOCTYPE html>" . ($this->beautified ? "\n" : "") . $this->root->toHtml();
     }
@@ -57,7 +57,7 @@ final class Document implements DocumentInterface
      * 
      * @param int $level The current level of indentation. This should always be 0.
      */
-    public function beautify (int $level = 0) : Beautifier
+    public function beautify(int $level = 0) : Beautifier
     {
         return new Document($this->root->beautify(), true);
     }

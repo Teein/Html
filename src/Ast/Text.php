@@ -60,11 +60,11 @@ final class Text implements TextInterface
      * @param string $localName A localName, that is escaped inside the
      *        text-content of this Text.
      */
-    public function toRawText (string $localName) : string
+    public function toRawText(string $localName) : string
     {
         $tests = [
             '/<(' . $localName . ')/ium', // test for forbidden opening tags
-            '/<\/(' .$localName. ')/ium', // test for forbidden closing tags
+            '/<\/(' . $localName . ')/ium', // test for forbidden closing tags
             '/<!--/ium'                   // test for forbidden opening comments
         ];
         $replacements = [

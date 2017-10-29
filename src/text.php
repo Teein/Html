@@ -5,7 +5,7 @@ namespace Teein\Html\Text;
 
 use Teein\Html\Ast\Text;
 
-function text (string $value) : Text
+function text(string $value) : Text
 {
     return new Text($value);
 }

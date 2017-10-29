@@ -5,5 +5,5 @@ namespace Teein\Html\Beautifier;
 
 interface Beautifier
 {
-    public function beautify (int $level = 0) : Beautifier;
+    public function beautify(int $level = 0) : Beautifier;
 }

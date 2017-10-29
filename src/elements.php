@@ -1259,7 +1259,7 @@ function style(Attribute ...$attributes) : callable
         return new RawTextElement(
             'style',
             $attributes,
-            $text ?? new Text ('')
+            $text ?? new Text('')
         );
     };
 }
