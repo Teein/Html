@@ -1,8 +1,8 @@
 # Teein/Html
 
-[![Build Status](https://scrutinizer-ci.com/g/Teein/Html/badges/build.png?b=feature%2Finitial-api-design)](https://scrutinizer-ci.com/g/Teein/Html/build-status/feature/initial-api-design)
-[![Code Coverage](https://scrutinizer-ci.com/g/Teein/Html/badges/coverage.png?b=feature%2Finitial-api-design)](https://scrutinizer-ci.com/g/Teein/Html/?branch=feature%2Finitial-api-design)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Teein/Html/badges/quality-score.png?b=feature%2Finitial-api-design)](https://scrutinizer-ci.com/g/Teein/Html/?branch=feature%2Finitial-api-design)
+[![Build Status](https://scrutinizer-ci.com/g/Teein/Html/badges/build.png?b=develop)](https://scrutinizer-ci.com/g/Teein/Html/build-status/develop)
+[![Code Coverage](https://scrutinizer-ci.com/g/Teein/Html/badges/coverage.png?b=develop)](https://scrutinizer-ci.com/g/Teein/Html/?branch=develop)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Teein/Html/badges/quality-score.png?b=develop)](https://scrutinizer-ci.com/g/Teein/Html/?branch=develop)
 
 <img src="logo.png" align="right" height="300">
 
