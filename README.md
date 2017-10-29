@@ -6,12 +6,13 @@
 
 <img src="logo.png" align="right" height="300">
 
-Teein/Html is a virtual-dom-based templating-engine for PHP inspired by React, XHP and Elm. Here are some highlights:
+Teein/Html is a virtual dom based templating-engine for PHP inspired by React, XHP and Elm. Here are some highlights:
 
-* **No new syntax to learn** Templates are written in ordinary PHP and they closely resemble the syntax of html.
-* **Immutable data** Templates are immutable and therefore always predictable. Once created you cannot change a template. However, you can always derive a new template from an existing one with a fluent getter/setter-api.
+* **No new syntax to learn** Templates are written in ordinary PHP and they closely resemble the syntax of HTML5.
 * **Composable templates** The only way to create templates is to compose them from simpler ones. Composable templates scale with your application without adding to its complexity.
-* **Security** Unlike most other templating-engines we automatically detect and prevent most cross-site-scripting-attacks.
+* **Immutable data** Templates are immutable and therefore predictable. Once created you cannot change a template. However, you can always derive a new template from an existing one with a fluent getter/setter-api.
+* **Automatic context handling** Forget `htmlspecialchars` and XSS-vulnerabilities, focus on your template, we do the dirty work for you.
+* **Minified by default** The HTML5-output is minified by default to reduce network-load. There are no additional tasks or build-steps to configure. Of course, you can always get a beautified output using our `beautify`-function.
 
 ## Getting Started
 
@@ -246,7 +247,7 @@ use function Teein\Html\Elements\h1;
 </details>
 
 ~~~php
-function content () :Element
+function content () : Element
 {
     return h1() (
         text(
@@ -320,7 +321,9 @@ function comics (array $comics) : Element
 }
 ~~~
 
-Protipp: Nesting anonymous functions can become cumbersome. On the positive site the anonymous function offers us hint where we could split our template into separate view-helpers. Here is a refactored version:
+The [splat-operator](http://php.net/manual/en/migration56.new-features.php#migration56.new-features.splat) (`...`) is mandatory here beacaue the function returned from `ul()` does not accept an array but a variadic parameter-sequence where each parameter must be of type `Node`. The splat-operator takes an array and produces the desired parameter-sequence.
+
+Protipp: Nesting anonymous functions can become cumbersome. On the positive site the anonymous function offers us a hint where we could split our template into separate view-helpers. Here is a refactored version:
 
 <details>
     <summary><i>Show me the head section of this script</i></summary>
