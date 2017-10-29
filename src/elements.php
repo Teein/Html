@@ -1,21 +1,26 @@
 <?php
-namespace Mammalia\Html;
+declare(strict_types=1);
 
-use Mammalia\Html\AST\Attribute;
-use Mammalia\Html\AST\EscapableRawTextElement;
-use Mammalia\Html\AST\NormalElement;
-use Mammalia\Html\AST\RawTextElement;
-use Mammalia\Html\AST\VoidElement;
+namespace Teein\Html\Elements;
+
+use Teein\Html\Ast\NormalElement;
+use Teein\Html\Ast\RawTextElement;
+use Teein\Html\Ast\Text;
+use Teein\Html\Ast\TextElement;
+use Teein\Html\Ast\VoidElement;
+use Teein\Html\VirtualDom\Attribute;
+use Teein\Html\VirtualDom\Node;
+use Teein\Html\VirtualDom\Text as TextInterface;
 
 /**
  * @link https://html.spec.whatwg.org/#the-a-element
  */
-function a(Attribtue ...$attribtues) : callable
+function a(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'a',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -24,12 +29,12 @@ function a(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-abbr-element
  */
-function abbr(Attribtue ...$attribtues) : callable
+function abbr(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'abbr',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -38,26 +43,12 @@ function abbr(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-address-element
  */
-function address(Attribtue ...$attribtues) : callable
+function address(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'address',
-            $attribtues,
-            $elements
-        );
-    };
-}
-
-/**
- * @link https://html.spec.whatwg.org/#the-applet-element
- */
-function applet(Attribtue ...$attribtues) : callable
-{
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
-        return new NormalElement(
-            'applet',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -66,23 +57,23 @@ function applet(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-area-element
  */
-function area(Attribtue ...$attribtues) : VoidElement
+function area(Attribute ...$attributes) : VoidElement
 {
     return new VoidElement(
         'area',
-        $attribtues
+        $attributes
     );
 }
 
 /**
  * @link https://html.spec.whatwg.org/#the-article-element
  */
-function article(Attribtue ...$attribtues) : callable
+function article(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'article',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -91,12 +82,12 @@ function article(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-aside-element
  */
-function aside(Attribtue ...$attribtues) : callable
+function aside(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'aside',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -105,12 +96,12 @@ function aside(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-audio-element
  */
-function audio(Attribtue ...$attribtues) : callable
+function audio(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'audio',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -119,12 +110,12 @@ function audio(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-b-element
  */
-function b(Attribtue ...$attribtues) : callable
+function b(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'b',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -133,23 +124,23 @@ function b(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-base-element
  */
-function base(Attribtue ...$attribtues) : VoidElement
+function base(Attribute ...$attributes) : VoidElement
 {
     return new VoidElement(
         'base',
-        $attribtues
+        $attributes
     );
 }
 
 /**
  * @link https://html.spec.whatwg.org/#the-bdi-element
  */
-function bdi(Attribtue ...$attribtues) : callable
+function bdi(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'bdi',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -158,12 +149,12 @@ function bdi(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-bdo-element
  */
-function bdo(Attribtue ...$attribtues) : callable
+function bdo(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'bdo',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -172,12 +163,12 @@ function bdo(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-blockquote-element
  */
-function blockquote(Attribtue ...$attribtues) : callable
+function blockquote(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'blockquote',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -186,12 +177,12 @@ function blockquote(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-body-element
  */
-function body(Attribtue ...$attribtues) : callable
+function body(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'body',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -200,23 +191,23 @@ function body(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-br-element
  */
-function br(Attribtue ...$attribtues) : VoidElement
+function br(Attribute ...$attributes) : VoidElement
 {
     return new VoidElement(
         'br',
-        $attribtues
+        $attributes
     );
 }
 
 /**
  * @link https://html.spec.whatwg.org/#the-button-element
  */
-function button(Attribtue ...$attribtues) : callable
+function button(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'button',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -225,12 +216,12 @@ function button(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-canvas-element
  */
-function canvas(Attribtue ...$attribtues) : callable
+function canvas(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'canvas',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -239,12 +230,12 @@ function canvas(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-caption-element
  */
-function caption(Attribtue ...$attribtues) : callable
+function caption(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'caption',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -253,12 +244,12 @@ function caption(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-cite-element
  */
-function cite(Attribtue ...$attribtues) : callable
+function cite(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'cite',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -267,12 +258,12 @@ function cite(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-code-element
  */
-function code(Attribtue ...$attribtues) : callable
+function code(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'code',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -281,23 +272,23 @@ function code(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-col-element
  */
-function col(Attribtue ...$attribtues) : VoidElement
+function col(Attribute ...$attributes) : VoidElement
 {
     return new VoidElement(
         'col',
-        $attribtues
+        $attributes
     );
 }
 
 /**
  * @link https://html.spec.whatwg.org/#the-colgroup-element
  */
-function colgroup(Attribtue ...$attribtues) : callable
+function colgroup(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'colgroup',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -306,12 +297,12 @@ function colgroup(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-data-element
  */
-function data(Attribtue ...$attribtues) : callable
+function data(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'data',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -320,12 +311,12 @@ function data(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-datalist-element
  */
-function datalist(Attribtue ...$attribtues) : callable
+function datalist(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'datalist',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -334,12 +325,12 @@ function datalist(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-dd-element
  */
-function dd(Attribtue ...$attribtues) : callable
+function dd(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'dd',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -348,12 +339,12 @@ function dd(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-del-element
  */
-function del(Attribtue ...$attribtues) : callable
+function del(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'del',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -362,12 +353,12 @@ function del(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-details-element
  */
-function details(Attribtue ...$attribtues) : callable
+function details(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'details',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -376,12 +367,12 @@ function details(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-dfn-element
  */
-function dfn(Attribtue ...$attribtues) : callable
+function dfn(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'dfn',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -390,12 +381,12 @@ function dfn(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-dialog-element
  */
-function dialog(Attribtue ...$attribtues) : callable
+function dialog(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'dialog',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -404,12 +395,12 @@ function dialog(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-div-element
  */
-function div(Attribtue ...$attribtues) : callable
+function div(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'div',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -418,12 +409,12 @@ function div(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-dl-element
  */
-function dl(Attribtue ...$attribtues) : callable
+function dl(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'dl',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -432,12 +423,12 @@ function dl(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-dt-element
  */
-function dt(Attribtue ...$attribtues) : callable
+function dt(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'dt',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -446,12 +437,12 @@ function dt(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-em-element
  */
-function em(Attribtue ...$attribtues) : callable
+function em(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'em',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -460,23 +451,23 @@ function em(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-embed-element
  */
-function embed(Attribtue ...$attribtues) : VoidElement
+function embed(Attribute ...$attributes) : VoidElement
 {
     return new VoidElement(
         'embed',
-        $attribtues
+        $attributes
     );
 }
 
 /**
  * @link https://html.spec.whatwg.org/#the-fieldset-element
  */
-function fieldset(Attribtue ...$attribtues) : callable
+function fieldset(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'fieldset',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -485,12 +476,12 @@ function fieldset(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-figcaption-element
  */
-function figcaption(Attribtue ...$attribtues) : callable
+function figcaption(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'figcaption',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -499,12 +490,12 @@ function figcaption(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-figure-element
  */
-function figure(Attribtue ...$attribtues) : callable
+function figure(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'figure',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -513,12 +504,12 @@ function figure(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-footer-element
  */
-function footer(Attribtue ...$attribtues) : callable
+function footer(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'footer',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -527,12 +518,12 @@ function footer(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-form-element
  */
-function form(Attribtue ...$attribtues) : callable
+function form(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'form',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -541,12 +532,12 @@ function form(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements
  */
-function h1(Attribtue ...$attribtues) : callable
+function h1(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'h1',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -555,12 +546,12 @@ function h1(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements
  */
-function h2(Attribtue ...$attribtues) : callable
+function h2(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'h2',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -569,12 +560,12 @@ function h2(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements
  */
-function h3(Attribtue ...$attribtues) : callable
+function h3(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'h3',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -583,12 +574,12 @@ function h3(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements
  */
-function h4(Attribtue ...$attribtues) : callable
+function h4(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'h4',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -597,12 +588,12 @@ function h4(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements
  */
-function h5(Attribtue ...$attribtues) : callable
+function h5(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'h5',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -611,12 +602,12 @@ function h5(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements
  */
-function h6(Attribtue ...$attribtues) : callable
+function h6(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'h6',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -625,12 +616,12 @@ function h6(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-head-element
  */
-function head(Attribtue ...$attribtues) : callable
+function head(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'head',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -639,12 +630,12 @@ function head(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-header-element
  */
-function header(Attribtue ...$attribtues) : callable
+function header(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'header',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -653,12 +644,12 @@ function header(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-hgroup-element
  */
-function hgroup(Attribtue ...$attribtues) : callable
+function hgroup(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'hgroup',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -667,23 +658,23 @@ function hgroup(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-hr-element
  */
-function hr(Attribtue ...$attribtues) : VoidElement
+function hr(Attribute ...$attributes) : VoidElement
 {
     return new VoidElement(
         'hr',
-        $attribtues
+        $attributes
     );
 }
 
 /**
  * @link https://html.spec.whatwg.org/#the-html-element
  */
-function html(Attribtue ...$attribtues) : callable
+function html(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'html',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -692,12 +683,12 @@ function html(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-i-element
  */
-function i(Attribtue ...$attribtues) : callable
+function i(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'i',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -706,12 +697,12 @@ function i(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-iframe-element
  */
-function iframe(Attribtue ...$attribtues) : callable
+function iframe(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'iframe',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -720,34 +711,34 @@ function iframe(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-img-element
  */
-function img(Attribtue ...$attribtues) : VoidElement
+function img(Attribute ...$attributes) : VoidElement
 {
     return new VoidElement(
         'img',
-        $attribtues
+        $attributes
     );
 }
 
 /**
  * @link https://html.spec.whatwg.org/#the-input-element
  */
-function input(Attribtue ...$attribtues) : VoidElement
+function input(Attribute ...$attributes) : VoidElement
 {
     return new VoidElement(
         'input',
-        $attribtues
+        $attributes
     );
 }
 
 /**
  * @link https://html.spec.whatwg.org/#the-ins-element
  */
-function ins(Attribtue ...$attribtues) : callable
+function ins(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'ins',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -756,12 +747,12 @@ function ins(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-kbd-element
  */
-function kbd(Attribtue ...$attribtues) : callable
+function kbd(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'kbd',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -770,12 +761,12 @@ function kbd(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-label-element
  */
-function label(Attribtue ...$attribtues) : callable
+function label(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'label',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -784,12 +775,12 @@ function label(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-legend-element
  */
-function legend(Attribtue ...$attribtues) : callable
+function legend(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'legend',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -798,12 +789,12 @@ function legend(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-li-element
  */
-function li(Attribtue ...$attribtues) : callable
+function li(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'li',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -812,23 +803,23 @@ function li(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-link-element
  */
-function link(Attribtue ...$attribtues) : VoidElement
+function link(Attribute ...$attributes) : VoidElement
 {
     return new VoidElement(
         'link',
-        $attribtues
+        $attributes
     );
 }
 
 /**
  * @link https://html.spec.whatwg.org/#the-main-element
  */
-function main(Attribtue ...$attribtues) : callable
+function main(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'main',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -837,12 +828,12 @@ function main(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-map-element
  */
-function map(Attribtue ...$attribtues) : callable
+function map(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'map',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -851,26 +842,12 @@ function map(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-mark-element
  */
-function mark(Attribtue ...$attribtues) : callable
+function mark(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'mark',
-            $attribtues,
-            $elements
-        );
-    };
-}
-
-/**
- * @link https://html.spec.whatwg.org/#the-marquee-element
- */
-function marquee(Attribtue ...$attribtues) : callable
-{
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
-        return new NormalElement(
-            'marquee',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -879,26 +856,12 @@ function marquee(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-menu-element
  */
-function menu(Attribtue ...$attribtues) : callable
+function menu(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'menu',
-            $attribtues,
-            $elements
-        );
-    };
-}
-
-/**
- * @link https://html.spec.whatwg.org/#the-menuitem-element
- */
-function menuitem(Attribtue ...$attribtues) : callable
-{
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
-        return new NormalElement(
-            'menuitem',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -907,23 +870,23 @@ function menuitem(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-meta-element
  */
-function meta(Attribtue ...$attribtues) : VoidElement
+function meta(Attribute ...$attributes) : VoidElement
 {
     return new VoidElement(
         'meta',
-        $attribtues
+        $attributes
     );
 }
 
 /**
  * @link https://html.spec.whatwg.org/#the-meter-element
  */
-function meter(Attribtue ...$attribtues) : callable
+function meter(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'meter',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -932,12 +895,12 @@ function meter(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-nav-element
  */
-function nav(Attribtue ...$attribtues) : callable
+function nav(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'nav',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -946,12 +909,12 @@ function nav(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-noscript-element
  */
-function noscript(Attribtue ...$attribtues) : callable
+function noscript(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'noscript',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -960,12 +923,12 @@ function noscript(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-object-element
  */
-function object(Attribtue ...$attribtues) : callable
+function object_(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'object',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -974,12 +937,12 @@ function object(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-ol-element
  */
-function ol(Attribtue ...$attribtues) : callable
+function ol(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'ol',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -988,12 +951,12 @@ function ol(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-optgroup-element
  */
-function optgroup(Attribtue ...$attribtues) : callable
+function optgroup(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'optgroup',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -1002,12 +965,12 @@ function optgroup(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-option-element
  */
-function option(Attribtue ...$attribtues) : callable
+function option(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'option',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -1016,12 +979,12 @@ function option(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-output-element
  */
-function output(Attribtue ...$attribtues) : callable
+function output(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'output',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -1030,12 +993,12 @@ function output(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-p-element
  */
-function p(Attribtue ...$attribtues) : callable
+function p(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'p',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -1044,23 +1007,23 @@ function p(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-param-element
  */
-function param(Attribtue ...$attribtues) : VoidElement
+function param(Attribute ...$attributes) : VoidElement
 {
     return new VoidElement(
         'param',
-        $attribtues
+        $attributes
     );
 }
 
 /**
  * @link https://html.spec.whatwg.org/#the-picture-element
  */
-function picture(Attribtue ...$attribtues) : callable
+function picture(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'picture',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -1069,12 +1032,12 @@ function picture(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-pre-element
  */
-function pre(Attribtue ...$attribtues) : callable
+function pre(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'pre',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -1083,12 +1046,12 @@ function pre(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-progress-element
  */
-function progress(Attribtue ...$attribtues) : callable
+function progress(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'progress',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -1097,12 +1060,12 @@ function progress(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-q-element
  */
-function q(Attribtue ...$attribtues) : callable
+function q(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'q',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -1111,12 +1074,12 @@ function q(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-rp-element
  */
-function rp(Attribtue ...$attribtues) : callable
+function rp(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'rp',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -1125,12 +1088,12 @@ function rp(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-rt-element
  */
-function rt(Attribtue ...$attribtues) : callable
+function rt(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'rt',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -1139,12 +1102,12 @@ function rt(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-ruby-element
  */
-function ruby(Attribtue ...$attribtues) : callable
+function ruby(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'ruby',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -1153,12 +1116,12 @@ function ruby(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-s-element
  */
-function s(Attribtue ...$attribtues) : callable
+function s(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             's',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -1167,12 +1130,12 @@ function s(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-samp-element
  */
-function samp(Attribtue ...$attribtues) : callable
+function samp(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'samp',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -1181,13 +1144,13 @@ function samp(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-script-element
  */
-function script(Attribtue ...$attribtues) : callable
+function script(Attribute ...$attributes) : callable
 {
-    return function (string $text) use ($attribtues) : RawTextElement {
+    return function (TextInterface $text = null) use ($attributes) : RawTextElement {
         return new RawTextElement(
             'script',
-            $attribtues,
-            $text
+            $attributes,
+            $text ?? new Text('')
         );
     };
 }
@@ -1195,12 +1158,12 @@ function script(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-section-element
  */
-function section(Attribtue ...$attribtues) : callable
+function section(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'section',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -1209,12 +1172,12 @@ function section(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-select-element
  */
-function select(Attribtue ...$attribtues) : callable
+function select(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'select',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -1223,12 +1186,12 @@ function select(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-slot-element
  */
-function slot(Attribtue ...$attribtues) : callable
+function slot(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'slot',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -1237,12 +1200,12 @@ function slot(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-small-element
  */
-function small(Attribtue ...$attribtues) : callable
+function small(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'small',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -1251,23 +1214,23 @@ function small(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-source-element
  */
-function source(Attribtue ...$attribtues) : VoidElement
+function source(Attribute ...$attributes) : VoidElement
 {
     return new VoidElement(
         'source',
-        $attribtues
+        $attributes
     );
 }
 
 /**
  * @link https://html.spec.whatwg.org/#the-span-element
  */
-function span(Attribtue ...$attribtues) : callable
+function span(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'span',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -1276,12 +1239,12 @@ function span(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-strong-element
  */
-function strong(Attribtue ...$attribtues) : callable
+function strong(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'strong',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -1290,13 +1253,13 @@ function strong(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-style-element
  */
-function style(Attribtue ...$attribtues) : callable
+function style(Attribute ...$attributes) : callable
 {
-    return function (string $text) use ($attribtues) : RawTextElement {
+    return function (TextInterface $text = null) use ($attributes) : RawTextElement {
         return new RawTextElement(
             'style',
-            $attribtues,
-            $text
+            $attributes,
+            $text ?? new Text('')
         );
     };
 }
@@ -1304,12 +1267,12 @@ function style(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-sub-and-sup-elements
  */
-function sub(Attribtue ...$attribtues) : callable
+function sub(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'sub',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -1318,12 +1281,12 @@ function sub(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-summary-element
  */
-function summary(Attribtue ...$attribtues) : callable
+function summary(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'summary',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -1332,12 +1295,12 @@ function summary(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-sub-and-sup-elements
  */
-function sup(Attribtue ...$attribtues) : callable
+function sup(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'sup',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -1346,12 +1309,12 @@ function sup(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-table-element
  */
-function table(Attribtue ...$attribtues) : callable
+function table(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'table',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -1360,12 +1323,12 @@ function table(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-tbody-element
  */
-function tbody(Attribtue ...$attribtues) : callable
+function tbody(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'tbody',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -1374,12 +1337,12 @@ function tbody(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-td-element
  */
-function td(Attribtue ...$attribtues) : callable
+function td(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'td',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -1388,12 +1351,12 @@ function td(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-template-element
  */
-function template(Attribtue ...$attribtues) : callable
+function template(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'template',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -1402,25 +1365,25 @@ function template(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-textarea-element
  */
-function textarea(Attribtue ...$attribtues) : callable
+function textarea(Attribute ...$attributes) : callable
 {
-    return function (string $text) use ($attribtues) : EscapableRawTextElement {
-        return new EscapableRawTextElement(
+    return function (TextInterface $text = null) use ($attributes) : TextElement {
+        return new TextElement(
             'textarea',
-            $attribtues,
-            $text
+            $attributes,
+            $text ?? new Text('')
         );
     };
 }
 /**
  * @link https://html.spec.whatwg.org/#the-tfoot-element
  */
-function tfoot(Attribtue ...$attribtues) : callable
+function tfoot(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'tfoot',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -1429,12 +1392,12 @@ function tfoot(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-th-element
  */
-function th(Attribtue ...$attribtues) : callable
+function th(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'th',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -1443,12 +1406,12 @@ function th(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-thead-element
  */
-function thead(Attribtue ...$attribtues) : callable
+function thead(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'thead',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -1457,12 +1420,12 @@ function thead(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-time-element
  */
-function time(Attribtue ...$attribtues) : callable
+function time(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'time',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -1471,13 +1434,13 @@ function time(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-title-element
  */
-function title(Attribtue ...$attribtues) : callable
+function title(Attribute ...$attributes) : callable
 {
-    return function (string $text) use ($attribtues) : EscapableRawTextElement {
-        return new EscapableRawTextElement(
+    return function (TextInterface $text = null) use ($attributes) : TextElement {
+        return new TextElement(
             'title',
-            $attribtues,
-            $text
+            $attributes,
+            $text ?? new Text('')
         );
     };
 }
@@ -1485,12 +1448,12 @@ function title(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-tr-element
  */
-function tr(Attribtue ...$attribtues) : callable
+function tr(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'tr',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -1499,23 +1462,23 @@ function tr(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-track-element
  */
-function track(Attribtue ...$attribtues) : VoidElement
+function track(Attribute ...$attributes) : VoidElement
 {
     return new VoidElement(
         'track',
-        $attribtues
+        $attributes
     );
 }
 
 /**
  * @link https://html.spec.whatwg.org/#the-u-element
  */
-function u(Attribtue ...$attribtues) : callable
+function u(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'u',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -1524,12 +1487,12 @@ function u(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-ul-element
  */
-function ul(Attribtue ...$attribtues) : callable
+function ul(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'ul',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -1538,12 +1501,12 @@ function ul(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-var-element
  */
-function var_(Attribtue ...$attribtues) : callable
+function var_(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'var',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -1552,12 +1515,12 @@ function var_(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-video-element
  */
-function video(Attribtue ...$attribtues) : callable
+function video(Attribute ...$attributes) : callable
 {
-    return function (Node ...$elements) use ($attribtues) : NormalElement {
+    return function (Node ...$elements) use ($attributes) : NormalElement {
         return new NormalElement(
             'video',
-            $attribtues,
+            $attributes,
             $elements
         );
     };
@@ -1566,10 +1529,10 @@ function video(Attribtue ...$attribtues) : callable
 /**
  * @link https://html.spec.whatwg.org/#the-wbr-element
  */
-function wbr(Attribtue ...$attribtues) : VoidElement
+function wbr(Attribute ...$attributes) : VoidElement
 {
     return new VoidElement(
         'wbr',
-        $attribtues
+        $attributes
     );
 }

@@ -1,13 +1,22 @@
 {
+    "name" : "teein/html",
+    "description": "A Virtual DOM and templating engine for PHP",
     "require": {
+        "php" : "^7.1"
     },
     "autoload": {
-        "psr-4": {"Mammalia\\Html\\": "src/"},
+        "psr-4": {"Teein\\Html\\": "src/"},
         "files" : [
-            "src/lang/a.php"
+            "src/attributes.php",
+            "src/beautify.php",
+            "src/comment.php",
+            "src/document.php",
+            "src/elements.php",
+            "src/text.php",
+            "src/toHtml.php"
         ]
     },
     "require-dev": {
-        "phpunit/phpunit": "^6.1"
+        "phpunit/phpunit": "^6.3"
     }
 }
