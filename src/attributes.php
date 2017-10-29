@@ -213,6 +213,7 @@ function crossorigin(string $value) : Attribute
 {
     return new Attribute('crossorigin', $value);
 }
+
 /**
  * @link https://html.spec.whatwg.org/multipage/dom.html#attr-data-*
  */
