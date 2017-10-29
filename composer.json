@@ -7,17 +7,13 @@
     "autoload": {
         "psr-4": {"Teein\\Html\\": "src/"},
         "files" : [
-            "src/beautify.php",
             "src/attributes.php",
+            "src/beautify.php",
             "src/comment.php",
-            "src/custom.php",
-            "src/data_.php",
             "src/document.php",
             "src/elements.php",
-            "src/foreign.php",
             "src/text.php",
-            "src/toHtml.php",
-            "src/unknown.php"
+            "src/toHtml.php"
         ]
     },
     "require-dev": {

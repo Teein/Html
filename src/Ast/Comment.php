@@ -28,7 +28,7 @@ final class Comment implements CommentInterface
     /**
      * Get the html-representation of this Comment
      */
-    public function toHtml () : string
+    public function toHtml() : string
     {
         $test = '/-->/ium'; // test for forbidden closing comment-tag
         $replacement = '--\\>';
@@ -50,7 +50,7 @@ final class Comment implements CommentInterface
      * 
      * @param int $level The current level of indentation
      */
-    public function beautify (int $level = 0) : Beautifier
+    public function beautify(int $level = 0) : Beautifier
     {
         $indent = "\n" . str_repeat("    ", $level);
         $beautified = $indent . str_replace("\n", $indent, $this->comment) . $indent;

@@ -213,13 +213,12 @@ function crossorigin(string $value) : Attribute
 {
     return new Attribute('crossorigin', $value);
 }
-
 /**
- * @link https://html.spec.whatwg.org/#attr-object-data
+ * @link https://html.spec.whatwg.org/multipage/dom.html#attr-data-*
  */
-function odata(string $value) : Attribute
+function data_(string $name, string $value) : Attribute
 {
-    return new Attribute('data', $value);
+    return new Attribute('data-' . $name, $value);
 }
 
 /**
@@ -450,15 +449,15 @@ function ismap(string $value) : Attribute
 /**
  * @link https://html.spec.whatwg.org/multipage/microdata.html#attr-itemid
  */
- function itemid (string $value) : Attribute
+function itemid(string $value) : Attribute
 {
     return new Attribute('itemid', $value);
 }
 
- /**
+/**
  * @link https://html.spec.whatwg.org/multipage/microdata.html#attr-itemid
  */
-function itemprop (string $value) : Attribute
+function itemprop(string $value) : Attribute
 {
     return new Attribute('itemprop', $value);
 }
@@ -466,15 +465,15 @@ function itemprop (string $value) : Attribute
 /**
  * @link https://html.spec.whatwg.org/multipage/microdata.html#attr-itemref
  */
-function itemref (string $value) : Attribute
+function itemref(string $value) : Attribute
 {
     return new Attribute('itemref', $value);
 }
 
- /**
+/**
  * @link https://html.spec.whatwg.org/multipage/microdata.html#attr-itemscope
  */
-function itemscope (string $value) : Attribute
+function itemscope(string $value) : Attribute
 {
     return new Attribute('itemscope', $value);
 }
@@ -482,7 +481,7 @@ function itemscope (string $value) : Attribute
 /**
  * @link https://html.spec.whatwg.org/multipage/microdata.html#attr-itemtype
  */
-function itemtype (string $value) : Attribute
+function itemtype(string $value) : Attribute
 {
     return new Attribute('itemtype', $value);
 }
@@ -637,6 +636,14 @@ function nonce(string $value) : Attribute
 function novalidate(string $value) : Attribute
 {
     return new Attribute('novalidate', $value);
+}
+
+/**
+ * @link https://html.spec.whatwg.org/#attr-object-data
+ */
+function odata(string $value) : Attribute
+{
+    return new Attribute('data', $value);
 }
 
 /**
