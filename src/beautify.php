@@ -5,7 +5,7 @@ namespace Teein\Html\Beautifier;
 
 use Teein\Html\VirtualDom\Document;
 
-function beautify(Document $document) : Document
+function beautify(Document $document) : Beautifier
 {
     return $document->beautify();
 }
