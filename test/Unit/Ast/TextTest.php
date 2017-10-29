@@ -16,6 +16,13 @@ class TextTest extends TestCase
         $this->assertEquals('Hello, World!', $textHtml);
     }
 
+    public function testBeautify()
+    {
+        $expected = new Text('Hello, World!');
+        $actual = $expected->beautify();
+        $this->assertEquals($expected, $actual);
+    }
+
     public function testEscaping()
     {
         $text = new Text('</title>');
