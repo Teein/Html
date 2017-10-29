@@ -6,7 +6,7 @@
 
 <img src="logo.png" align="right" height="300">
 
-Teein/Html is a virtual dom based templating-engine for PHP inspired by React, XHP and Elm. Here are some highlights:
+Teein/Html is a Virtual DOM based templating-engine for PHP inspired by React, XHP and Elm. Here are some highlights:
 
 * **No new syntax to learn** Templates are written in ordinary PHP and they closely resemble the syntax of HTML5.
 * **Composable templates** The only way to create templates is to compose them from simpler ones. Composable templates scale with your application without adding to its complexity.
@@ -18,7 +18,7 @@ Teein/Html is a virtual dom based templating-engine for PHP inspired by React, X
 
 ### Requirements
 
-Teein/Html requires at least PHP 7.1 and [Composer](https://getcomposer.org/). If you haven't installed composer on your system yet, you can do so by following their [installation-instructions](https://getcomposer.org/doc/00-intro.md).
+Teein/Html requires at least PHP 7.1 and [Composer](https://getcomposer.org/).
 
 ### Installation
 
@@ -26,16 +26,6 @@ When your system satisfies the requirements listed above, you can install Teein/
 
 ~~~bash
 composer require teein/html
-~~~
-
-or by adding it manually to your composer.json-file:
-
-~~~json
-{
-    "require": {
-        "teein/html" : "1.0.*"
-    }
-}
 ~~~
 
 ## Hello World
@@ -121,15 +111,15 @@ Let's see how Teein/Html syntax is similar to HTML5:
 
 Notice, what is different from HTML5:
 
-* We use parenthesis not angle-brackets and they're placed in different positions.
+* We use parenthesis not angle-brackets and they're placed in different positions. We use one pair of parenthesis to wrap attributes and another pair of parenthesis to wrap the children of an element.
 * We don't have closing-tags.
-* We can use any PHP-expression inside our templates and it will become evaluated.
-* We need to import our dependencies at the top of our php-file.
+* We can use PHP-expressions inside our templates and they will be evaluated.
+* We need to import our dependencies at the top of our PHP-file. We've collapsed the top section from the above example, this is an excellent moment to expand the hidden contents and discover what's inside.
 
-There is more to discover in our example:
+There is more to spot in our example:
 
 * Templates are minified by default, we use the `beautify`-function to indent our output.
-* We use the `toHtml`-function to get a string-representation from our virtual dom. 
+* We use the `toHtml`-function to get a string-representation from our Virtual DOM. 
 
 ### Composable Templates
 
@@ -198,7 +188,7 @@ function content () : Element
 }
 ~~~
 
-By the way, we sometimes call functions like `boilerplate` and `content` view-helpers. Notice how simple view-helpers are: They're just functions. Mappings from inputs to outputs. There is no abstract base class that we need to inherit or an interface that we must implement. It's just that simple: functions. Now, it should be clear how we can compose `boilerplate` and `content` together to get the same output as from our original hello-world-exmaple. Just to be sure, here it is, our new-born hello-world:
+By the way, we sometimes call functions like `boilerplate` and `content` view-helpers. Notice how simple view-helpers are: They're just functions. Mappings from inputs to outputs. There is no abstract base class that we need to inherit or an interface that we must implement. It's just that simple: functions. Now, it should be clear how we can compose `boilerplate` and `content` together to get the same output as from our original "Hello World"-exmaple. Just to be sure, here it is, our new-born hello-world:
 
 <details>
     <summary><i>Show me the head section of this script</i></summary>
@@ -252,10 +242,10 @@ function content () : Element
     return h1() (
         text(
             isset($_GET['name'])
-                ? "Hello {$_GET[name]}"
+                ? "Hello {$_GET['name']}"
                 : "Hello World!"
         )
-    )
+    );
 }
 ~~~
 
@@ -263,8 +253,8 @@ Notice, that we didn't put `htmlspecialchars` around `$_GET['name']`. This would
 
 ### Loops
 
-The restriction for `if`-statements also holds for `for`- and `while`-loops. We use the cooler `map`/`reduce`-functions to loop. Again, let's have a view at some code. The greeting-example, however, got me bored. So let's think of something fancier, let's make a list view of some of my favourite comics. For this sake, assume we have a model
-of a comic, that implements the following interface:
+The restriction for `if`-statements also holds for `for`- and `while`-loops. We use the cooler `map`/`reduce`-functions to loop. Again, let's have a look at some code. The "Hello World"-example, however, got me bored. So let's think of something fancier, let's make a list view of some of my favorite comics. For this sake, assume we have a model
+of a comic that implements the following interface:
 
 <details>
     <summary><i>Show me the head section of this script</i></summary>
@@ -323,7 +313,7 @@ function comics (array $comics) : Element
 
 The [splat-operator](http://php.net/manual/en/migration56.new-features.php#migration56.new-features.splat) (`...`) is mandatory here beacaue the function returned from `ul()` does not accept an array but a variadic parameter-sequence where each parameter must be of type `Node`. The splat-operator takes an array and produces the desired parameter-sequence.
 
-Protipp: Nesting anonymous functions can become cumbersome. On the positive site the anonymous function offers us a hint where we could split our template into separate view-helpers. Here is a refactored version:
+Protip: Nesting anonymous functions can become cumbersome. On the positive site the anonymous function offers us a hint where we could split our template into separate view-helpers. Here is a refactored version:
 
 <details>
     <summary><i>Show me the head section of this script</i></summary>
@@ -379,19 +369,19 @@ function comics (array $comics) : Element
 
 ### Namespaces
 
-Teein/Html does not register any global definitions, that means that you have to import everything you are going to use in your template explicitly at the beginning of your script. Most editors today offer automatic tools to simplify this process. However, some tools find it hard detect functions inside your namespaces. If you are on coffein and cannot wait for better tooling you can always include the complete list of functions at the beginning of your file.
+Teein/Html does not register any global definitions, that means that you have to import everything you are going to use in your template explicitly at the beginning of your script. Most editors today offer automatic tools to simplify this process. However, some tools find it hard detect functions inside your namespaces. If you are on coffein and cannot wait for better tooling you can always include a complete list of imports at the beginning of your file. Here it is:
 
 ~~~php
 <?php
+use Teein\Html\VirtualDom\{Attribute,Comment,Document,Element,Node,Text};
 use function Teein\Html\{Beautifier\beautify,ToHtml\toHtml,Document\document,Text\text};
-use function Teein\Html\VirtualDom\{Attribute,Comment,Document,Element,Node,Text};
 use function Teein\Html\Elements\{a,abbr,address,area,article,aside,audio,b,base,bdi,bdo,blockquote,body,br,button,canvas,caption,cite,code,col,colgroup,data,datalist,dd,del,details,dfn,dialog,div,dl,dt,em,embed,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,head,header,hgroup,hr,html,i,iframe,img,input,ins,kbd,label,legend,li,link,main,map,mark,math,menu,meta,meter,nav,noscript,object_,ol,optgroup,option,output,p,param,picture,pre,progress,q,rp,rt,ruby,s,samp,script,section,select,slot,small,source,span,strong,style,sub,summary,sup,svg,table,tbody,td,template,textarea,tfoot,th,thead,time,title,tr,track,u,ul,var_,video,wbr};
 use function Teein\Html\Attributes\{abbr_,accept,accept_charset,accesskey,action,allowfullscreen,allowpaymentrequest,allowusermedia,alt,as_,async,autocomplete,autofocus,autoplay,charset,checked,cite_,class_,color,cols,colspan,content,contenteditable,controls,coords,crossorigin,data_,datetime,default_,defer,dir,dirname,disabled,download,draggable,enctype,for_,form_,formaction,formenctype,formmethod,formnovalidate,formtarget,headers,height,hidden,high,href,hreflang,http_equiv,id,inputmode,integrity,is,ismap,itemid,itemprop,itemref,itemscope,itemtype,kind,label_,lang,list_,loop,low,manifest,max,maxlength,media,method,min,minlength,multiple,muted,name,nomodule,nonce,novalidate,objectData,open,optimum,pattern,ping,placeholder,playsinline,poster,preload,readonly,referrerpolicy,rel,required,reversed,rows,rowspan,sandbox,scope,selected,shape,size,sizes,slot_,span_,spellcheck,src,srcdoc,srclang,srcset,start,step,style_,tabindex,target,title_,translate,type,typemustmatch,updateviacache,usemap,value,width,workertype,wrap};
 ~~~
 
 ### Naming Deviations
 
-We tried to give every HTML5 element and attribute a factory with the same name. However, there are some cases where this is not possible. PHP reserves some words, which means we cannot use them as a name for a factory. Furthermore, HTML5 sometimes uses the same name for an attribute and an element. Here is a complete list of factories with unconventional names and their output:
+We tried to give every HTML5 element and attribute a factory with the same name. However, there are some cases where this is not possible. PHP reserves some words, which means we cannot use them as a name for a factory. Furthermore, HTML5 sometimes uses the same name for an attribute and an element. Here is a complete list of factories with unconventional names and their output.
 
 <table>
     <tr>
