@@ -1,5 +1,5 @@
 {
-    "name" : "Teein/Html",
+    "name" : "teein/html",
     "description": "A Virtual DOM and templating engine for PHP",
     "require": {
         "php" : "^7.1"
