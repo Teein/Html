@@ -38,7 +38,7 @@ or by adding it manually to your composer.json-file:
 }
 ~~~
 
-### Hello World
+## Hello World
 
 <table>
     <tr>
@@ -450,6 +450,10 @@ meta(httpequiv('anyhttpheader'))
 </td>
     </tr>
 </table>
+
+## Further Reading & Getting Help
+
+This guide is a very early draft and will be extended in the future. The goal is to document every single feature and some best-practices related to Teein/Html. This is, however, not a one-day job. In the meantime, feel free to discover the code-base which is carefully documented itself. If you have a specific question we're eager to answer it, just [open an issue](https://github.com/Teein/Html/issues/new).
 
 ## Contribution
 
