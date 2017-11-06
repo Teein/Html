@@ -9,11 +9,21 @@ use Teein\Html\Ast\Text;
 
 class TextTest extends TestCase
 {
-    public function testToHtml()
+    /**
+     * @dataProvider toHtmlProvider
+     */
+    public function testToHtml(Text $text, string $expected)
     {
-        $text = new Text('Hello, World!');
-        $textHtml = $text->toHtml();
-        $this->assertEquals('Hello, World!', $textHtml);
+        $actual = $text->toHtml();
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function toHtmlProvider() : array
+    {
+        return [
+            [new Text('Hello, World!'), 'Hello, World!'],
+            [new Text('</title>'), '&lt;/title&gt;']
+        ];
     }
 
     public function testBeautify()
@@ -23,54 +33,56 @@ class TextTest extends TestCase
         $this->assertEquals($expected, $actual);
     }
 
-    public function testEscaping()
+    /**
+     * @dataProvider toRawTextProvider
+     */
+    public function testToRawText(Text $text, string $localName, string $expected)
     {
-        $text = new Text('</title>');
-        $textHtml = $text->toHtml();
-        $this->assertEquals('&lt;/title&gt;', $textHtml);
-    }
-
-    public function testAmpersandShouldBePreserved()
-    {
-        $text = new Text('Hello, World & Mars!');
-        $textHtml = $text->toRawText('script');
-        $this->assertEquals('Hello, World & Mars!', $textHtml);
-    }
-
-    public function testForbiddenOpeningTagShouldBeEscaped()
-    {
-        $text = new Text('<script>');
-        $textHtml = $text->toRawText('script');
-        $this->assertEquals('<\\script>', $textHtml);
-    }
-
-    public function testForbiddenClosingTagShouldBeEscaped()
-    {
-        $text = new Text('</script>');
-        $textHtml = $text->toRawText('script');
-        $this->assertEquals('<\\/script>', $textHtml);
-    }
-
-    public function testForbiddenOpeningCommentShouldBeEscpaed()
-    {
-        $text = new Text('<!-- -->');
-        $textHtml = $text->toRawText('script');
-        $this->assertEquals('<\\!-- -->', $textHtml);
-    }
-
-    public function testGetText()
-    {
-        $expected = 'lorem ipsum';
-        $element = new Text($expected);
-        $actual = $element->getText();
+        $actual = $text->toRawText($localName);
         $this->assertEquals($expected, $actual);
     }
 
-    public function testSetText()
+    public function toRawTextProvider() : array
     {
-        $expected = 'lorem ipsum';
-        $element = new Text('');
-        $actual = $element->setText($expected)->getText();
+        return [
+            [new Text('Hello, World & Mars!'), 'script', 'Hello, World & Mars!'],
+            [new Text('<script>'), 'script', '<\\script>'],
+            [new Text('</script>'), 'script', '<\\/script>'],
+            [new Text('<!-- -->'), 'script', '<\\!-- -->']
+        ];
+    }
+
+    /**
+     * @dataProvider getTextProvider
+     */
+    public function testGetText(Text $text, string $expected)
+    {
+        $actual = $text->getText();
         $this->assertEquals($expected, $actual);
+    }
+
+    public function getTextProvider() : array
+    {
+        return [
+            [new Text('lorem'), 'lorem'],
+            [new Text('ipsum'), 'ipsum']
+        ];
+    }
+
+    /**
+     * @dataProvider setTextProvider
+     */
+    public function testSetText(Text $text, string $expected)
+    {
+        $actual = $text->setText($expected)->getText();
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function setTextProvider() : array
+    {
+        return [
+            [new Text(''), 'lorem'],
+            [new Text(''), 'ipsum']
+        ];
     }
 }
