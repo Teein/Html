@@ -9,57 +9,95 @@ use Teein\Html\Ast\VoidElement;
 
 class VoidElementTest extends TestCase
 {
-    public function testToHtml()
+    /**
+     * @dataProvider toHtmlProvider
+     */
+    public function testToHtml(VoidElement $element, string $expected)
+    {
+        $actual = $element->toHtml();
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function toHtmlProvider() : array
+    {
+        $attribute = $this->createMock(Attribute::class);
+        $attribute->method('toHtml')->willReturn('attribute="value"');
+        return [
+            [new VoidElement('element', []), '<element>'],
+            [new VoidElement('element', [$attribute]), '<element attribute="value">']
+        ];
+    }
+
+    public function testBeautify()
     {
         $element = new VoidElement('element', []);
-        $elementHtml = $element->toHtml();
-        $this->assertEquals($elementHtml, '<element>');
-    }
-    
-    public function testWithAttributes()
-    {
-        $attributeStub = $this->createMock(Attribute::class);
-        $attributeStub->method('toHtml')->willReturn('attribute="value"');
-        $element = new VoidElement('element', [$attributeStub]);
-        $elementHtml = $element->toHtml();
-        $this->assertEquals('<element attribute="value">', $elementHtml);
+        $actual = $element->beautify();
+        $this->assertEquals($element, $actual);
     }
 
-    public function testBeautify ()
+    /**
+     * @dataProvider getLocalNameProvider
+     */
+    public function testGetLocalName(VoidElement $element, string $expected)
     {
-        $element = new VoidElement('element', []);
-        $beautified = $element->beautify();
-        $this->assertEquals($element, $beautified);
+        $actual = $element->getLocalName();
+        $this->assertEquals($expected, $actual);
     }
 
-    public function testGetLocalName()
+    public function getLocalNameProvider() : array
     {
-        $localName = 'element';
-        $element = new VoidElement($localName, []);
-        $this->assertEquals($localName, $element->getLocalName());
+        return [
+            [new VoidElement('lorem', []), 'lorem'],
+            [new VoidElement('ipsum', []), 'ipsum'],
+        ];
     }
 
-    public function testGetAttributes()
+    /**
+     * @dataProvider getAttributesProvider
+     */
+    public function testGetAttributes(VoidElement $element, array $expected)
+    {
+        $actual = $element->getAttributes();
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function getAttributesProvider() : array
     {
         $attributes = [];
         $element = new VoidElement('element', $attributes);
-        $this->assertEquals($attributes, $element->getAttributes());
+        return [[$element, $attributes]];
     }
 
-    public function testSetLocalName()
+    /**
+     * @dataProvider setLocalNameProvider
+     */
+    public function testSetLocalName(VoidElement $element, string $expected)
     {
-        $expected = 'setelement';
-        $element = new VoidElement('element', []);
         $actual = $element->setLocalName($expected)->getLocalName();
         $this->assertEquals($expected, $actual);
     }
 
-    public function testSetAttributes()
+    public function setLocalNameProvider() : array
     {
-        $attributeStub = $this->createMock(Attribute::class);
-        $expected = [$attributeStub];
-        $element = new VoidElement('element', []);
+        return [
+            [new VoidElement('', []), 'lorem'],
+            [new VoidElement('', []), 'ipsum']
+        ];
+    }
+
+    /**
+     * @dataProvider setAttributesProvider
+     */
+    public function testSetAttributes(VoidElement $element, array $expected)
+    {
         $actual = $element->setAttributes($expected)->getAttributes();
         $this->assertEquals($expected, $actual);
+    }
+
+    public function setAttributesProvider() : array
+    {
+        $attributes = [$this->createMock(Attribute::class)];
+        $element = new VoidElement('', []);
+        return [[$element, $attributes]];
     }
 }

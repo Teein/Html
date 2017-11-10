@@ -8,54 +8,81 @@ use Teein\Html\Ast\Comment;
 
 class CommentTest extends TestCase
 {
-    public function testToHtml()
+
+    /**
+     * @dataProvider toHtmlProvider
+     */
+    public function testToHtml(Comment $comment, string $expected)
     {
-        $comment = new Comment("lorem ipsum");
-        $commentHtml = $comment->toHtml();
-        $this->assertEquals("<!--lorem ipsum-->", $commentHtml);
+        $actual = $comment->toHtml();
+        $this->assertEquals($expected, $actual);
     }
 
-    public function testToHtmlForEscaping()
+    public function toHtmlProvider() : array
     {
-        $comment = new Comment("-->");
-        $commentHtml = $comment->toHtml();
-        $this->assertEquals("<!----\\>-->", $commentHtml);
+        return [
+            [new Comment("lorem ipsum"), "<!--lorem ipsum-->"],
+            [new Comment("-->"), "<!----\\>-->"]
+        ];
     }
 
-    public function testBeautify ()
+    /**
+     * @dataProvider beautifyProvider
+     */
+    public function testBeautify(Comment $comment, string $expected)
     {
-        $comment = new Comment("lorem ipsum");
-        $commentHtml = $comment->beautify()->toHtml();
-        $this->assertEquals("<!--\nlorem ipsum\n-->", $commentHtml);
+        $actual = $comment->beautify()->toHtml();
+        $this->assertEquals($expected, $actual);
     }
 
-    public function testBeautifyWithLinebreaks ()
+    public function beautifyProvider() : array
     {
-        $comment = new Comment("lorem\nipsum");
-        $commentHtml = $comment->beautify()->toHtml();
-        $this->assertEquals("<!--\nlorem\nipsum\n-->", $commentHtml);
+        return [
+            [new Comment("lorem ipsum"), "<!--\nlorem ipsum\n-->"],
+            [new Comment("lorem\nipsum"), "<!--\nlorem\nipsum\n-->"]
+        ];
     }
 
-    public function testBeautifyWithLinebreaksAndLevel1 ()
+    /**
+     * @dataProvider beautifyWithIndentionProvider
+     */
+    public function testBeautifyWithIndention(Comment $comment, string $expected)
     {
-        $comment = new Comment("lorem\nipsum");
-        $commentHtml = $comment->beautify(1)->toHtml();
-        $this->assertEquals("<!--\n    lorem\n    ipsum\n    -->", $commentHtml);
+        $actual = $comment->beautify(1)->toHtml();
+        $this->assertEquals($expected, $actual);
     }
 
-    public function testGetComment()
+    public function beautifyWithIndentionProvider() : array
     {
-        $text = "lorem ipsum";
-        $comment = new Comment($text);
-        $this->assertEquals($text, $comment->getComment());
+        return [
+            [new Comment("lorem ipsum"), "<!--\n    lorem ipsum\n    -->"],
+            [new Comment("lorem\nipsum"), "<!--\n    lorem\n    ipsum\n    -->"]
+        ];
     }
 
-    public function testSetComment()
+    /**
+     * @dataProvider commentProvider
+     */
+    public function testGetComment($expected)
     {
-        $textBefore = "lorem";
-        $textAfter = "ipsum";
-        $commentBefore = new Comment($textBefore);
-        $commentAfter = $commentBefore->setComment($textAfter);
-        $this->assertEquals($textAfter, $commentAfter->getComment());
+        $comment = new Comment($expected);
+        $actual = $comment->getComment();
+        $this->assertEquals($expected, $actual);
+    }
+
+    /**
+     * @dataProvider commentProvider
+     */
+    public function testSetComment($expected)
+    {
+        $comment = new Comment("any comment (will be ignored)");
+        $actual = $comment->setComment($expected)->getComment();
+        $this->assertEquals($expected, $actual);
+    }
+
+
+    public function commentProvider() : array
+    {
+        return [["lorem"], ["ipsum"], ["dolor"], ["sit"], ["amet"], ["-->"], ["<!--"]];
     }
 }
