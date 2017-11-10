@@ -10,84 +10,152 @@ use Teein\Html\Ast\RawTextElement;
 
 class RawTextElementTest extends TestCase
 {
-    public function testToHtml()
+    /**
+     * @dataProvider toHtmlProvider
+     */
+    public function testToHtml(RawTextElement $element, string $expected)
     {
-        $textStub = $this->createMock(Text::class);
-        $textStub->method('toRawText')->willReturn('');
-        $element = new RawTextElement('element', [], $textStub);
-        $elementHtml = $element->toHtml();
-        $this->assertEquals('<element></element>', $elementHtml);
+        $actual = $element->toHtml();
+        $this->assertEquals($expected, $actual);
     }
 
-    public function testWithAttributes()
+    public function toHtmlProvider() : array
     {
-        $textStub = $this->createMock(Text::class);
-        $textStub->method('toRawText')->willReturn('');
-        $attributeStub = $this->createMock(Attribute::class);
-        $attributeStub->method('toHtml')->willReturn('attribute="value"');
-        $element = new RawTextElement('element', [$attributeStub], $textStub);
-        $elementHtml = $element->toHtml();
-        $this->assertEquals('<element attribute="value"></element>', $elementHtml);
+        // Create a empty RawTextElement
+        $text = $this->createMock(Text::class);
+        $text->method('toRawText')->willReturn('');
+        $emptyElement = new RawTextElement('element', [], $text);
+
+        // Create a RawTextElement with an attribute
+        $attribute = $this->createMock(Attribute::class);
+        $attribute->method('toHtml')->willReturn('attribute="value"');
+        $attributeElement = new RawTextElement('element', [$attribute], $text);
+        
+        return [
+            [$emptyElement, '<element></element>'],
+            [$attributeElement, '<element attribute="value"></element>']
+        ];
     }
 
-    public function testBeautify ()
+    /**
+     * @dataProvider beautifyProvider
+     */
+    public function testBeautify(RawTextElement $element, RawTextElement $expected)
     {
-        $textStub = $this->createMock(Text::class);
-        $textStub->method('toRawText')->willReturn('');
-        $element = new RawTextElement('element', [], $textStub);
-        $beautified = $element->beautify();
-        $this->assertEquals($element, $beautified);
+        $actual = $element->beautify();
+        $this->assertEquals($expected, $actual);
     }
 
-    public function testGetLocalName()
+    public function beautifyProvider()
     {
-        $textStub = $this->createMock(Text::class);
+        $text = $this->createMock(Text::class);
+        $text->method('toRawText')->willReturn('');
+        $element = new RawTextElement('element', [], $text);
+        return [[$element, $element]];
+    }
+
+    /**
+     * @dataProvider getLocalNameProvider
+     */
+    public function testGetLocalName(RawTextElement $element, string $expected)
+    {
+        $actual = $element->getLocalName();
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function getLocalNameProvider() : array
+    {
+        $text = $this->createMock(Text::class);
         $localName = 'element';
-        $element = new RawTextElement($localName, [], $textStub);
-        $this->assertEquals($localName, $element->getLocalName());
+        $element = new RawTextElement($localName, [], $text);
+        return [
+            [$element, $localName]
+        ];
     }
 
-    public function testGetAttributes()
+    /**
+     * @dataProvider setLocalNameProvider
+     */
+    public function testSetLocalName(RawTextElement $element, string $expected)
     {
-        $textStub = $this->createMock(Text::class);
-        $attributes = [];
-        $element = new RawTextElement('element', $attributes, $textStub);
-        $this->assertEquals($attributes, $element->getAttributes());
-    }
-
-    public function testSetLocalName()
-    {
-        $textStub = $this->createMock(Text::class);
-        $expected = 'setelement';
-        $element = new RawTextElement('element', [], $textStub);
         $actual = $element->setLocalName($expected)->getLocalName();
         $this->assertEquals($expected, $actual);
     }
 
-    public function testSetAttributes()
+    public function setLocalNameProvider() : array
     {
-        $textStub = $this->createMock(Text::class);
-        $attributeStub = $this->createMock(Attribute::class);
-        $expected = [$attributeStub];
-        $element = new RawTextElement('element', [], $textStub);
+        $text = $this->createMock(Text::class);
+        $element = new RawTextElement('element', [], $text);
+        return [
+            [$element, 'lorem'],
+            [$element, 'ipsum']
+        ];
+    }
+
+    /**
+     * @dataProvider getAttributesProvider
+     */
+    public function testGetAttributes(RawTextElement $element, array $expected)
+    {
+        $actual = $element->getAttributes();
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function getAttributesProvider() : array
+    {
+        $text = $this->createMock(Text::class);
+        $attributes = [];
+        $element = new RawTextElement('element', $attributes, $text);
+        return [[$element, $attributes]];
+    }
+
+    /**
+     * @dataProvider setAttributesProvider
+     */
+    public function testSetAttributes(RawTextElement $element, array $expected)
+    {
         $actual = $element->setAttributes($expected)->getAttributes();
         $this->assertEquals($expected, $actual);
     }
 
-    public function testGetText()
+    public function setAttributesProvider() : array
     {
-        $expected = $this->createMock(Text::class);
-        $element = new RawTextElement('element', [], $expected);
+        $text = $this->createMock(Text::class);
+        $attributes = [];
+        $element = new RawTextElement('element', [], $text);
+        return [[$element, $attributes]];
+    }
+
+    /**
+     * @dataProvider getTextProvider
+     */
+    public function testGetText(RawTextElement $element, Text $expected)
+    {
         $actual = $element->getText();
         $this->assertEquals($expected, $actual);
     }
 
-    public function testSetText()
+    public function getTextProvider() : array
     {
-        $textStub = $this->createMock(Text::class);
-        $expected = $this->createMock(Text::class);
-        $element = new RawTextElement('element', [], $textStub);
+        $text = $this->createMock(Text::class);
+        $element = new RawTextElement('element', [], $text);
+        return [[$element, $text]];
+    }
+
+    /**
+     * @dataProvider setTextProvider
+     */
+    public function testSetText(RawTextElement $element, Text $expected)
+    {
         $actual = $element->setText($expected)->getText();
         $this->assertEquals($expected, $actual);
+    }
+
+    public function setTextProvider() : array
+    {
+        $text = $this->createMock(Text::class);
+        $expected = $this->createMock(Text::class);
+        $element = new RawTextElement('element', [], $text);
+        return [[$element, $expected]];
     }
 }

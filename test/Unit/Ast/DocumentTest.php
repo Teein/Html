@@ -9,38 +9,76 @@ use Teein\Html\Ast\Element;
 
 class DocumentTest extends TestCase
 {
-    public function testToHtml()
+
+    /**
+     * @dataProvider toHtmlProvider
+     */
+    public function testToHtml(Document $document, string $expected)
     {
-        $rootStub = $this->createMock(Element::class);
-        $rootStub->method('toHtml')->willReturn('<html></html>');
-        $document = new Document($rootStub);
-        $documentHtml = $document->toHtml();
-        $this->assertEquals("<!DOCTYPE html><html></html>", $documentHtml);
+        $actual = $document->toHtml();
+        $this->assertEquals($expected, $actual);
     }
 
-    public function testBeautify ()
+    public function toHtmlProvider() : array
     {
-        $rootStub = $this->createMock(Element::class);
-        $rootStub->method('beautify')->willReturn($rootStub);
-        $rootStub->method('toHtml')->willReturn("<html>\n</html>");
-        $document = new Document($rootStub);
-        $documentHtml = $document->beautify()->toHtml();
-        $this->assertEquals("<!DOCTYPE html>\n<html>\n</html>", $documentHtml);
+        $bareHtml = $this->createMock(Element::class);
+        $bareHtml->method('toHtml')->willReturn('<html></html>');
+        $classyHtml = $this->createMock(Element::class);
+        $classyHtml->method('toHtml')->willReturn('<html class="classy"></html>');
+        $junkHtml = $this->createMock(Element::class);
+        $junkHtml->method('toHtml')->willReturn('junk');
+        return [
+            [new Document($bareHtml), "<!DOCTYPE html><html></html>"],
+            [new Document($classyHtml), "<!DOCTYPE html><html class=\"classy\"></html>"],
+            [new Document($junkHtml), "<!DOCTYPE html>junk"],
+        ];
     }
 
-    public function testGetRoot()
+    /**
+     * @dataProvider beautifyProvider
+     */
+    public function testBeautify(Document $document, string $expected)
     {
-        $rootStub = $this->createMock(Element::class);
-        $document = new Document($rootStub);
-        $this->assertEquals($rootStub, $document->getRoot());
+        $actual = $document->beautify()->toHtml();
+        $this->assertEquals($expected, $actual);
     }
 
-    public function testSetComment()
+    public function beautifyProvider() : array
     {
-        $rootBefore = $this->createMock(Element::class);
-        $rootAfter = $this->createMock(Element::class);
-        $documentBefore = new Document($rootBefore);
-        $documentAfter = $documentBefore->setRoot($rootAfter);
-        $this->assertEquals($rootAfter, $documentAfter->getRoot());
+        $root = $this->createMock(Element::class);
+        $root->method('beautify')->willReturn($root);
+        $root->method('toHtml')->willReturn("<html>\n</html>");
+        $document = new Document($root);
+        return [
+            [$document, "<!DOCTYPE html>\n<html>\n</html>"]
+        ];
+    }
+
+    /**
+     * @dataProvider rootProvider
+     */
+    public function testGetRoot(Element $expected)
+    {
+        $document = new Document($expected);
+        $actual = $document->getRoot();
+        $this->assertEquals($expected, $actual);
+    }
+
+    /**
+     * @dataProvider rootProvider
+     */
+    public function testSetRoot(Element $expected)
+    {
+        $anyRoot = $this->createMock(Element::class);
+        $document = new Document($anyRoot);
+        $actual = $document->setRoot($expected)->getRoot();
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function rootProvider() : array
+    {
+        return [
+            [$this->createMock(Element::class)]
+        ];
     }
 }

@@ -10,62 +10,68 @@ use Teein\Html\Ast\NormalElement;
 
 class NormalElementTest extends TestCase
 {
-    public function testToHtml()
+
+    /**
+     * @dataProvider toHtmlProvider
+     */
+    public function testToHtml(NormalElement $element, string $expected)
     {
-        $element = new NormalElement('element', [], []);
-        $elementHtml = $element->toHtml();
-        $this->assertEquals($elementHtml, '<element></element>');
-    }
-    
-    public function testWithAttributes()
-    {
-        $attributeStub = $this->createMock(Attribute::class);
-        $attributeStub->method('toHtml')->willReturn('attribute="value"');
-        $element = new NormalElement('element', [$attributeStub], []);
-        $elementHtml = $element->toHtml();
-        $this->assertEquals('<element attribute="value"></element>', $elementHtml);
+        $actual = $element->toHtml();
+        $this->assertEquals($expected, $actual);
     }
 
-    public function testWithDescendants()
+    public function toHtmlProvider() : array
     {
-        $childStub = $this->createMock(Element::class);
-        $childStub->method('toHtml')->willReturn('<child>');
-        $element = new NormalElement('parent', [], [$childStub]);
-        $elementHtml = $element->toHtml();
-        $this->assertEquals('<parent><child></parent>', $elementHtml);
+        // Stub an empty element
+        $emptyElement = new NormalElement('element', [], []);
+
+        // Stub an element with exactly one attribute
+        $attribute = $this->createMock(Attribute::class);
+        $attribute->method('toHtml')->willReturn('attribute="value"');
+        $attributeElement = new NormalElement('element', [$attribute], []);
+
+        // Stub an Element with exactly one child
+        $child = $this->createMock(Element::class);
+        $child->method('toHtml')->willReturn('<child>');
+        $parentElement = new NormalElement('parent', [], [$child]);
+
+        return [
+            [$emptyElement, '<element></element>'],
+            [$attributeElement, '<element attribute="value"></element>'],
+            [$parentElement, '<parent><child></parent>']
+        ];
     }
 
-    public function testBeautifierWithoutChildren()
+    /**
+     * @dataProvider beautifyProvider
+     */
+    public function testBeautify(NormalElement $element, string $expected)
     {
-        $element = new NormalElement('empty', [], []);
-        $beautifiedHtml = $element->beautify()->toHtml();
-        $this->assertEquals("<empty>\n</empty>", $beautifiedHtml);
+        $actual = $element->beautify()->toHtml();
+        $this->assertEquals($expected, $actual);
     }
 
-    public function testBeautifierWithChild()
+    public function beautifyProvider() : array
     {
+        // Create an empty element
+        $emptyElement = new NormalElement('empty', [], []);
+
+        // Create an element with exactly one child
         $child = new NormalElement('child', [], []);
-        $element = new NormalElement('parent', [], [$child]);
-        $beautifiedHtml = $element->beautify()->toHtml();
-        $this->assertEquals("<parent>\n    <child>\n    </child>\n</parent>", $beautifiedHtml);
-    }
+        $parentElement = new NormalElement('parent', [], [$child]);
 
+        // Create an element with multiple children
+        $twinParentElement = new NormalElement('parent', [], [$child, $child]);
 
-    public function testBeautifierWithSingleChildren()
-    {
-        $child = new NormalElement('child', [], []);
-        $element = new NormalElement('parent', [], [$child, $child]);
-        $beautifiedHtml = $element->beautify()->toHtml();
-        $this->assertEquals("<parent>\n    <child>\n    </child>\n    <child>\n    </child>\n</parent>", $beautifiedHtml);
-    }
+        // Create an element with on child and one grantchild
+        $grantParentElement = new NormalElement('grantparent', [], [$parentElement]);
 
-    public function testBeautifierWithGrandChild()
-    {
-        $grandChild = new NormalElement('grandchild', [], []);
-        $child = new NormalElement('child', [], [$grandChild]);
-        $element = new NormalElement('parent', [], [$child]);
-        $beautifiedHtml = $element->beautify()->toHtml();
-        $this->assertEquals("<parent>\n    <child>\n        <grandchild>\n        </grandchild>\n    </child>\n</parent>", $beautifiedHtml);
+        return [
+            [$emptyElement, "<empty>\n</empty>"],
+            [$parentElement, "<parent>\n    <child>\n    </child>\n</parent>"],
+            [$twinParentElement, "<parent>\n    <child>\n    </child>\n    <child>\n    </child>\n</parent>"],
+            [$grantParentElement, "<grantparent>\n    <parent>\n        <child>\n        </child>\n    </parent>\n</grantparent>"]
+        ];
     }
 
     public function testGetLocalName()

@@ -8,42 +8,72 @@ use Teein\Html\Ast\Attribute;
 
 class AttributeTest extends TestCase
 {
-    public function testToHtml()
+    
+    /**
+     * @dataProvider toHtmlProvider
+     */
+    public function testToHtml(Attribute $attribute, string $expected)
     {
-        $attribute = new Attribute("name", "value");
-        $attributeHtml = $attribute->toHtml();
-        $this->assertEquals("name=\"value\"", $attributeHtml);
+        $actual = $attribute->toHtml();
+        $this->assertEquals($expected, $actual);
     }
 
-    public function testGetName()
+    public function toHtmlProvider() : array
     {
-        $expected = "name";
+        return [
+            [new Attribute("name", "value"), "name=\"value\""],
+            [new Attribute("escaping1", "\""), "escaping1=\"&quot;\""],
+            [new Attribute("escaping2", "&"), "escaping2=\"&amp;\""],
+        ];
+    }
+
+    /**
+     * @dataProvider nameProvider
+     */
+    public function testGetName(string $expected)
+    {
         $attribute = new Attribute($expected, "value");
         $actual = $attribute->getName();
         $this->assertEquals($expected, $actual);
     }
 
-    public function testGetValue()
+    /**
+     * @dataProvider nameProvider
+     */
+    public function testSetName(string $expected)
     {
-        $expected = "value";
-        $attribute = new Attribute("name", $expected);
-        $actual = $attribute->getValue();
-        $this->assertEquals($expected, $actual);
-    }
-
-    public function testSetName()
-    {
-        $expected = "name";
         $attribute = new Attribute("", "");
         $actual = $attribute->setName($expected)->getName();
         $this->assertEquals($expected, $actual);
     }
 
-    public function testSetValue()
+    public function nameProvider() : array
     {
-        $expected = "value";
+        return [["lorem"], ["ipsum"], ["dolor"], ["sit"], ["amet"], ["data-test"]];
+    }
+
+    /**
+     * @dataProvider valueProvider
+     */
+    public function testGetValue(string $expected)
+    {
+        $attribute = new Attribute("name", $expected);
+        $actual = $attribute->getValue();
+        $this->assertEquals($expected, $actual);
+    }
+
+    /**
+     * @dataProvider valueProvider
+     */
+    public function testSetValue(string $expected)
+    {
         $attribute = new Attribute("", "");
         $actual = $attribute->setValue($expected)->getValue();
         $this->assertEquals($expected, $actual);
+    }
+
+    public function valueProvider() : array
+    {
+        return [["lorem"], ["ipsum"], ["dolor"], ["sit"], ["amet"], ["\""], ["&"]];
     }
 }
