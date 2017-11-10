@@ -1,6 +1,7 @@
 {
     "name" : "teein/html",
     "description": "A Virtual DOM and templating engine for PHP",
+    "license": "MIT",
     "require": {
         "php" : "^7.1"
     },
