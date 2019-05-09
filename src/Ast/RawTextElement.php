@@ -11,8 +11,8 @@ use Teein\Html\VirtualDom\Element as ElementInterface;
 /**
  * A RawTextElement represents a html-element which contents are restricted
  * to a certain kind of foreign-language. Currently, this is only used to
- * represent <script>-elements, that may comprise JavaScript-content and
- * <style>-element, that may comprise CSS-content. These elements use a
+ * represent script-elements, that may comprise JavaScript-content and
+ * style-element, that may comprise CSS-content. These elements use a
  * different encoding-algorithm when serialized.
  */
 final class RawTextElement extends Element implements ElementInterface
