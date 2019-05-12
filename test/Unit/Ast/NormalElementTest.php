@@ -67,10 +67,22 @@ class NormalElementTest extends TestCase
         $grantParentElement = new NormalElement('grantparent', [], [$parentElement]);
 
         return [
-            [$emptyElement, "<empty>\n</empty>"],
-            [$parentElement, "<parent>\n    <child>\n    </child>\n</parent>"],
-            [$twinParentElement, "<parent>\n    <child>\n    </child>\n    <child>\n    </child>\n</parent>"],
-            [$grantParentElement, "<grantparent>\n    <parent>\n        <child>\n        </child>\n    </parent>\n</grantparent>"]
+            [
+                $emptyElement,
+                "<empty>\n</empty>"
+            ],
+            [
+                $parentElement,
+                "<parent>\n    <child>\n    </child>\n</parent>"
+            ],
+            [
+                $twinParentElement,
+                "<parent>\n    <child>\n    </child>\n    <child>\n    </child>\n</parent>"
+            ],
+            [
+                $grantParentElement,
+                "<grantparent>\n    <parent>\n        <child>\n        </child>\n    </parent>\n</grantparent>"
+            ]
         ];
     }
 

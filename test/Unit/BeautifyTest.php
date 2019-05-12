@@ -8,7 +8,6 @@ use PHPUnit\Framework\TestCase;
 use function Teein\Html\Beautifier\beautify;
 use Teein\Html\VirtualDom\Document;
 
-
 class BeautifyTest extends TestCase
 {
     /**
@@ -27,5 +26,4 @@ class BeautifyTest extends TestCase
         $original->method('beautify')->willReturn($beautified);
         return [[$original, $beautified]];
     }
-
 }

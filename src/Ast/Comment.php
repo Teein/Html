@@ -17,7 +17,7 @@ final class Comment implements CommentInterface
 
     /**
      * Construct a new Comment with given $comment
-     * 
+     *
      * @param string $comment The content of the new Comment
      */
     public function __construct(string $comment)
@@ -41,13 +41,13 @@ final class Comment implements CommentInterface
      * seqence "-->". Additionally, all line-breaks inside the content of this
      * Comment are indented with respect to the current nesting level $level.
      * The original Comment is left unmodified.
-     * 
+     *
      * This function should not be called directly on a Comment. It is invoked
      * automatically if the document-ancestor is about to be beautified.
      * However, it is a debugging-utility, so don't take the former rule too
      * serious, but make sure to remove the call to beautify for
      * production-code.
-     * 
+     *
      * @param int $level The current level of indentation
      */
     public function beautify(int $level = 0) : Beautifier
@@ -68,7 +68,7 @@ final class Comment implements CommentInterface
     /**
      * Get a new Comment that is like this one but with its content set to
      * $content
-     * 
+     *
      * @param string $comment The content of the new comment
      */
     public function setComment(string $comment) : CommentInterface

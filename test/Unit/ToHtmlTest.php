@@ -8,7 +8,6 @@ use PHPUnit\Framework\TestCase;
 use function Teein\Html\ToHtml\toHtml;
 use Teein\Html\VirtualDom\Document;
 
-
 class ToHtmlTest extends TestCase
 {
     /**
@@ -28,5 +27,4 @@ class ToHtmlTest extends TestCase
             return [$documentStub, $output];
         }, ['lorem', 'ipsum', 'dolar', 'sit', 'amet']);
     }
-
 }

@@ -55,7 +55,7 @@ final class Attribute implements AttributeInterface
 
     /**
      * Get a new Attribute that is like this one but with name set to $name
-     * 
+     *
      * @param string $name The name of the new Attribute
      */
     public function setName(string $name) : AttributeInterface
@@ -65,7 +65,7 @@ final class Attribute implements AttributeInterface
     
     /**
      * Get a new Attribute that is like this one but with value set to $value
-     * 
+     *
      * @param string $value The value of the new Attribute
      */
     public function setValue(string $value) : AttributeInterface
