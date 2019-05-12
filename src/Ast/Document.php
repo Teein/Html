@@ -20,7 +20,7 @@ final class Document implements DocumentInterface
 
     /**
      * Construct a new Document with given root $root.
-     * 
+     *
      * @param ElementInterface $root The root-node of the new Document
      * @param bool $beautified A flag to capture wether the new Document should be
      *        beautified before output. This flag defaults to "false" and
@@ -47,14 +47,14 @@ final class Document implements DocumentInterface
      * Get a beautified Document for debugging-purpose. This inserts a new line
      * right after the document-type definition "<!DOCTYPE html>" and recursively
      * invokes the beautify-method on its root-node and all its descendants.
-     * 
+     *
      * This method should never be invoked directly. Instead use the top-level
      * function "beautify($document)" for the same purpose. Since this is method
      * is a debugging-utility only, don't take the former rule too serious, but
      * make sure to remove any call this method for production-code.
-     * 
+     *
      * Make sure to remove the call to beautify for production-code.
-     * 
+     *
      * @param int $level The current level of indentation. This should always be 0.
      */
     public function beautify(int $level = 0) : Beautifier
@@ -73,7 +73,7 @@ final class Document implements DocumentInterface
     /**
      * Get a new Document that is like this one but with the root-node
      * set to $root
-     * 
+     *
      * @param ElementInterface $root The root-node of the new Document
      */
     public function setRoot(ElementInterface $root) : DocumentInterface

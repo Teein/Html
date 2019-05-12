@@ -5,15 +5,13 @@ namespace Teein\Html\Test\Integration;
 
 use PHPUnit\Framework\TestCase;
 
-use function Teein\Html\Attributes\{abbr_,accept,acceptcharset,accesskey,action,allowfullscreen,allowpaymentrequest,allowusermedia,alt,as_,async,autocomplete,autofocus,autoplay,charset,checked,cite_,class_,color,cols,colspan,content,contenteditable,controls,coords,crossorigin,datetime,default_,defer,dir,dirname,disabled,download,draggable,enctype,for_,form_,formaction,formenctype,formmethod,formnovalidate,formtarget,headers,height,hidden,high,href,hreflang,httpequiv,id,inputmode,integrity,is,ismap,itemid,itemprop,itemref,itemscope,itemtype,kind,label_,lang,list_,loop,low,manifest,max,maxlength,media,method,min,minlength,multiple,muted,name,nomodule,nonce,novalidate,odata,open,optimum,pattern,ping,placeholder,playsinline,poster,preload,readonly,referrerpolicy,rel,required,reversed,rows,rowspan,sandbox,scope,selected,shape,size,sizes,slot_,span_,spellcheck,src,srcdoc,srclang,srcset,start,step,style_,tabindex,target,title_,translate,type,typemustmatch,updateviacache,usemap,value,width,workertype,wrap};
-
 class AttributesTest extends TestCase
 {
     /**
      * @dataProvider factoryProvider
      */
-    public function testToHtml ($factory, $attributeName)
-    {            
+    public function testToHtml($factory, $attributeName)
+    {
         $fullyQualifiedFactory = self::fullyQualifiedName($factory);
         $expected = "$attributeName=\"value\"";
         $actual = call_user_func($fullyQualifiedFactory, 'value', 'value')->toHtml();
@@ -148,7 +146,7 @@ class AttributesTest extends TestCase
         ];
     }
 
-    public static function fullyQualifiedName ($factory)
+    public static function fullyQualifiedName($factory)
     {
         return "Teein\\Html\\Attributes\\$factory";
     }

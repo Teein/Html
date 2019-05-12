@@ -17,7 +17,7 @@ final class VoidElement extends Element implements ElementInterface
     /**
      * Construct a new VoidElement with localName set to $localName and
      * attributes set to $attributes
-     * 
+     *
      * @param string $localName The localName of the new VoidElement
      * @param array $attributes The attributes of the new VoidElement
      */
@@ -31,13 +31,13 @@ final class VoidElement extends Element implements ElementInterface
      * Get a beautified VoidElement for debugging-purpose. This inserts a
      * new line after the opening tag "<$localName>".
      * The original VoidElement is left unmodified.
-     * 
+     *
      * This function should not be called directly on a VoidElement. It is
      * invoked automatically if the document-ancestor is about to be
      * beautified. However, it is a debugging-utility, so don't take the former
      * rule too serious, but make sure to remove the call to "beautify" for
      * production-code.
-     * 
+     *
      * @param int $level The current level of indentation
      */
     public function beautify(int $level = 0) : Beautifier
@@ -58,7 +58,7 @@ final class VoidElement extends Element implements ElementInterface
     /**
      * Get a new VoidElement that is like this one but with its localName set
      * to $localName
-     * 
+     *
      * @param string $localName The localName of the new VoidElement
      */
     public function setLocalName(string $localName) : ElementInterface
@@ -69,7 +69,7 @@ final class VoidElement extends Element implements ElementInterface
     /**
      * Get a new VoidElement that is like this one but with its attributes set
      * to $attributes
-     * 
+     *
      * @param array $attributes The attributes of the new VoidElement
      */
     public function setAttributes(array $attributes) : ElementInterface

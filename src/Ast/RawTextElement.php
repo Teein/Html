@@ -23,7 +23,7 @@ final class RawTextElement extends Element implements ElementInterface
     /**
      * Construct a new RawTextElement with localName set to $localName,
      * attributes set to $attributes and text-content set to $text
-     * 
+     *
      * @param string $localName The localName of the new RawTextElement
      * @param array $attributes The attributes of the new RawTextElement
      * @param TextInterface $text The text-content of the new RawTextElement
@@ -41,13 +41,13 @@ final class RawTextElement extends Element implements ElementInterface
      * closing tag "</$localName>. Additionally, "beautify" is invoked
      * recursively on all childNodes $childNodes.
      * The original RawTextElement is left unmodified.
-     * 
+     *
      * This function should not be called directly on a RawTextElement. It is
      * invoked automatically if the document-ancestor is about to be
      * beautified. However, it is a debugging-utility, so don't take the former
      * rule too serious, but make sure to remove the call to "beautify" for
      * production-code.
-     * 
+     *
      * @param int $level The current level of indentation
      */
     public function beautify(int $level = 0) : Beautifier
@@ -77,7 +77,7 @@ final class RawTextElement extends Element implements ElementInterface
     /**
      * Get a new RawTextElement that is like this one but with its text-content
      * set to $text
-     * 
+     *
      * @param TextInterface $text The text-content of the new RawTextElement
      */
     public function setText(TextInterface $text) : ElementInterface
@@ -88,7 +88,7 @@ final class RawTextElement extends Element implements ElementInterface
     /**
      * Get a new RawTextElement that is like this one but with its localName
      * set to $localName
-     * 
+     *
      * @param string $localName The localName of the new RawTextElement
      */
     public function setLocalName(string $localName) : ElementInterface
@@ -99,7 +99,7 @@ final class RawTextElement extends Element implements ElementInterface
     /**
      * Get a new RawTextElement that is like this one but with its attributes
      * set to $attributes
-     * 
+     *
      * @param array $attributes The attributes of the new RawTextElement
      */
     public function setAttributes(array $attributes) : ElementInterface

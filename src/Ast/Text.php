@@ -16,7 +16,7 @@ final class Text implements TextInterface
 
     /**
      * Construct a new Text with text-content set to $text
-     * 
+     *
      * @param string $text The text-content of the new Text
      */
     public function __construct(string $text)
@@ -28,13 +28,13 @@ final class Text implements TextInterface
      * Get a beautified Text for debugging-purpose. This returns
      * the same Text because it is unclear how a beautified
      * Text should look like.
-     * 
+     *
      * This function should not be called directly on a Text. It is
      * invoked automatically if the document-ancestor is about to be
      * beautified. However, it is a debugging-utility, so don't take the former
      * rule too serious, but make sure to remove the call to "beautify" for
      * production-code.
-     * 
+     *
      * @param int $level The current level of indentation
      */
     public function beautify(int $level = 0) : Beautifier
@@ -56,7 +56,7 @@ final class Text implements TextInterface
      * a different encoding-algorithm. For exmaple, an ampersand "&" is
      * not replaced by the html-escaping-sequence "&amp;", but left
      * unmodifier.
-     * 
+     *
      * @param string $localName A localName, that is escaped inside the
      *        text-content of this Text.
      */
@@ -86,7 +86,7 @@ final class Text implements TextInterface
     /**
      * Get a new Text that is like this one but with its text-content set to
      * $text.
-     * 
+     *
      * @param string $text The text-content of the new Text
      */
     public function setText(string $text) : TextInterface

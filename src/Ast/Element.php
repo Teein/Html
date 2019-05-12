@@ -43,5 +43,4 @@ abstract class Element implements ElementInterface
     {
         return $this->attributes;
     }
-
 }
